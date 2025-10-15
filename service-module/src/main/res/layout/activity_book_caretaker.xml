@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#F6F8F7"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.services.BookCaretakerActivity">
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar_layout"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookRecylerview"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        tools:itemCount="4"
+        tools:listitem="@layout/book_care_row_layout"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

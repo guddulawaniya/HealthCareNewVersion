@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottomsheet_rounded"
+    android:clipToOutline="true"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"
+            android:text="Profile Picture" />
+
+        <ImageView
+            android:id="@+id/crossbtn"
+            android:layout_width="35dp"
+            android:src="@drawable/cross_black_icon"
+            android:layout_height="35dp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:src="@drawable/camera_icon"
+            android:layout_height="35dp"
+            android:padding="3dp"
+            app:tint="@color/textColor" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:layout_marginStart="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"
+            android:text="Take Photo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnGallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:src="@drawable/gallery_icon"
+            android:layout_height="35dp"
+            android:padding="3dp"
+            app:tint="@color/textColor" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:layout_marginStart="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"
+            android:text="Choose from Gallery"/>
+
+    </LinearLayout>
+
+</LinearLayout>

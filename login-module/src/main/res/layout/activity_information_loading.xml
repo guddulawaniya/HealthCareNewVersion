@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.healthonboardingactivity.Information_loading_Activity">
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/loading_screen_bg_image" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="346dp"
+        android:src="@drawable/loadinimage1" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="center"
+        android:text="@string/care_avatar_is_for_everyone_from_curious_kids_to_wise_elders_your_companion_at_every_stage_of_life"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@color/disableBtnColor" />
+
+    </LinearLayout>
+
+</LinearLayout>

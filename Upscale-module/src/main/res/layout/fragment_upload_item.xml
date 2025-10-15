@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ui.upscale.UploadItemFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <ImageView
+                        android:id="@+id/itemImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/sample_image" />
+
+                    <ImageView
+                        android:id="@+id/crossbtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/cross_btn_bg"
+                        android:padding="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/cross_black_icon" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/imagepicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/image_upload_bg"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/image_placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Upload Event Image"
+                        android:textColor="@color/dividerColor"
+
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/inter"
+                        android:text="Tap to upload a photo"
+                        android:textColor="@color/dividerColor"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Upload your Item"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="Add a photo and details to get started"
+                android:textColor="@color/textColor"
+                android:textSize="10sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="28dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:layout_editor_absoluteX="16dp">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/create_event_text_bg"
+                    android:fontFamily="@font/inter_medium"
+                    android:hint="Item Name"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="20dp"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="15dp" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:elevation="0dp"
+                    app:cardBackgroundColor="#F0F0F0"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/newtext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="6dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/height_active_tab_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="New"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/usedtext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="6dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Used"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <EditText
+                    android:id="@+id/durationUsed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/create_event_text_bg"
+                    android:fontFamily="@font/inter_medium"
+                    android:hint="Duration for used"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="20dp"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="15dp" />
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/categoryAutocomplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/create_event_text_bg"
+                    android:drawableEnd="@drawable/keyboard_arrow_down_20px"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingEnd="10dp"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:text="Category"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="20dp"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/create_event_text_bg"
+                    android:fontFamily="@font/inter_medium"
+                    android:hint="Price (optional)"
+                    android:paddingVertical="12dp"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:paddingStart="20dp"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="15dp" />
+
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:text="Mark as free for Donation"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    app:buttonTint="@color/check_box_color" />
+
+                <include
+                    android:id="@+id/btninclude"
+                    layout="@layout/custom_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

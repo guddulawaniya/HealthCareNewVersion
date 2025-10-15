@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "951573303887",
+    "project_id": "careavatar-2e6bd",
+    "storage_bucket": "careavatar-2e6bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951573303887:android:dbb5bf95b16129a3d1903a",
+        "android_client_info": {
+          "package_name": "com.careavatar.expertapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqtXZ1yOPfhpFckf3t84w4mGGiBN93NGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951573303887:android:b7400c6009920376d1903a",
+        "android_client_info": {
+          "package_name": "com.careavatar.userapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqtXZ1yOPfhpFckf3t84w4mGGiBN93NGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

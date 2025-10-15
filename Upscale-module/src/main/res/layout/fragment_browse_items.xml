@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+
+    tools:context=".ui.upscale.BrowseItemsFragment">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="16dp"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/borderColor"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/baseline_search_24"
+                app:tint="@color/borderColor" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/inter"
+                android:hint="Search for items....."
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dividerColor"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/browerRecylerview"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="10dp"
+        tools:listitem="@layout/browse_item_row_layout"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

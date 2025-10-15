@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="15dp"
+    android:id="@+id/categoryName"
+    android:layout_marginEnd="15dp"
+    android:background="@drawable/edit_text_bg"
+    android:fontFamily="@font/inter_medium"
+    android:gravity="center"
+    android:minWidth="143dp"
+    android:paddingVertical="12dp"
+    android:text="Yoga"
+    android:textColor="@color/black"
+    android:textSize="18dp" />

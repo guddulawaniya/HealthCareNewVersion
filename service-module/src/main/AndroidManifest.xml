@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application>
+        <activity
+            android:name=".ui.BookCaretakerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.BookingConfirmationActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.careTaker_DetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.CareTakersActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.OrderDetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.OrderSummaryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.YourOrderConfirmedActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.MedicalServicesActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.ScheduleAppoinmentActivity"
+            android:exported="true" />
+
+
+    </application>
+</manifest>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".ui.community.CommunityCreatedActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="50dp"
+            android:src="@drawable/selected_icon"
+            android:layout_height="50dp"
+            app:tint="@color/buttonColor" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="@string/community_created"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/inter"
+            android:text="Your community ' Health with time ' has been successfully created . You can now start sharing content and engaging with members."/>
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_button"/>
+
+</LinearLayout>

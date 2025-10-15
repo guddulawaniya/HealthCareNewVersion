@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/nameFragment">
+
+    <fragment
+        android:id="@+id/nameFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.NameFragment"
+        android:label="name">
+        <action
+            android:id="@+id/action_name_to_email"
+            app:destination="@id/emailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.EmailFragment"
+        android:label="email">
+        <action
+            android:id="@+id/action_email_to_gender"
+            app:destination="@id/genderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/genderFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.GenderFragment"
+        android:label="Gender">
+        <action
+            android:id="@+id/action_gender_to_age"
+            app:destination="@id/ageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ageFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.AgeFragment"
+        android:label="Age">
+        <action
+            android:id="@+id/action_age_to_height"
+            app:destination="@id/heightFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/heightFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.HeightFragment"
+        android:label="Height">
+        <action
+            android:id="@+id/action_height_to_weight"
+            app:destination="@id/weightFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/weightFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.WeightFragment"
+        android:label="Height">
+        <action
+            android:id="@+id/action_weight_to_bloodPressure"
+            app:destination="@id/bloodPressureFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/bloodPressureFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.BloodPressureFragment"
+        android:label="Height">
+        <action
+            android:id="@+id/action_bloodPressure_to_sugarLevel"
+            app:destination="@id/sugarLevelFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/sugarLevelFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.SugarLevelFragment"
+        android:label="Sugar Level">
+        <action
+            android:id="@+id/action_sugar_to_UploadProfile"
+            app:destination="@id/userProfileFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.UploadProfileImageFragment"
+        android:label="User UploadImage Profile">
+        <action
+            android:id="@+id/action_UploadProfile_to_emergencycontact"
+            app:destination="@id/emergencyContactFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/emergencyContactFragment"
+        android:name="com.asyscraft.login_module.ui.healthonboardingactivity.EmergencyContactFragment"
+        android:label="Emergency Contact"/>
+</navigation>

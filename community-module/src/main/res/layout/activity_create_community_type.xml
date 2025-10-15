@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CreateCommunityTypeActivity">
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/custom_toolbar_layout"/>
+
+            <LinearLayout
+                android:id="@+id/layoutPublic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/selected_gender_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="@string/public_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/anyone_an_join_view_content_and_search_for_this_community"/>
+                </LinearLayout>
+
+
+                <RadioButton
+                    android:id="@+id/imgPublic"
+                    android:layout_width="22dp"
+                    android:checked="true"
+                    android:button="@null"
+                    android:layout_height="22dp"
+                    android:background="@drawable/radio_btn_outline_bg"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPrivate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/unselected_gender_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="@string/private_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/inter"
+
+                        android:text="@string/only_members_can_join_view_content_and_search_for_this_community"/>
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/imgPrivate"
+                    android:layout_width="22dp"
+                    android:button="@null"
+                    android:layout_height="22dp"
+                    android:background="@drawable/radio_btn_outline_bg"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/add_members"/>
+
+            <LinearLayout
+                android:id="@+id/addMemberBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:background="@drawable/adduserbtn_bg"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/add_user_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginStart="8dp"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="@string/add_people"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="5"
+                tools:listitem="@layout/add_poeple_row_layout"
+                android:layout_marginTop="20dp"
+                />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <include
+        android:id="@+id/includedbtn"
+        layout="@layout/custom_button"/>
+
+
+</LinearLayout>

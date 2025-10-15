@@ -1,0 +1,90 @@
+package com.careavatar.dashboardmodule.dashboardfragments
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import com.asyscraft.service_module.ui.BookCaretakerActivity
+import com.asyscraft.service_module.ui.MedicalServicesActivity
+import com.careavatar.dashboardmodule.adapters.ViewPagerAdapter
+import com.careavatar.dashboardmodule.databinding.FragmentHomeBinding
+import com.careavatar.dashboardmodule.viewModels.DashBoardViewModel
+import com.careavatar.core_network.base.BaseFragment
+import com.careavatar.dashboardmodule.NotificationActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
+
+
+@AndroidEntryPoint
+class HomeFragment : BaseFragment() {
+
+    private lateinit var binding: FragmentHomeBinding
+
+    private val viewModel: DashBoardViewModel by viewModels()
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        binding.notification.setOnClickListener {
+            startActivity(Intent(requireContext(), NotificationActivity::class.java))
+        }
+
+        binding.btnBookNow.setOnClickListener {
+            startActivity(Intent(requireContext(), BookCaretakerActivity::class.java))
+        }
+
+        binding.medicalOrderNow.setOnClickListener {
+            startActivity(Intent(requireContext(), MedicalServicesActivity::class.java))
+        }
+
+
+        fetchUserData()
+        observeViewModel()
+
+        return binding.root
+    }
+
+    private fun observeViewModel() = with(viewModel) {
+        collectApiResultOnStarted(userDetailsResponse) {
+            if (it.success) {
+                if (it.user.notificationCount > 0) {
+                    binding.badgeCount.visibility = View.VISIBLE
+                    binding.badgeCount.text = it.user.notificationCount.toString()
+                } else {
+                    binding.badgeCount.visibility = View.GONE
+                }
+            }
+        }
+
+        collectApiResultOnStarted(healthResponse) {
+        }
+
+        collectApiResultOnStarted(bannerResponse) {
+            binding.viewPager.adapter = ViewPagerAdapter(requireContext(), it)
+            binding.dotsIndicator.attachTo(binding.viewPager)
+        }
+
+        collectApiResultOnStarted(upComingResponseModel) {
+
+        }
+
+    }
+
+    private fun fetchUserData() {
+        launchIfInternetAvailable {
+            // Main thread is fine here
+            viewModel.userDetails()
+            viewModel.hitBanner()
+            viewModel.hitDashBoardHealth()
+            viewModel.hitGetUpComingClass()
+        }
+    }
+
+
+}

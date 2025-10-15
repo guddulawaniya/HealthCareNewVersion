@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/firstmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:fontFamily="@font/inter"
+        android:visibility="gone"
+        android:text="TODAY"
+        android:textColor="@color/textColor"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:minWidth="300dp"
+        android:paddingBottom="5dp"
+        android:orientation="vertical"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message_reciver_bg"
+            android:fontFamily="@font/inter_medium"
+            android:maxWidth="350dp"
+            android:minWidth="150dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="16dp"
+            android:text="Hi Welcome to our group "
+            android:textColor="@color/textColor"
+            android:textSize="15dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            app:strokeColor="#34000000"
+            app:strokeWidth="1dp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="250dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="164dp">
+                    <ImageView
+                        android:id="@+id/ivEventImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/dementia_image_bg"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/party_event_image" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvEventTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Community Dance Night"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvEventDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Join us for fun evening of game, dance and socializing"
+                        android:textSize="12sp"
+                        android:maxWidth="245dp"
+                        android:textColor="@color/textColor"
+                        android:fontFamily="@font/inter"
+                        android:layout_marginTop="3dp" />
+
+                    <TextView
+                        android:id="@+id/tvEventDateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Oct 16, 8:00PM"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="12sp" />
+
+
+
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Join"
+                        app:cornerRadius="20dp"
+                        app:strokeColor="#4C49A24E"
+                        android:layout_gravity="right"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="6dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/primaryColor"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/profile_sample_image" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Joyprokash Sardar"
+                    android:textColor="@color/chatMessageColor"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/inter_medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="1 hour ago"
+                    android:textColor="@color/chatMessageColor"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        android:minWidth="300dp"
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message_sender_bg"
+            android:fontFamily="@font/inter_medium"
+            android:maxWidth="350dp"
+            android:minWidth="150dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="16dp"
+            android:text="Hi Welcome to our group "
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            app:strokeColor="#34000000"
+            app:strokeWidth="1dp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/primaryColor"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="250dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="164dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/party_event_image" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Community Dance Night"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Join us for fun evening of game, dance and socializing"
+                        android:textSize="12sp"
+                        android:maxWidth="245dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/inter"
+                        android:layout_marginTop="3dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Oct 16, 8:00PM"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+
+
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnJoin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Join"
+                        app:cornerRadius="20dp"
+                        app:strokeColor="#4C49A24E"
+                        android:paddingHorizontal="40dp"
+                        android:layout_gravity="right"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="6dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/primaryColor"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Joyprokash Sardar"
+                    android:textColor="@color/chatMessageColor"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/inter_medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="1 hour ago"
+                    android:textColor="@color/chatMessageColor"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/profile_sample_image" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

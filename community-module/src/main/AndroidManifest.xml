@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application>
+        <activity
+            android:name=".CreateHightlightActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddMemberCommunityActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CommunityCallHistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CommunityCreatedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateCommunityActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateEventActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateCommunityTypeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EventActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateEventNextActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EventDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PeopleFilterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CommunityMessageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FindPeopleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EventCreatePreviewActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

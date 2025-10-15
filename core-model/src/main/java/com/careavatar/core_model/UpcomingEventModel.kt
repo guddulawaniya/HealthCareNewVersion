@@ -1,0 +1,81 @@
+package com.careavatar.core_model
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
+data class UpcomingEventModel(
+    val message: String,
+    val count: Long,
+    val events: List<UpcomingTodayEventList>,
+)
+@Parcelize
+data class UpcomingTodayEventList(
+    val _id: String,
+    val communityId: CommunityId,
+    val creatorId: CreatorId,
+    val title: String,
+    val description: String,
+    val eventDate: String,
+    val eventTime: String,
+    val visibility: String,
+    val location: String,
+    val latitude: Double,
+    val longitude: Double,
+    val eventLink: String,
+    val eventMode: String,
+    val attachment: List<String>?=null,
+    val notifiedMembers: List<String>,
+    val createdAt: String,
+    val updatedAt: String,
+    val __v: Long,
+): Parcelable
+
+@Parcelize
+data class CommunityId(
+    val _id: String,
+    val category: String,
+    val name: String,
+    val communityLogo: String?,
+    val memberCount: Int,
+): Parcelable
+
+@Parcelize
+data class CreatorId(
+    val _id: String,
+    val phoneNumber: String,
+    val avatar: String,
+    val email: String,
+    val name: String,
+): Parcelable
+
+
+
+
+
+
+data class GetCommunitySocialHomeResponse(
+    val message: String,
+    val count: Long,
+    val requestNotifications: List<Any?>,
+)
+
+
+
+data class ChatNotificationResponse(
+    val count: Long,
+    val senders: List<Sender>,
+)
+
+data class Sender(
+    val _id: String,
+    val phoneNumber: String,
+    val avatar: String,
+    val email: String,
+    val name: String,
+)
+
+
+
+
+

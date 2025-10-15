@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".CreateCommunityActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                android:src="@drawable/cross_black_icon" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:gravity="center"
+                android:text="@string/create_community"
+                android:textColor="@color/textColor"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userProfile"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:src="@drawable/sample_image"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="50dp" />
+
+
+        <LinearLayout
+            android:id="@+id/imagepicker"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_gravity="center"
+            android:background="@drawable/profile_linear_bg"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:cardCornerRadius="100dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/camera_add_icon"
+                app:tint="@color/primaryColor" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/add_photo"
+                android:gravity="center"
+                android:textColor="@color/primaryColor"
+                android:textSize="15sp"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/removebtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:visibility="gone"
+            android:fontFamily="@font/inter"
+            android:text="@string/remove"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginTop="30dp"
+            android:text="Community Title"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"/>
+        <EditText
+            android:id="@+id/communityTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:hint="Enter community title"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:layout_marginTop="10dp"
+
+            android:background="@drawable/edit_text_bg"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginTop="30dp"
+            android:text="Interests"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"/>
+        <AutoCompleteTextView
+            android:id="@+id/interests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:hint="Choose"
+            android:textColor="@color/textColor"
+            android:inputType="none"
+            android:drawableEnd="@drawable/keyboard_arrow_down_20px"
+            android:textColorHint="@color/hintColor"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+
+
+
+
+    <include
+        android:id="@+id/includedbtn"
+        layout="@layout/custom_button"/>
+
+</LinearLayout>

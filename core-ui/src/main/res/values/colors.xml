@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="textColor">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primaryColor">#49A24E</color>
+    <color name="secondaryColor">#D16B93</color>
+    <color name="disableBtnColor">#C2C2C2</color>
+    <color name="grayTextColor">#878484</color>
+    <color name="headingBtnColor">#39523A</color>
+    <color name="lightGray">#DDFFDF</color>
+    <color name="hintColor">#878484</color>
+    <color name="red">#F30D0D</color>
+    <color name="backgroundColor">#F0F0F0</color>
+    <color name="inActivetab">#F2FAF0</color>
+
+
+
+    <color name="communitybtnColor">#39523A</color>
+    <color name="profileCardbgColor">#CBF2CD</color>
+    <color name="dementiaActiveBgColorbg">#9B75FF</color>
+    <color name="communityDistanceBgColor">#F3EEEE</color>
+    <color name="profile_careseek_Color">#F8F1BF</color>
+    <color name="dementiaBgColorbgsecond">#8F6EFB</color>
+    <color name="activemoduleColorbg">#F99C2A</color>
+    <color name="activemoduleColorbgsecond">#FEB615</color>
+    <color name="activemodule">#F99C2A</color>
+    <color name="dementiafirstcolor">#FEF7FF</color>
+    <color name="dailyMindBgColor">#FCF0FB</color>
+    <color name="expertBookingBgColor">#F3F3FF</color>
+    <color name="expertBookingTextColor">#000080</color>
+    <color name="dementiasecondcolor">#FEE5FC</color>
+    <color name="autismfirstcolor">#FBEEEA</color>
+    <color name="autismsecondcolor">#FFD0C2</color>
+    <color name="dietPlannerbg">#FFC068</color>
+    <color name="reminderBgColor">#358ACB</color>
+    <color name="healthFitnessbgColor">#FFD3C5</color>
+
+
+    <color name="homeTextColor">#39523A</color>
+    <color name="boostDailydietColor">#203020</color>
+    <color name="boostDailyBgdietColor">#B9EEBA</color>
+    <color name="boostDailywaterColor">#4D64A7</color>
+    <color name="boostDailyBgwaterColor">#D7DCEF</color>
+    <color name="boostDailyexcersiceColor">#D17196</color>
+    <color name="boostDailyexcersiceBgColor">#FBEEEA</color>
+
+    <color name="selectedCardbg">#FFEAF2</color>
+    <color name="buttonColor">#49A24E</color>
+    <color name="dividerColor">#878484</color>
+    <color name="borderColor">#BBB4B4B4</color>
+    <color name="servicebtnColor">#E95290</color>
+
+    <color name="securetextbgcolorhome">#585858</color>
+    <color name="heighttabbgcolor">#eeeeef</color>
+    <color name="preferenceInactive">#C2C2C2</color>
+    <color name="chatMessageColor">#6B7882</color>
+</resources>

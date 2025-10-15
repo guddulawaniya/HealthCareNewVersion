@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="@string/add_emergency_contacts"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/inter"
+            android:text="@string/choose_a_trusted_person_we_can_reach_in_case_of_emergency"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/permissionbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_bg"
+            android:padding="10dp"
+            android:text="@string/allow_read_contact"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+
+            <include
+                android:id="@+id/custom_searchbar"
+                layout="@layout/custom_search_layout"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/emergencyContactRecylerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/emergency_row_layout" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+    <include
+        android:id="@+id/btninclude"
+        layout="@layout/custom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</LinearLayout>
