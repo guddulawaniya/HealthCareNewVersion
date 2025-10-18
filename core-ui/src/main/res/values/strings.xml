@@ -1,8 +1,5 @@
 <resources>
-    <string name="google_maps_key">AIzaSyAxmRrwWLag7plK-SQFtQvQxlhRVwI09tY</string>
-
-
-
+    <string name="google_api_key" translatable="false">AIzaSyCqtXZ1yOPfhpFckf3t84w4mGGiBN93NGE</string>
     <string name="app_name">Healthcare2.0</string>
     <string name="welcome_to_care_avatar">Welcome to Care Avatar</string>
     <string name="personalized_healthcare_for_you_and_your_loved_ones_from_daily_fitness_to_emergency_support">Personalized healthcare for you and your loved\n ones from daily fitness to emergency support.</string>

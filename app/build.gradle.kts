@@ -21,6 +21,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val mapsApiKey: String? = project.findProperty("GOOGLE_MAPS_API_KEY") as? String
+        if (!mapsApiKey.isNullOrEmpty()) {
+            // Use the same name your manifest expects
+            resValue("string", "google_api_key", mapsApiKey)
+        }
+
     }
 
     buildTypes {

@@ -44,7 +44,6 @@ class JoinedFragment : BaseFragment() {
     }
 
 
-
     private fun setRecyclerview() {
 
         joinedAdapter = SearchCommunityAdapter(requireContext(), dataList, onItemClick = { array ->

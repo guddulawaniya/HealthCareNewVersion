@@ -55,6 +55,7 @@ class CommunityMessageActivity : BaseActivity() {
         setupRecyclerView()
         extractIntentData()
         setupCommunityDetailsUI()
+
     }
     private fun setupCommunityDetailsUI() {
         binding.tvName.text = communityName
@@ -93,7 +94,11 @@ class CommunityMessageActivity : BaseActivity() {
         }
 
         binding.ivEventIcon.setOnClickListener {
-            startActivity(Intent(this, EventActivity::class.java))
+            startActivity(Intent(this, EventActivity::class.java).putExtra("communityId",communityId))
+        }
+
+        binding.communityDetails.setOnClickListener {
+            startActivity(Intent(this, CommunityProfileActivtiy::class.java).putExtra("communityId",communityId))
         }
 
         binding.plusbutton.setOnClickListener {

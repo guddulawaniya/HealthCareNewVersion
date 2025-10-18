@@ -9,6 +9,7 @@ import com.careavatar.core_model.LoginRequest
 import com.careavatar.core_model.VerifyOtpRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class UserRepository(private val apiService: ApiServices) {
 
@@ -49,8 +50,50 @@ class UserRepository(private val apiService: ApiServices) {
     suspend fun hitGroupMessage(communityId: String) =
         apiService.hitGetGroupMessage(communityId)
 
+    suspend fun hitGetChatList(userId: String) =
+        apiService.hitGetChatList(userId)
+
     suspend fun hitUserHobbies(resquest: UserHobbiessResquest) =
         apiService.hitUserHobbies(resquest)
+
+    suspend fun hitEventsDelete(eventId: String) =
+        apiService.hitEventsDelete(eventId)
+
+    suspend fun hitEventsByDateAndCommunity(communityId: String, date: String) =
+        apiService.hitEventsByDateAndCommunity(communityId,date)
+
+
+    suspend fun hitCreateEventData(
+        communityId: String,
+        eventDate: String,
+        description: String,
+        eventLink: String,
+        eventMode: String,
+        eventTime: String,
+        latitude: String,
+        location: String,
+        longitude: String,
+        title: String,
+        visibility: String,
+        notifiedMembers: RequestBody,
+        attachments: List<MultipartBody.Part>?,
+    ) =
+
+        apiService.hitCreateEventData(
+            communityId.toRequestBody(),
+            description.toRequestBody(),
+            eventDate.toRequestBody(),
+            eventLink.toRequestBody(),
+            eventMode.toRequestBody(),
+            eventTime.toRequestBody(),
+            latitude.toRequestBody(),
+            location.toRequestBody(),
+            longitude.toRequestBody(),
+            title.toRequestBody(),
+            visibility.toRequestBody(),
+            notifiedMembers,
+            attachments
+        )
 
 
     suspend fun hitCreateCommunity(

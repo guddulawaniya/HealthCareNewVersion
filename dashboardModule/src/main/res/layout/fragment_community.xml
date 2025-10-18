@@ -70,40 +70,36 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/communityPostRecylerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/community_status_row_lyout" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/communityPostRecylerview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/community_status_row_lyout" />
-            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:id="@+id/eventLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/upcoming_event"
-                android:textColor="@color/homeTextColor"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="@string/upcoming_event"
+                    android:textColor="@color/homeTextColor"
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/upComingEventRecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/upcoming_event_row_layout" />
@@ -144,9 +140,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter_bold"
                         android:text="@string/lets_connect_to_the_people_near_you"
-                        android:textColor="@color/white"
+                        android:textColor="#F0F0F0"
                         android:textSize="15sp" />
 
                     <com.google.android.material.card.MaterialCardView
@@ -185,12 +181,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
-
                     <LinearLayout
                         android:id="@+id/rvOverlapImages"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="horizontal">

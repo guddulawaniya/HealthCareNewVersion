@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             tools:ignore="UseCompoundDrawables">
 
             <TextView
@@ -29,8 +30,10 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:id="@+id/arrowBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="6dp"
                 android:contentDescription="@string/icon"
                 android:src="@drawable/keyboard_arrow_down_20px"
                 app:tint="@color/white" />
@@ -60,6 +63,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/imageRecylerview"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"

@@ -12,7 +12,7 @@ data class UpcomingEventModel(
 @Parcelize
 data class UpcomingTodayEventList(
     val _id: String,
-    val communityId: CommunityId,
+    val communityId: CommunityIdUpComing,
     val creatorId: CreatorId,
     val title: String,
     val description: String,
@@ -32,7 +32,7 @@ data class UpcomingTodayEventList(
 ): Parcelable
 
 @Parcelize
-data class CommunityId(
+data class CommunityIdUpComing(
     val _id: String,
     val category: String,
     val name: String,
@@ -51,21 +51,6 @@ data class CreatorId(
 
 
 
-
-
-
-data class GetCommunitySocialHomeResponse(
-    val message: String,
-    val count: Long,
-    val requestNotifications: List<Any?>,
-)
-
-
-
-data class ChatNotificationResponse(
-    val count: Long,
-    val senders: List<Sender>,
-)
 
 data class Sender(
     val _id: String,

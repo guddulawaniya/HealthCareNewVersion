@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.asyscraft.community_module.databinding.CommunityStatusRowLyoutBinding
 import com.bumptech.glide.Glide
-import com.careavatar.core_model.CommunityPostData
+import com.careavatar.core_model.CommunityPostDatalist
+import com.careavatar.core_model.R
+import com.careavatar.core_utils.Constants
 
 
 class CommunityPostAdapter(
     val content: Context,
-    val datalist: MutableList<CommunityPostData>,
+    val datalist: MutableList<CommunityPostDatalist>,
+    private val onClick: (CommunityPostDatalist) -> Unit
 ) : RecyclerView.Adapter<CommunityPostAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: CommunityStatusRowLyoutBinding) :
@@ -30,8 +33,19 @@ class CommunityPostAdapter(
         val item = datalist[position]
 
         holder.binding.tvUserName.text = item.user?.name
-        Glide.with(content).load(item.user?.image).into(holder.binding.tvProfile)
-        Glide.with(content).load(item.image).into(holder.binding.eventImage)
+        Glide.with(content)
+            .load(item.user?.image?.let { Constants.IMAGE_BASEURL + it } ?: com.careavatar.core_ui.R.drawable.logo)
+            .into(holder.binding.tvProfile)
+
+        Glide.with(content)
+            .load(item.image?.let { Constants.IMAGE_BASEURL + it } ?: com.careavatar.core_ui.R.drawable.logo)
+            .into(holder.binding.eventImage)
+
+
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
+
     }
 
     override fun getItemCount(): Int {

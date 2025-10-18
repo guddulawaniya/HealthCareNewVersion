@@ -12,6 +12,8 @@ import com.careavatar.core_model.CategoryListResponsePost
 import com.careavatar.core_model.ChatRequestResponse
 import com.careavatar.core_model.CommunityPostResponse
 import com.careavatar.core_model.CreateCommunityResponse
+import com.careavatar.core_model.DeleteEventResponse
+import com.careavatar.core_model.EventPostResponse
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_model.GroupMessageResponse
 import com.careavatar.core_model.SearchCommunityResponse
@@ -28,15 +30,18 @@ import com.careavatar.core_model.LoginResponse
 import com.careavatar.core_model.NotificationResponse
 import com.careavatar.core_model.PendingChatRequest
 import com.careavatar.core_model.RecentJoinMemberList
+import com.careavatar.core_model.UserChatListResponse
 import com.careavatar.core_model.VerifyOtpRequest
 import com.careavatar.core_model.VerifyOtpResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
@@ -160,10 +165,20 @@ interface ApiServices {
         @Path("communityId") communityId: String,
     ): Response<GroupMessageResponse>
 
+    @GET("get-initial-contacts/{userId}")
+    suspend fun hitGetChatList(
+        @Path("userId") userId: String,
+    ): Response<UserChatListResponse>
+
     @POST("userHobbies")
     suspend fun hitUserHobbies(
         @Body request: UserHobbiessResquest
     ): Response<UserHobbiesResponse>
+
+    @DELETE("event/{eventId}")
+    suspend fun hitEventsDelete(
+        @Path("eventId") eventId: String
+    ): Response<DeleteEventResponse>
 
     @Multipart
     @POST("messageToCategoryMembers")
@@ -176,4 +191,48 @@ interface ApiServices {
         @Part("longitude") longitude: RequestBody?,
         @Part image: MultipartBody.Part? = null,
     ): Response<HightlightPostResponse>
+
+    @GET("eventsByDate/{communityId}")
+    suspend fun hitEventsByDateAndCommunity(
+        @Path("communityId") communityId: String,
+        @Query("date") date: String
+    ): Response<UpcomingEventModel>
+
+
+    @Multipart
+    @POST("event")
+    suspend fun hitCreateEventData(
+        @Part("communityId") communityId: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("eventDate") eventDate: RequestBody,
+        @Part("eventLink") eventLink: RequestBody,
+        @Part("eventMode") eventMode: RequestBody,
+        @Part("eventTime") eventTime: RequestBody,
+        @Part("latitude") latitude: RequestBody,
+        @Part("location") location: RequestBody,
+        @Part("longitude") longitude: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("visibility") visibility: RequestBody,
+        @Part("notifiedMembers") notifiedMembers: RequestBody,
+        @Part attachments: List<MultipartBody.Part>?,
+
+    ): Response<EventPostResponse>
+
+    @Multipart
+    @PATCH("event/{eventid}")
+    suspend fun UpdateEventdata(
+        @Path("eventid") eventid: String,
+        @Part("communityId") communityId: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("eventDate") eventDate: RequestBody,
+        @Part("eventLink") eventLink: RequestBody,
+        @Part("eventMode") eventMode: RequestBody,
+        @Part("eventTime") eventTime: RequestBody,
+        @Part("latitude") latitude: RequestBody,
+        @Part("location") location: RequestBody,
+        @Part("longitude") longitude: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("visibility") visibility: RequestBody,
+//        @Part attachments: List<MultipartBody.Part>?,
+    ): Response<EventPostResponse>
 }

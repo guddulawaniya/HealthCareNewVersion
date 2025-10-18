@@ -8,12 +8,12 @@ import kotlinx.parcelize.Parcelize
 data class CommunityPostResponse(
     val success: Boolean,
     val msg: String,
-    val data: List<CommunityPostData>,
+    val data: List<CommunityPostDatalist>,
 ) : Parcelable
 
 
 @Parcelize
-data class CommunityPostData(
+data class CommunityPostDatalist(
     val _id: String,
     val title: String,
     val description: String,
@@ -35,7 +35,7 @@ data class HobbiesId(
 
 @Parcelize
 data class UserdataPost(
-    var status: String,
+    var status: String? = null,
     val id: String,
     val name: String,
     val image: String? = null

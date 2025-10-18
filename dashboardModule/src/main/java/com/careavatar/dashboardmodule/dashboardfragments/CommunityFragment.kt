@@ -12,18 +12,20 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.careavatar.core_model.CommunityPostData
 import com.careavatar.core_model.UpcomingTodayEventList
 import com.careavatar.core_ui.R
-import com.careavatar.dashboardmodule.adapters.CommunityPostAdapter
 import com.careavatar.dashboardmodule.adapters.TabsPagerAdapter
 import com.careavatar.dashboardmodule.adapters.UpcomingEventAdapter
 import com.careavatar.dashboardmodule.databinding.FragmentCommunityBinding
 import com.asyscraft.community_module.ChatActivity
 import com.asyscraft.community_module.CreateCommunityActivity
 import com.asyscraft.community_module.CreateHightlightActivity
+import com.asyscraft.community_module.EventDetailsActivity
 import com.asyscraft.community_module.FindPeopleActivity
+import com.asyscraft.community_module.HightLightPreviewActivity
+import com.asyscraft.community_module.adpaters.CommunityPostAdapter
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
+import com.careavatar.core_model.CommunityPostDatalist
 import com.careavatar.core_network.base.BaseFragment
 import com.careavatar.core_utils.ImagePickerManager
 import com.careavatar.core_utils.FileUtils
@@ -43,7 +45,7 @@ class CommunityFragment : BaseFragment() {
     private lateinit var adapter: UpcomingEventAdapter
     private lateinit var communityAdapter: CommunityPostAdapter
     private var datalist = mutableListOf<UpcomingTodayEventList>()
-    private var communityPostDataList = mutableListOf<CommunityPostData>()
+    private var communityPostDataList = mutableListOf<CommunityPostDatalist>()
     private val viewModel: SocialMeetViewmodel by viewModels()
     private val tabTitles = arrayOf("Explore", "Joined")
     private var selectDay = "1"
@@ -56,7 +58,7 @@ class CommunityFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCommunityBinding.inflate(inflater, container, false)
-
+        ImagePickerManager.init(this, requireActivity())
         return binding.root
     }
 
@@ -141,6 +143,7 @@ class CommunityFragment : BaseFragment() {
 
         }
         createHighlight.setOnClickListener {
+            dialog.dismiss()
             pickImage()
         }
         crossbtn.setOnClickListener {
@@ -156,6 +159,7 @@ class CommunityFragment : BaseFragment() {
         ImagePickerManager.showImageSourceDialog(requireContext()) { uri ->
             uri?.let {
                 selectedImageUri = it
+
                 startActivity(
                     Intent(requireContext(), CreateHightlightActivity::class.java).putExtra(
                         "uri",
@@ -179,12 +183,23 @@ class CommunityFragment : BaseFragment() {
     private fun obervationAPi() {
 
         collectApiResultOnStarted(viewModel.upComingEventList) {
+            if (it.events.isEmpty()){
+                binding.eventLayout.visibility = View.GONE
+            }else{
+                binding.eventLayout.visibility = View.VISIBLE
+            }
+
             datalist.clear()
             datalist.addAll(it.events)
             adapter.notifyDataSetChanged()
         }
 
         collectApiResultOnStarted(viewModel.communityPostResponseList) {
+            if (it.data.isEmpty()){
+                binding.communityPostRecylerview.visibility = View.GONE
+            }else{
+                binding.communityPostRecylerview.visibility = View.VISIBLE
+            }
             communityPostDataList.clear()
             communityPostDataList.addAll(it.data)
             communityAdapter.notifyDataSetChanged()
@@ -212,17 +227,22 @@ class CommunityFragment : BaseFragment() {
     }
 
     private fun setUpRecyclerview() {
-        adapter = UpcomingEventAdapter(requireContext(), datalist)
+        adapter = UpcomingEventAdapter(requireContext(), datalist,listener={
+            startActivity(Intent(requireContext(), EventDetailsActivity::class.java))
+        })
         binding.upComingEventRecyclerview.adapter = adapter
         binding.upComingEventRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun setUpCommunityPostRecyclerview() {
-        communityAdapter = CommunityPostAdapter(requireContext(), communityPostDataList)
-        binding.communityPostRecylerview.adapter = adapter
-        binding.communityPostRecylerview.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        communityAdapter = CommunityPostAdapter(requireContext(), communityPostDataList, onClick = {
+            startActivity(Intent(requireContext(), HightLightPreviewActivity::class.java)
+                .putExtra("highLightpost",it)
+            )
+        })
+        binding.communityPostRecylerview.adapter = communityAdapter
+        binding.communityPostRecylerview.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
 

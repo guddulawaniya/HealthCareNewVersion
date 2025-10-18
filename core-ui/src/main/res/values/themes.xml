@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme -->
     <style name="Base.Theme.Healthcare20" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
@@ -34,8 +34,36 @@
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
+    <!-- Custom TimePicker Theme -->
+    <style name="MyTimePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="android:timePickerDialogTheme">@style/MyTimePickerDialogTheme</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/CustomDialogButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/CustomDialogButton</item>
+
+    </style>
+
+    <style name="MyTimePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/backgroundColor</item>
+        <item name="android:textColorPrimary">@color/primaryColor</item>
+        <item name="android:textColorSecondary">@color/secondaryColor</item>
+    </style>
+
+    <!-- Custom Button Style -->
+    <style name="CustomDialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/primaryColor</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
 
 
+    <!-- Custom DatePicker Style -->
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:headerBackground">@color/primaryColor</item>
+        <item name="android:calendarTextColor">@color/secondaryColor</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/CustomDialogButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/CustomDialogButton</item>
+        <item name="android:datePickerMode">spinner</item>
+    </style>
 
 
     <style name="Theme.Healthcare20" parent="Base.Theme.Healthcare20" />
@@ -57,9 +85,6 @@
         <item name="android:textColor">@color/textColor</item>
         <item name="android:fontFamily">@font/inter_semibold</item>
     </style>
-
-
-
 
 
     <!-- Custom Bottom Navigation View -->

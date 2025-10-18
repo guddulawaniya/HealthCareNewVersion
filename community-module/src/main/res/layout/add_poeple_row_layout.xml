@@ -26,11 +26,11 @@
     <ImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:visibility="gone"
         android:background="@drawable/cross_black_icon"/>
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:visibility="gone"
         android:background="@drawable/radio_btn_outline_bg"/>
 </LinearLayout>

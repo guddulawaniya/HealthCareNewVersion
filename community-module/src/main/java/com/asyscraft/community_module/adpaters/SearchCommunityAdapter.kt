@@ -2,14 +2,17 @@ package com.asyscraft.community_module.adpaters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.asyscraft.community_module.databinding.CommunityUserRowLayoutBinding
 import com.bumptech.glide.Glide
 import com.careavatar.core_model.SearchCommunityResponse
 import com.careavatar.core_ui.R
 import com.careavatar.core_utils.Constants
+import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable
 
 class SearchCommunityAdapter(
     val context: Context,
@@ -35,6 +38,7 @@ class SearchCommunityAdapter(
         return array.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.binding.apply {
@@ -44,7 +48,7 @@ class SearchCommunityAdapter(
                     R.drawable.add_user_icon
                 ).into(ivProfile)
 
-            tvTime.text = array[position].createdAt
+            tvTime.text = formatDateToReadable(array[position].createdAt)
             tvCommunityName.text = array[position].name
             tvCommunityType.text = array[position].type
         }

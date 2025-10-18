@@ -50,7 +50,6 @@ class AddressPickerActivity : AppCompatActivity(),OnMapReadyCallback {
     private lateinit var geocoder: Geocoder
     private var locationMarker: Marker? = null
     private lateinit var placesClient: PlacesClient
-
     private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +57,8 @@ class AddressPickerActivity : AppCompatActivity(),OnMapReadyCallback {
         binding = ActivityAddressPickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Places.initialize(applicationContext, getString(R.string.google_maps_key))
+        Places.initialize(applicationContext, getString(R.string.google_api_key))
+
         placesClient = Places.createClient(this)
 
         binding.backbutton.setOnClickListener {
@@ -150,6 +150,7 @@ class AddressPickerActivity : AppCompatActivity(),OnMapReadyCallback {
             if (!addressList.isNullOrEmpty()) {
                 val address = addressList[0]
                 val latLng = LatLng(address.latitude, address.longitude)
+
                 withContext(Dispatchers.Main) {
                     googleMap.clear()
                     googleMap.addMarker(MarkerOptions().position(latLng).title(prediction.getFullText(null).toString()))

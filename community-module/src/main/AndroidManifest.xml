@@ -3,8 +3,58 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application>
+        <activity
+            android:name=".MemberSeachActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatSelectedImagePreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForwardmessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LeaveCommunityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SharedGalleryActcivity"
+            android:exported="false" />
+        <activity
+            android:name=".AudioVideoCallRecievedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CommunityAudioVideoCallRecievedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CommunityProfileActivtiy"
+            android:exported="false" />
+        <activity
+            android:name=".AudioCallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VideoCallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GroupAudioCallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GroupVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HightLightPreviewActivity"
+            android:exported="false" />
         <activity
             android:name=".CreateHightlightActivity"
             android:exported="false" />

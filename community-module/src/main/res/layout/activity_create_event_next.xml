@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.community.CreateEventNextActivity">
+    tools:context=".CreateEventNextActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -68,6 +68,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/meetingLinkFieldtextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
@@ -77,6 +78,7 @@
                 android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/meetingLinkField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -91,21 +93,25 @@
                     android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/locationFieldTextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
                 android:layout_marginTop="20dp"
                 android:text="Location"
+                android:visibility="gone"
                 android:textColor="@color/textColor"
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/locationField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_bg"
                 android:fontFamily="@font/inter_medium"
                 android:hint="Location"
+                android:visibility="gone"
                 android:paddingVertical="12dp"
                 android:drawableStart="@drawable/blue_location_icon"
                 android:paddingStart="10dp"
@@ -119,11 +125,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Date &amp; Time"
+                android:text="Date"
                 android:textColor="@color/textColor"
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/datePickTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -144,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Event Date"
+                android:text="Time"
                 android:textColor="@color/textColor"
                 android:textSize="15sp" />
 
@@ -156,14 +163,15 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <EditText
+                <TextView
+                    android:id="@+id/timePickTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/inter_medium"
-                    android:hint="Event Date"
+                    android:hint="Start Time"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/clock_icon"
                     android:paddingVertical="12dp"
@@ -172,6 +180,7 @@
                     android:textSize="15dp" />
 
                 <AutoCompleteTextView
+                    android:id="@+id/eventTimeDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -183,6 +192,8 @@
                     android:drawableEnd="@drawable/keyboard_arrow_down_20px"
                     android:fontFamily="@font/inter_medium"
                     android:hint="Duration"
+                    android:inputType="none"
+                    android:focusable="false"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="12dp"
                     android:textColorHint="@color/hintColor"

@@ -3,7 +3,12 @@ package com.careavatar.core_utils
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import java.util.*
 
 object DateTimePickerUtil {
@@ -49,6 +54,17 @@ object DateTimePickerUtil {
         datePicker.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun formatDateToReadable(inputDate: String): String {
+        return try {
+            val parsedDate = LocalDate.parse(inputDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+            val outputFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM d")
+            parsedDate.format(outputFormatter)
+        } catch (e: DateTimeParseException) {
+            inputDate // fallback to original if parsing fails
+        }
+    }
+
     /**
      * Pick only a date and return formatted string.
      */
@@ -58,7 +74,7 @@ object DateTimePickerUtil {
         onDatePicked: (String) -> Unit
     ) {
         val datePicker = DatePickerDialog(
-            context,
+            context,com.careavatar.core_ui.R.style.CustomDatePickerDialog,
             { _, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
@@ -77,11 +93,11 @@ object DateTimePickerUtil {
 
     fun pickTime(
         context: Context,
-        timeFormat: String = "HH:mm",
+        timeFormat: String = "HH:mm a",
         onTimePicked: (String) -> Unit
     ) {
         val timePicker = TimePickerDialog(
-            context,
+            context, com.careavatar.core_ui.R.style.MyTimePickerTheme,
             { _, hourOfDay, minute ->
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 calendar.set(Calendar.MINUTE, minute)

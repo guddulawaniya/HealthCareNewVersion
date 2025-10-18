@@ -9,12 +9,15 @@ import com.careavatar.core_model.CategoryListResponse
 import com.careavatar.core_model.CategoryListResponsePost
 import com.careavatar.core_model.CommunityPostResponse
 import com.careavatar.core_model.CreateCommunityResponse
+import com.careavatar.core_model.DeleteEventResponse
+import com.careavatar.core_model.EventPostResponse
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_model.GroupMessageResponse
 import com.careavatar.core_model.HightlightPostResponse
 import com.careavatar.core_model.RecentJoinMemberList
 import com.careavatar.core_model.SearchCommunityResponse
 import com.careavatar.core_model.UpcomingEventModel
+import com.careavatar.core_model.UserChatListResponse
 import com.careavatar.core_model.UserHobbiesResponse
 import com.careavatar.core_model.UserHobbiessResquest
 import com.careavatar.core_service.repository.UserRepository
@@ -22,10 +25,13 @@ import com.careavatar.core_utils.ApiResult
 import com.careavatar.core_utils.SafeFlowApiCall.safeFlowApiCall
 import com.careavatar.core_utils.convertFormFileToMultipartBody
 import com.careavatar.core_utils.toRequestBody
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import javax.inject.Inject
 
@@ -95,8 +101,89 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
     val hightlightPostResponse: StateFlow<ApiResult<HightlightPostResponse>> =
         _hightlightPostResponse
 
+    private val _deleteEventResponse =
+        MutableStateFlow<ApiResult<DeleteEventResponse>>(ApiResult.Idle)
+    val deleteEventResponse: StateFlow<ApiResult<DeleteEventResponse>> =
+        _deleteEventResponse
 
-    fun getGroupMessage(communityId: String) {
+
+    private val _eventPostResponse =
+        MutableStateFlow<ApiResult<EventPostResponse>>(ApiResult.Idle)
+    val eventPostResponse: StateFlow<ApiResult<EventPostResponse>> =
+        _eventPostResponse
+
+    private val _userChatListResponse =
+        MutableStateFlow<ApiResult<UserChatListResponse>>(ApiResult.Idle)
+    val userChatListResponse: StateFlow<ApiResult<UserChatListResponse>> =
+        _userChatListResponse
+
+
+    fun hitGetChatList(userId: String) {
+        safeFlowApiCall(_userChatListResponse) {
+            val response = repository.hitGetChatList(userId)
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun getUpcomingEventList(communityId: String,date:String) {
+        safeFlowApiCall(_upComingEventList) {
+            val response = repository.hitEventsByDateAndCommunity(communityId,date)
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun hitCreateEventData(
+        communityId: String,
+        eventDate: String,
+        description: String,
+        eventLink: String,
+        eventMode: String,
+        eventTime: String,
+        latitude: String,
+        location: String,
+        longitude: String,
+        title: String,
+        visibility: String,
+        notifiedMembers: List<String>?,
+        attachments: List<MultipartBody.Part>?) {
+
+        safeFlowApiCall(_eventPostResponse) {
+
+            val notifiedJson = notifiedMembers?.let {
+                Gson().toJson(it)
+            } ?: "[]"
+
+            val response = repository.hitCreateEventData(
+                communityId,
+                eventDate,
+                description,
+                eventLink,
+                eventMode,
+                eventTime,
+                latitude,
+                location,
+                longitude,
+                title,
+                visibility,
+                notifiedJson.toRequestBody("application/json".toMediaTypeOrNull()),
+                attachments
+            )
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun hitEventsDelete(eventId: String) {
+        safeFlowApiCall(_deleteEventResponse) {
+            val response = repository.hitEventsDelete(eventId)
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+ fun getGroupMessage(communityId: String) {
         safeFlowApiCall(_groupMessageResponse) {
             val response = repository.hitGroupMessage(communityId)
             if (response.isSuccessful) response.body()!!

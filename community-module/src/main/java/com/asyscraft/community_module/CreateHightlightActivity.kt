@@ -3,27 +3,21 @@ package com.asyscraft.community_module
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asyscraft.community_module.adpaters.CommunityHightlightCategoryAdapter
 import com.asyscraft.community_module.databinding.ActivityCreateHightlightBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
 import com.careavatar.core_model.CategoryPost
-import com.careavatar.core_utils.FileUtils
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_network.base.BaseActivity
 import com.careavatar.core_ui.AddressPickerActivity
+import com.careavatar.core_utils.FileUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 @AndroidEntryPoint
 class CreateHightlightActivity : BaseActivity() {
@@ -31,7 +25,7 @@ class CreateHightlightActivity : BaseActivity() {
     private lateinit var binding: ActivityCreateHightlightBinding
     private val viewModel: SocialMeetViewmodel by viewModels()
     private val categoryList = mutableListOf<CategoryPost>()
-    private lateinit var adapter : CommunityHightlightCategoryAdapter
+    private lateinit var adapter: CommunityHightlightCategoryAdapter
     private var selectedInterest: String? = null
 
     private lateinit var addressPickerLauncher: ActivityResultLauncher<Intent>
@@ -54,9 +48,13 @@ class CreateHightlightActivity : BaseActivity() {
             addressPickerLauncher.launch(intent)
         }
 
+        val imageUri = intent.getStringExtra("uri")?.toUri()
+
+        // Show image preview if available
+        imageUri?.let { binding.postImage.setImageURI(it) }
 
         binding.buttonNext.setOnClickListener {
-            if (validation()){
+            if (validation()) {
                 createThePost()
             }
 
@@ -69,16 +67,16 @@ class CreateHightlightActivity : BaseActivity() {
         observer()
     }
 
-    private fun observer(){
-        collectApiResultOnStarted(viewModel.hightlightPostResponse){
-            if (it.success){
+    private fun observer() {
+        collectApiResultOnStarted(viewModel.hightlightPostResponse) {
+            if (it.success) {
                 showToast("Post created successfully")
                 finish()
             }
         }
     }
 
-    private fun createThePost(){
+    private fun createThePost() {
         val imageUri = intent.getStringExtra("uri")?.toUri()
 
         // Show image preview if available
@@ -125,18 +123,17 @@ class CreateHightlightActivity : BaseActivity() {
     private fun validation(): Boolean {
         if (binding.addressText.text.toString().isEmpty()) {
             showToast("Please select address")
-        }else if (binding.titleEdittext.text.toString().isEmpty()){
-            showInputError(binding.titleEdittext,"Please enter title")
-        }else if (binding.descriptionEdittext.text.toString().isEmpty()){
-            showInputError(binding.descriptionEdittext,"Please enter description")
-        }
-        else{
+        } else if (binding.titleEdittext.text.toString().isEmpty()) {
+            showInputError(binding.titleEdittext, "Please enter title")
+        } else if (binding.descriptionEdittext.text.toString().isEmpty()) {
+            showInputError(binding.descriptionEdittext, "Please enter description")
+        } else {
             return true
         }
         return false
     }
 
-    private fun getLocation(){
+    private fun getLocation() {
         addressPickerLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
@@ -163,10 +160,13 @@ class CreateHightlightActivity : BaseActivity() {
             if (it.status) {
                 categoryList.clear()
                 categoryList.addAll(it.categories)
-                adapter = CommunityHightlightCategoryAdapter(this@CreateHightlightActivity, categoryList, onItemClick = {
-                    Log.d("category",it.toString())
-                    selectedInterest = it
-                })
+                adapter = CommunityHightlightCategoryAdapter(
+                    this@CreateHightlightActivity,
+                    categoryList,
+                    onItemClick = {
+                        Log.d("category", it.toString())
+                        selectedInterest = it
+                    })
 
                 binding.categoryRecyclerView.adapter = adapter
                 binding.categoryRecyclerView.layoutManager = LinearLayoutManager(

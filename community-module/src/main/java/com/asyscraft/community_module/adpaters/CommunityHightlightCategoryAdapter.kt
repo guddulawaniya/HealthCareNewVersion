@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.asyscraft.community_module.databinding.CategoryRowLayoutBinding
-import com.asyscraft.community_module.databinding.CommunityStatusRowLyoutBinding
-import com.bumptech.glide.Glide
 import com.careavatar.core_model.CategoryPost
-import com.careavatar.core_model.CommunityPostData
 
 
 class CommunityHightlightCategoryAdapter(
@@ -16,7 +13,7 @@ class CommunityHightlightCategoryAdapter(
     val datalist: MutableList<CategoryPost>,
     val onItemClick: (position: String) -> Unit
 ) : RecyclerView.Adapter<CommunityHightlightCategoryAdapter.ViewHolder>() {
-
+    private var selectedPosition = -1 // no selection initially
     inner class ViewHolder(val binding: CategoryRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -32,7 +29,24 @@ class CommunityHightlightCategoryAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = datalist[position]
         holder.binding.categoryName.text = item.name
+
+
+        if (position == selectedPosition) {
+            holder.binding.categoryName.setBackgroundColor(com.careavatar.core_ui.R.drawable.category_select_highlight_bg) // selected color
+        } else {
+            holder.binding.categoryName.setBackgroundColor(com.careavatar.core_ui.R.drawable.category_select_highlight_bg) // default color
+        }
+        val currentPosition = position
+
         holder.binding.root.setOnClickListener {
+            val previousPosition = selectedPosition
+            selectedPosition = currentPosition
+
+            // Notify items to redraw backgrounds
+            if (previousPosition >= 0) notifyItemChanged(previousPosition)
+            notifyItemChanged(currentPosition)
+
+            // Trigger callback
             onItemClick(item.id)
         }
     }
