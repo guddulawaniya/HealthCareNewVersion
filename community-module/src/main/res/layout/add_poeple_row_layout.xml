@@ -9,10 +9,12 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/tvProfile"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/profile_sample_image"/>
     <TextView
+        android:id="@+id/tvUserName"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -30,7 +32,8 @@
         android:background="@drawable/cross_black_icon"/>
 
     <ImageView
+        android:id="@+id/radiobtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/radio_btn_outline_bg"/>
+        android:background="@drawable/green_circle_btn"/>
 </LinearLayout>

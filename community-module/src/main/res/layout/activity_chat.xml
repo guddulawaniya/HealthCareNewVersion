@@ -20,6 +20,16 @@
         app:navigationIcon="@drawable/back_arrow_btn"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/search_bar"
+            layout="@layout/custom_search_layout"/>
+    </LinearLayout>
 
     <!-- Tab Layout -->
     <com.google.android.material.tabs.TabLayout

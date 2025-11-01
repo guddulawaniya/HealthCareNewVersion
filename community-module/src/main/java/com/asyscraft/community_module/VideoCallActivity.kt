@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class VideoCallActivity : BaseActivity() {
     private lateinit var binding: ActivityVideoCallBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVideoCallBinding.inflate(layoutInflater)

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.asyscraft.community_module.adpaters.EventAdapter
 import com.asyscraft.community_module.adpaters.UpcomingEventAdapter
 import com.asyscraft.community_module.databinding.ActivityEventBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
@@ -18,7 +19,7 @@ import java.util.Locale
 @AndroidEntryPoint
 class EventActivity : BaseActivity() {
     private lateinit var binding: ActivityEventBinding
-    private lateinit var adapter: UpcomingEventAdapter
+    private lateinit var adapter: EventAdapter
     private  var eventList = mutableListOf<UpcomingTodayEventList>()
     private lateinit var selectedDate: String
     private val viewModel : SocialMeetViewmodel by viewModels()
@@ -87,9 +88,9 @@ class EventActivity : BaseActivity() {
     }
 
     private fun setUpRecyclerView(){
-        adapter = UpcomingEventAdapter(this, eventList,onItemClicked = {
+        adapter = EventAdapter(this, eventList,onItemClicked = {
             val intent = Intent(this, EventDetailsActivity::class.java)
-            intent.putExtra("event", it)
+            intent.putExtra("eventId", it._id)
             startActivity(intent)
         })
         binding.rvEvents.adapter = adapter

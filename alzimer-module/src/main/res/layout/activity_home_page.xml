@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background"
+    tools:context=".HomePage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/hedi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Alzheimer’s"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_20sdp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/exit_background"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingHorizontal="@dimen/_30sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="Exit"
+                    android:textColor="@color/Exit_red"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/line"
+                app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+
+            <!--               <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                   android:layout_width="match_parent"-->
+            <!--                   android:layout_height="wrap_content"-->
+            <!--                   android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                   android:layout_marginHorizontal="@dimen/_10sdp">-->
+
+            <!--                &lt;!&ndash;   Home                &ndash;&gt;-->
+            <!--                   <LinearLayout-->
+            <!--                       android:id="@+id/home"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       app:layout_constraintStart_toStartOf="parent"-->
+            <!--                       android:orientation="vertical"-->
+            <!--                       android:gravity="center"-->
+            <!--                       android:layout_marginStart="@dimen/_10sdp"-->
+            <!--                       android:visibility="gone">-->
+
+            <!--                       <ImageView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:src="@drawable/home_icon"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:text="Home"-->
+            <!--                           android:fontFamily="@font/inter_medium"-->
+            <!--                           android:textSize="@dimen/_10sdp"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                   </LinearLayout>-->
+            <!--                   &lt;!&ndash;   Home_fill     &ndash;&gt;-->
+            <!--                   <LinearLayout-->
+            <!--                       android:id="@+id/home_fill"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       app:layout_constraintStart_toStartOf="parent"-->
+            <!--                       android:orientation="vertical"-->
+            <!--                       android:layout_marginStart="@dimen/_10sdp"-->
+            <!--                       android:gravity="center"-->
+            <!--                       android:visibility="visible">-->
+
+            <!--                       <ImageView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:src="@drawable/home_icon_fill"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:text="Home"-->
+            <!--                           android:fontFamily="@font/inter_bold"-->
+            <!--                           android:textSize="@dimen/_10sdp"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="@dimen/_75sdp"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:background="@drawable/line_home"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                   </LinearLayout>-->
+
+
+            <!--                &lt;!&ndash;  planner   &ndash;&gt;-->
+            <!--                   <LinearLayout-->
+            <!--                       android:id="@+id/planner"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       app:layout_constraintStart_toStartOf="parent"-->
+            <!--                       app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                       android:orientation="vertical"-->
+            <!--                       android:gravity="center"-->
+            <!--                       android:layout_marginStart="@dimen/_10sdp"-->
+            <!--                       android:visibility="visible">-->
+
+            <!--                       <ImageView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:src="@drawable/planner_fill"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:text="Planner"-->
+            <!--                           android:fontFamily="@font/inter_medium"-->
+            <!--                           android:textSize="@dimen/_10sdp"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                   </LinearLayout>-->
+
+            <!--                   &lt;!&ndash;planner fill&ndash;&gt;-->
+
+            <!--                   <LinearLayout-->
+            <!--                       android:id="@+id/planner_fill"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       app:layout_constraintStart_toStartOf="parent"-->
+            <!--                       app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                       android:layout_marginStart="@dimen/_10sdp"-->
+            <!--                       android:orientation="vertical"-->
+            <!--                       android:gravity="center"-->
+            <!--                       android:visibility="gone">-->
+
+            <!--                       <ImageView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:src="@drawable/planner"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:text="Planner"-->
+            <!--                           android:fontFamily="@font/inter_bold"-->
+            <!--                           android:textSize="@dimen/_10sdp"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="@dimen/_75sdp"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:background="@drawable/line_home"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                   </LinearLayout>-->
+
+
+            <!--                   &lt;!&ndash;  memory   &ndash;&gt;-->
+            <!--                   <LinearLayout-->
+            <!--                       android:id="@+id/memory"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                       android:orientation="vertical"-->
+            <!--                       android:gravity="center"-->
+            <!--                       android:layout_marginStart="@dimen/_10sdp"-->
+            <!--                       android:visibility="visible">-->
+
+            <!--                       <ImageView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:src="@drawable/brain"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:text="Memory Lane"-->
+            <!--                           android:fontFamily="@font/inter_medium"-->
+            <!--                           android:textSize="@dimen/_10sdp"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                   </LinearLayout>-->
+
+            <!--                   &lt;!&ndash;brain fill&ndash;&gt;-->
+
+            <!--                   <LinearLayout-->
+            <!--                       android:id="@+id/memory_fill"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                       android:orientation="vertical"-->
+            <!--                       android:gravity="center"-->
+            <!--                       android:visibility="gone">-->
+
+            <!--                       <ImageView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:src="@drawable/brain_fill"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="wrap_content"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:text="Memory Lane"-->
+            <!--                           android:fontFamily="@font/inter_bold"-->
+            <!--                           android:textSize="@dimen/_10sdp"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                       <TextView-->
+            <!--                           android:layout_width="@dimen/_75sdp"-->
+            <!--                           android:layout_height="wrap_content"-->
+            <!--                           android:background="@drawable/line_home"-->
+            <!--                           android:textColor="@color/black"/>-->
+
+            <!--                   </LinearLayout>-->
+
+            <!--               </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+            <!--     updation of home field      -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <!--   Home                -->
+                <LinearLayout
+                    android:id="@+id/home"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/home_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="Home"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+                <!--   Home_fill     -->
+                <LinearLayout
+                    android:id="@+id/home_fill"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/home_icon_fill" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Home"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/line_home"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+
+                <!--  planner   -->
+                <LinearLayout
+                    android:id="@+id/planner"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/planner_fill" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="Planner"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+                <!--planner fill-->
+
+                <LinearLayout
+                    android:id="@+id/planner_fill"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/planner" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Planner"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/line_home"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+
+                <!--  memory   -->
+                <LinearLayout
+                    android:id="@+id/memory"
+                    android:layout_width="@dimen/_68sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/brain" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="Memory Lane"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+                <!--brain fill-->
+
+                <LinearLayout
+                    android:id="@+id/memory_fill"
+                    android:layout_width="@dimen/_68sdp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/brain_fill" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Memory Lane"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/line_home"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--  Home fragment       -->
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/homeFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dailyplanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_110sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:background="@drawable/daily_planner_background"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/calender_icon"
+                                android:layout_width="@dimen/_45sdp"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_marginStart="@dimen/_15sdp"
+                                android:layout_marginTop="@dimen/_25sdp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/calender_white"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/planner_heading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_27sdp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Your Daily Planner"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_21sdp"
+                                app:layout_constraintStart_toEndOf="@+id/calender_icon"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_15sdp"
+                                android:fontFamily="@font/inter_medium"
+                                android:text="Stay on track with your personalized routine."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintStart_toEndOf="@id/calender_icon"
+                                app:layout_constraintTop_toBottomOf="@+id/planner_heading" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:background="@drawable/background_startplanner"
+                                android:fontFamily="@font/inter_medium"
+                                android:paddingHorizontal="@dimen/_15sdp"
+                                android:paddingVertical="@dimen/_5sdp"
+                                android:text="Start Planner"
+                                android:textColor="@color/purple_text"
+                                android:textSize="@dimen/_10sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/activateplanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_110sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:background="@drawable/background_activate"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/lock_icon"
+                                android:layout_width="@dimen/_45sdp"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_marginStart="@dimen/_15sdp"
+                                android:layout_marginTop="@dimen/_25sdp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/image_activate"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/activitate_heading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_27sdp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Activate Planner"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_21sdp"
+                                app:layout_constraintStart_toEndOf="@+id/lock_icon"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_6sdp"
+                                android:fontFamily="@font/inter_medium"
+                                android:text="The patient is required to complete the assessment."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintStart_toEndOf="@id/lock_icon"
+                                app:layout_constraintTop_toBottomOf="@+id/activitate_heading" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="My Care &amp; Support"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_110sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/whoiam"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:background="@drawable/my_care_support_background"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@drawable/circle_purple"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/who_i_am" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/inter_medium"
+                                    android:text="Who am I?"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/Geoloaction"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:background="@drawable/my_care_support_background"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@drawable/circle_purple"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/jio_location" />
+
+                                <TextView
+                                    android:id="@+id/geolocationtext"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/inter_medium"
+                                    android:text="Geolocation"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/bookappointment"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:background="@drawable/my_care_support_background"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@drawable/circle_purple"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/book_appointment" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/inter_medium"
+                                    android:text="Book appointment"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/sessions"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/my_care_support_background"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@drawable/circle_purple"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/session" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/inter_medium"
+                                    android:text="Sessions"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_250sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:background="@color/white"
+
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Balance Your Day"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_16sdp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_marginBottom="@dimen/_20sdp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/meditation"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/background_yellow"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="-30dp"
+                                        android:src="@drawable/meditation" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="-10dp"
+                                        android:fontFamily="@font/inter_semibold"
+                                        android:text="Meditation"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_12sdp" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/todolist"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/background_red_gradient"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/todo_list" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:fontFamily="@font/inter_semibold"
+                                        android:text="To Do List"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_12sdp" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_20sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Suggested Games"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_16sdp"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/seeallgame"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="See all"
+                                android:textColor="@color/blue_see_all"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/italianno"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0dp"
+                            android:lineSpacingMultiplier="1"
+                            android:text="Care Avatar"
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/_55sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="-30dp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:paddingBottom="@dimen/_30sdp"
+                            android:text="Your Personal Umbrella for Health, Hope, and Happiness."
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+            <!--   planner whole screen        -->
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/plannerfragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerviewdate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerviewmessage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:visibility="visible" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/todayalltask"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:visibility="visible">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                >
+
+                                <TextView
+                                    android:id="@+id/today"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:text="Today"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_18sdp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:text="7 TASK"
+                                    android:textColor="@color/C807B82"
+                                    android:textSize="@dimen/_12sdp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/today" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/streak_bg"
+                                android:padding="@dimen/_5sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/streak_icon" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:text="0"
+                                    android:textColor="@color/FF9700"
+                                    android:textSize="@dimen/_12sdp"
+                                    app:layout_constraintStart_toEndOf="@+id/icon" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/statusline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_15sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/taskcard"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_15sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/statusline" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/assesmentstart"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+
+                            android:background="@drawable/message_background"
+                            android:paddingBottom="@dimen/_10sdp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/brainimg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/brain_health_check"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/headingmiddle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Brain Health Check"
+                                android:textSize="@dimen/_18sdp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/brainimg" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/inter_medium"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:text="Your planner tasks will be available once you complete the assessment. The assessment helps us understand your interests, preferences, and abilities, so we can design activities that are safe, enjoyable, and easy to follow."
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintTop_toBottomOf="@id/headingmiddle" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <TextView
+                            android:id="@+id/startassesmentbtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:background="@drawable/startassesment_btn_background"
+                            android:fontFamily="@font/inter_semibold"
+                            android:paddingHorizontal="@dimen/_20sdp"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="Start Assesment"
+                            android:textColor="@color/B05EEB"
+                            android:textSize="@dimen/_12sdp"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <!--   planner caregiver screen  -->
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <FrameLayout
+                    android:id="@+id/Plannercaregiverscreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Daily Progress"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_15sdp"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_weight="2"
+                                android:background="@drawable/message_background">
+
+                                <FrameLayout
+                                    android:id="@+id/progress"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+
+                                    <ProgressBar
+                                        android:id="@+id/circularProgress"
+                                        style="@android:style/Widget.ProgressBar.Horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:indeterminate="false"
+                                        android:max="100"
+                                        android:progress="65"
+                                        android:progressDrawable="@drawable/todays_activity_progress"
+                                        android:rotation="-90" />
+
+                                    <TextView
+                                        android:id="@+id/progressText"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:text="3/5"
+                                        android:textColor="@color/B05EEB"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/todayheading"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:fontFamily="@font/inter_bold"
+                                    android:text="Today Activites"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp"
+                                    app:layout_constraintStart_toEndOf="@+id/progress"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                <TextView
+                                    android:id="@+id/incomplete"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_20sdp"
+                                    android:drawableStart="@drawable/incomplete_color"
+                                    android:drawablePadding="@dimen/_5sdp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:text="Incomplete"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_8sdp"
+                                    app:layout_constraintStart_toEndOf="@+id/progress"
+                                    app:layout_constraintTop_toBottomOf="@+id/todayheading" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:drawableStart="@drawable/complete_color"
+                                    android:drawablePadding="@dimen/_5sdp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:text="Complete"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_8sdp"
+                                    app:layout_constraintStart_toEndOf="@+id/progress"
+                                    app:layout_constraintTop_toBottomOf="@+id/incomplete" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/message_background">
+
+                                <ImageView
+                                    android:id="@+id/cross"
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@drawable/bigfire_outer_circle"
+                                    android:src="@drawable/big_fire"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/noofstreak"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="-20dp"
+                                    android:fontFamily="@font/inter_extrabold"
+                                    android:text="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_25sdp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/cross" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/inter_bold"
+                                    android:text="Days Streak"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/noofstreak" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Todays Mood"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_15sdp"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_70sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/message_background">
+
+                            <ImageView
+                                android:id="@+id/emoji"
+                                android:layout_width="@dimen/_50sdp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:src="@drawable/sad_caregiver"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/moodtype"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Sad"
+                                android:textSize="@dimen/_18sdp"
+                                app:layout_constraintStart_toEndOf="@+id/emoji"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/message"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Motivational tone for the caregiver."
+                                android:textSize="@dimen/_10sdp"
+                                app:layout_constraintStart_toEndOf="@+id/emoji"
+                                app:layout_constraintTop_toBottomOf="@+id/moodtype" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Send Message"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_15sdp"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/message_background"
+                            android:padding="@dimen/_10sdp">
+
+                            <EditText
+                                android:id="@+id/writemessage"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_70sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/box_message"
+                                android:gravity="top|start"
+                                android:hint="Write the message here"
+                                android:padding="@dimen/_5sdp"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/C878787"
+                                android:textSize="@dimen/_12sdp" />
+
+
+                            <TextView
+                                android:id="@+id/schedule"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_25sdp"
+                                android:layout_marginTop="@dimen/_15sdp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Schedule date"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/writemessage" />
+
+                            <TextView
+                                android:id="@+id/date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/add_title_outline"
+                                android:drawableStart="@drawable/tabler_calendar"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:paddingVertical="@dimen/_5sdp"
+                                android:text="25/05/2025"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                app:layout_constraintStart_toEndOf="@+id/schedule"
+                                app:layout_constraintTop_toBottomOf="@+id/writemessage" />
+
+
+                            <TextView
+                                android:id="@+id/save"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_marginBottom="@dimen/_15sdp"
+                                android:background="@drawable/bookappoint_btn_bg"
+                                android:fontFamily="@font/inter_medium"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/_45sdp"
+                                android:paddingVertical="@dimen/_7sdp"
+                                android:text="Send"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/date" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+            <!--   memory lane      -->
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <FrameLayout
+                    android:id="@+id/memoryLanefragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--    Todays activity      -->
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/todayactivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:id="@+id/todayactivityheading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Today Activites"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_15sdp"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/todays_activity_background"
+                                app:layout_constraintTop_toBottomOf="@+id/todayactivityheading">
+
+                                <TextView
+                                    android:id="@+id/textnoactivity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:hint="No activity today" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/imagetask"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_60sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:visibility="gone"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                <ImageButton
+                                    android:id="@+id/play_activity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/play_btn_for_activity"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                <com.asyscraft.alzimer_module.utils.CustomVisualizerView
+                                    android:id="@+id/wave"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_marginStart="@dimen/_50sdp"
+                                    app:bar_width="4dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/play_activity"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                <TextView
+                                    android:id="@+id/activitytitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_10sdp"
+                                    android:layout_marginVertical="@dimen/_5sdp"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <!--    voice notes      -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Voice Notes"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_15sdp"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <ImageButton
+                                android:id="@+id/voicenoteadd_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/plus_icon"
+                                app:layout_constraintEnd_toEndOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <ImageView
+                            android:id="@+id/voiceempty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/memorylane_card"
+                            android:paddingVertical="@dimen/_30sdp"
+                            android:src="@drawable/empty_voicenote"
+                            android:visibility="gone" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerviewvoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <!--    my memory      -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="My memories"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_15sdp"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <ImageButton
+                                android:id="@+id/memoryadd_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/plus_icon"
+                                app:layout_constraintEnd_toEndOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <ImageView
+                            android:id="@+id/memoryempty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/memorylane_card"
+                            android:paddingVertical="@dimen/_20sdp"
+                            android:src="@drawable/nomemery_img"
+                            android:visibility="gone" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerviewmemory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp" />
+
+                        <!--    albums     -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_15sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Albums"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_15sdp"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <ImageButton
+                                android:id="@+id/albumadd_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/plus_icon"
+                                app:layout_constraintEnd_toEndOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <ImageView
+                            android:id="@+id/albumempty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:background="@drawable/memorylane_card"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:src="@drawable/noalbum_img"
+                            android:visibility="gone" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerviewalbum"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/sos_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/sos_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

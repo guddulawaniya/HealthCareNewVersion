@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".JigsawPuzzle">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                tools:ignore="MissingConstraints">
+
+                <ImageButton
+                    android:id="@+id/cross"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/cross"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints">
+                    <ImageView
+                        android:id="@+id/gold"
+                        android:layout_width="@dimen/_23sdp"
+                        android:layout_height="@dimen/_23sdp"
+                        android:src="@drawable/gold"
+                        android:scaleType="centerInside"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/timertext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1:00"
+                        android:textSize="@dimen/_16sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/inter_semibold"
+                        app:layout_constraintStart_toEndOf="@+id/gold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <ImageButton
+                    android:id="@+id/music"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/imageon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/top"
+            android:layout_marginTop="@dimen/_15sdp">
+
+            <View
+                android:id="@+id/progressView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_12sdp"
+                android:background="@drawable/level_background"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                android:text="4/16"
+                android:fontFamily="@font/istok_web_bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp"
+                android:gravity="center_horizontal"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/bar"
+            android:text="Solve Jigsaw"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"/>
+
+        <FrameLayout
+                android:id="@+id/topgrid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.40"
+                app:layout_constraintTop_toBottomOf="@id/instruction">
+                <GridLayout
+                    android:id="@+id/cardGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:columnCount="2"
+                    android:rowCount="2"
+                    android:alignmentMode="alignMargins"
+                    android:background="@drawable/selector_box"
+                    android:padding="@dimen/_10sdp"
+                    android:rowOrderPreserved="false"
+                    android:useDefaultMargins="true">
+
+                    <!-- One card (repeat 8 times) -->
+                    <FrameLayout
+                        android:id="@+id/card1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <!-- Under image (revealed) -->
+                        <ImageView
+                            android:id="@+id/underImage1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+                    </FrameLayout>
+
+                    <!--        card 2-->
+                    <FrameLayout
+                        android:id="@+id/card2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <!-- Under image (revealed) -->
+                        <ImageView
+                            android:id="@+id/underImage2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+                    </FrameLayout>
+
+                    <!--        card 3-->
+                    <FrameLayout
+                        android:id="@+id/card3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <!-- Under image (revealed) -->
+                        <ImageView
+                            android:id="@+id/underImage3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+
+                    </FrameLayout>
+
+                    <!--        card 4-->
+                    <FrameLayout
+                        android:id="@+id/card4"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <!-- Under image (revealed) -->
+                        <ImageView
+                            android:id="@+id/underImage4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+                        <!-- Upper cover image -->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage4"-->
+<!--                            android:layout_width="@dimen/_80sdp"-->
+<!--                            android:layout_height="@dimen/_80sdp"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/mountainwhole"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:background="@color/white"-->
+<!--                            android:layout_gravity="bottom|end"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+
+                        <!-- Container for cover image + text -->
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/imagefull"-->
+<!--                            android:layout_width="@dimen/_80sdp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_gravity="bottom|end"-->
+<!--                            android:background="@drawable/jigsaw_background"-->
+<!--                            android:paddingHorizontal="@dimen/_10sdp"-->
+<!--                            android:paddingTop="@dimen/_10sdp">-->
+
+<!--                            &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                            <ImageView-->
+<!--                                android:id="@+id/coverImage4"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="@dimen/_60sdp"-->
+<!--                                android:scaleType="centerCrop"-->
+<!--                                android:src="@drawable/mountainwhole"-->
+<!--                                android:clickable="true"-->
+<!--                                android:focusable="true" />-->
+
+<!--                            &lt;!&ndash; Description text at bottom &ndash;&gt;-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/imageDescription4"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Tap to View"-->
+<!--                                android:textColor="@color/textcolorjigsaw"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textSize="@dimen/_10sdp" /> &lt;!&ndash; Pink background &ndash;&gt;-->
+
+<!--                        </LinearLayout>-->
+                    </FrameLayout>
+
+
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/hintText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="drag and drop here"
+                    android:textColor="@color/blackhint"
+                    android:textSize="@dimen/_13sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomgrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/topgrid"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/img_background">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:text="Pick from here"
+                android:textColor="@color/black"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingStart="@dimen/_15sdp"
+                android:textSize="@dimen/_11sdp"/>
+
+            <GridLayout
+                android:id="@+id/pickgrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/text"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:columnCount="4"
+                android:rowCount="1"
+                android:alignmentMode="alignMargins"
+                android:padding="@dimen/_2sdp"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <!-- One card (repeat 8 times) -->
+                <FrameLayout
+                    android:id="@+id/pickcard1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/_5sdp">
+
+                    <!-- Under image (revealed) -->
+                    <ImageView
+                        android:id="@+id/pickImage1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mountain1" />
+
+                </FrameLayout>
+
+                <!--        card 2-->
+                <FrameLayout
+                    android:id="@+id/pickcard2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/_5sdp">
+
+                    <!-- Under image (revealed) -->
+                    <ImageView
+                        android:id="@+id/pickImage2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mountain2" />
+
+                </FrameLayout>
+
+                <!--        card 3-->
+                <FrameLayout
+                    android:id="@+id/pickcard3"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/_5sdp">
+
+                    <!-- Under image (revealed) -->
+                    <ImageView
+                        android:id="@+id/pickImage3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mountain3" />
+
+
+                </FrameLayout>
+
+                <!--        card 4-->
+                <FrameLayout
+                    android:id="@+id/pickcard4"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/_5sdp">
+
+                    <!-- Under image (revealed) -->
+                    <ImageView
+                        android:id="@+id/pickImage4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mountain4" />
+
+
+                </FrameLayout>
+
+
+            </GridLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/imagefull"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom|end"
+        app:layout_constraintTop_toBottomOf="@+id/bottomgrid"
+        android:background="@drawable/jigsaw_background"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="@dimen/_10sdp">
+
+        <!-- Upper cover image -->
+        <ImageView
+            android:id="@+id/coverImage4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mountainwhole"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Description text at bottom -->
+        <TextView
+            android:id="@+id/imageDescription4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tap to View"
+            android:textColor="@color/textcolorjigsaw"
+            android:gravity="center"
+            android:textSize="@dimen/_10sdp" /> <!-- Pink background -->
+
+    </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/next_button_disable_background"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottomgrid"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:layout_constraintVertical_bias="1.0"
+                android:fontFamily="@font/inter_tight_semibold"/>
+
+
+
+
+
+        <ImageView
+            android:id="@+id/centerOverlayImage"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/complete"
+            android:visibility="gone"
+            android:scaleType="centerInside" />
+
+
+        <!-- Full-screen overlay for pop-out image -->
+        <FrameLayout
+            android:id="@+id/imagePopupOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/popupImage"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:id="@+id/closePopup"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/cross"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:layout_gravity="top|end"
+                android:layout_margin="16dp"/>
+        </FrameLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

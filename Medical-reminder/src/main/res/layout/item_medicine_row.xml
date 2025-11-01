@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Medicine Item Template -->
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/slot_time_unselected"
+    android:padding="12dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:elevation="2dp"
+    android:layout_marginVertical="8dp"
+    android:weightSum="5"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Medicine Info -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paracetamol"
+            android:textStyle="bold"
+            android:textColor="@color/textColor"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20mg"
+            android:fontFamily="@font/inter_medium"
+            android:textColor="@color/primaryColor"
+            android:textSize="9sp"/>
+    </LinearLayout>
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchMorning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        app:trackTint="@color/primaryColor"
+        app:thumbTint="@color/white"
+        android:gravity="center" />
+
+
+    <!-- Morning Switch -->
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:checked="true"
+        android:thumbTint="@color/white"
+        android:trackTint="@color/primaryColor"/>
+
+    <!-- Afternoon Switch -->
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:checked="true"
+        android:thumbTint="@color/white"
+        android:trackTint="@color/primaryColor"/>
+
+    <!-- Evening Switch -->
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:checked="true"
+        android:thumbTint="@color/white"
+        android:trackTint="@color/primaryColor"/>
+
+    <!-- Night Switch -->
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:checked="true"
+        android:thumbTint="@color/white"
+        android:trackTint="@color/primaryColor"/>
+</LinearLayout>

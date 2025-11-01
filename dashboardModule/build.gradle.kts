@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.5")
 
 
+    implementation(project(":alzimer-module"))
     implementation(project(":core-service"))
     implementation(project(":core-network"))
     implementation(project(":core-ui"))
@@ -62,6 +63,7 @@ dependencies {
     implementation(project(":service-module"))
     implementation(project(":Upscale-module"))
     implementation(project(":core-navigation"))
+    implementation(project(":Medical-reminder"))
 
     ksp("com.google.dagger:hilt-compiler:2.54")
     implementation("com.google.dagger:hilt-android:2.54")

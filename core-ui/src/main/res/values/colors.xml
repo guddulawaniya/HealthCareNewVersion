@@ -4,6 +4,8 @@
     <color name="textColor">#000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="pinkColor">#FA55C8</color>
+    <color name="darkPinkColor">#EF4399</color>
     <color name="primaryColor">#49A24E</color>
     <color name="secondaryColor">#D16B93</color>
     <color name="disableBtnColor">#C2C2C2</color>

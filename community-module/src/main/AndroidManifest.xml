@@ -8,6 +8,12 @@
 
     <application>
         <activity
+            android:name=".GroupIncomingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IncomingCallActivity"
+            android:exported="false" />
+        <activity
             android:name=".MemberSeachActivity"
             android:exported="false" />
         <activity
@@ -38,7 +44,7 @@
             android:name=".CommunityAudioVideoCallRecievedActivity"
             android:exported="false" />
         <activity
-            android:name=".CommunityProfileActivtiy"
+            android:name=".CommunityDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".AudioCallActivity"

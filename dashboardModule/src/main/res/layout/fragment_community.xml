@@ -331,10 +331,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:animateLayoutChanges="true"
-                android:background="@android:color/transparent"
+                android:background="@drawable/tab_bg"
                 app:tabBackground="@drawable/height_active_tab_bg"
-                app:tabIndicatorColor="@color/white"
-                app:tabIndicatorHeight="3dp"
+                app:tabIndicatorColor="@android:color/transparent"
+                app:tabIndicatorHeight="0dp"
                 app:tabTextColor="@color/textColor" />
 
 

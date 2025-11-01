@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".CommunityProfileActivtiy">
+    tools:context=".CommunityDetailsActivity">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -35,12 +35,15 @@
                     android:id="@+id/editbtn"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:visibility="gone"
+                    android:padding="4dp"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_outline_edit" />
 
             </RelativeLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/communityImage"
                 android:layout_width="150dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
@@ -48,6 +51,7 @@
                 android:src="@drawable/profile_sample_image" />
 
             <TextView
+                android:id="@+id/communityName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -58,6 +62,7 @@
                 android:fontFamily="@font/inter_semibold" />
 
             <TextView
+                android:id="@+id/tvTotalMember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
@@ -208,6 +213,7 @@
                 tools:listitem="@layout/event_add_image_row_layout" />
 
             <TextView
+                android:id="@+id/tvUpcomingEvents"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="16dp"
                 android:layout_height="wrap_content"
@@ -225,6 +231,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_marginHorizontal="16dp"
                 android:clipToPadding="false"
                 tools:listitem="@layout/item_event_row_layout" />
@@ -288,6 +296,7 @@
                 android:layout_marginTop="10dp"
                 tools:itemCount="8"
                 android:layout_width="match_parent"
+                android:nestedScrollingEnabled="false"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/community_user_row_layout"/>
 
@@ -363,6 +372,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/leaveGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -388,5 +398,5 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

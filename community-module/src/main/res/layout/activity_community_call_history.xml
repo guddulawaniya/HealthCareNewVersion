@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:background="@color/white"
+    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent"
-    tools:context=".ui.community.CommunityCallHistoryActivity">
+    tools:context=".CommunityCallHistoryActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:title="History"
+        app:menu="@menu/chat_menu"
+        app:titleTextColor="@color/black"
+        app:navigationIcon="@drawable/back_btn_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/search_bar"
+            layout="@layout/custom_search_layout"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/height_feet_linear_bg"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tabImages"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="All"
+                android:background="@drawable/height_active_tab_bg"
+                android:textColor="@color/textColor"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:layout_margin="3dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="10sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tabDocuments"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Calls"
+                android:textColor="@color/hintColor"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:layout_margin="3dp"
+
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="10sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tabAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Video Call"
+                android:textColor="@color/hintColor"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:layout_margin="3dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="10sp"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"/>
+
+</LinearLayout>

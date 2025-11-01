@@ -9,22 +9,24 @@ data class UpcomingEventModel(
     val count: Long,
     val events: List<UpcomingTodayEventList>,
 )
+
 @Parcelize
+
 data class UpcomingTodayEventList(
     val _id: String,
-    val communityId: CommunityIdUpComing,
+    val communityId: CommunityId,
     val creatorId: CreatorId,
     val title: String,
     val description: String,
+    val latitude: String,
+    val longitude: String,
+    val location: String,
+    val eventLink: String,
+    val eventMode: String,
     val eventDate: String,
     val eventTime: String,
     val visibility: String,
-    val location: String,
-    val latitude: Double,
-    val longitude: Double,
-    val eventLink: String,
-    val eventMode: String,
-    val attachment: List<String>?=null,
+    val attachment: List<String>,
     val notifiedMembers: List<String>,
     val createdAt: String,
     val updatedAt: String,
@@ -36,9 +38,9 @@ data class CommunityIdUpComing(
     val _id: String,
     val category: String,
     val name: String,
-    val communityLogo: String?,
-    val memberCount: Int,
+    val communityLogo: String,
 ): Parcelable
+
 
 @Parcelize
 data class CreatorId(

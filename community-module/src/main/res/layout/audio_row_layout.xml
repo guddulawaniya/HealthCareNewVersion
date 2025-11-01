@@ -25,6 +25,7 @@
         android:layout_gravity="center"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/sharedbyName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Shared by You"
@@ -32,6 +33,7 @@
             android:fontFamily="@font/inter_medium"
             android:textColor="@color/textColor"/>
         <TextView
+            android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:45"

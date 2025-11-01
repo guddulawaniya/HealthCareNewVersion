@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".CaregiverForm">
+
+    <!-- Header Background -->
+    <TextView
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:background="@drawable/pink_background"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Caregiver Information"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_25sdp"
+        android:fontFamily="@font/istok_web_bold"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Subtitle -->
+
+
+    <!-- Full Name Label -->
+    <TextView
+        android:id="@+id/full_name_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/istok_web"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Full Name Input -->
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter your full name."
+        android:maxLength="50"
+        android:inputType="textCapWords"
+        android:background="@drawable/inputfield_box"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:singleLine="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/full_name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/nameerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Name is required"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_9sdp"
+        android:fontFamily="@font/istok_web"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Age Label -->
+    <TextView
+        android:id="@+id/age_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Relation with patient"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/istok_web"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/nameerror"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter your relation"
+        android:background="@drawable/inputfield_box"
+        android:singleLine="true"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/age_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/age_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Age is required"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_9sdp"
+        android:fontFamily="@font/istok_web"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/age"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    <!-- Phone no Label -->
+    <TextView
+        android:id="@+id/Phone_no_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/istok_web"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/age_error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Phone no Input -->
+    <EditText
+        android:id="@+id/phoneno"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter your Phone no."
+        android:maxLength="50"
+        android:inputType="textCapWords"
+        android:background="@drawable/inputfield_box"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:singleLine="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/Phone_no_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--Phone no error-->
+    <TextView
+        android:id="@+id/phonenoerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Phone no is required"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_9sdp"
+        android:fontFamily="@font/istok_web"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/phoneno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Location Label -->
+    <TextView
+        android:id="@+id/location_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Location (Where you live)"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/istok_web"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/phonenoerror"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter your Location"
+        android:maxLength="50"
+        android:inputType="textCapWords"
+        android:background="@drawable/inputfield_box"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:singleLine="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/location_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/location_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Location is required"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_9sdp"
+        android:fontFamily="@font/istok_web"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Save Button -->
+    <TextView
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:background="@drawable/save_button_background"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/inter_tight_semibold"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

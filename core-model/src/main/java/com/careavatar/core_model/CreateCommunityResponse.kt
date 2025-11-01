@@ -1,5 +1,8 @@
 package com.careavatar.core_model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 
 data class UpdateCommunityResponse(
     val status: Boolean,
@@ -13,6 +16,7 @@ data class CreateCommunityResponse(
     val data: Data,
 )
 
+@Parcelize
 data class Data(
     val _id: String,
     val creatorId: String,
@@ -23,15 +27,16 @@ data class Data(
     val status: Long,
     val hobbies: List<String>,
     val members: List<String>,
-    val communityLogo: Any?,
+    val communityLogo: String? =null,
     val messageAt: String,
     val createdAt: String,
     val updatedAt: String,
     val __v: Long,
-)
+) : Parcelable
 
+@Parcelize
 data class CategoryCreateCommunity(
     val _id: String,
     val name: String,
     val image: String,
-)
+): Parcelable

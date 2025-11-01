@@ -25,6 +25,7 @@
         android:layout_gravity="center"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/filename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Project Proposal"
@@ -32,6 +33,7 @@
             android:fontFamily="@font/inter_medium"
             android:textColor="@color/textColor"/>
         <TextView
+            android:id="@+id/fileSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PDF 1.3MB"

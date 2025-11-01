@@ -16,6 +16,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://jitpack.io")
+        }
     }
 }
 
@@ -32,3 +35,6 @@ include(":community-module")
 include(":Upscale-module")
 include(":service-module")
 include(":core-navigation")
+include(":CallModule")
+include(":alzimer-module")
+include(":Medical-reminder")

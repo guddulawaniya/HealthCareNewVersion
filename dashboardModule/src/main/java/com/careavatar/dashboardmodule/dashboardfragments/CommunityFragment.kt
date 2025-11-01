@@ -30,6 +30,7 @@ import com.careavatar.core_network.base.BaseFragment
 import com.careavatar.core_utils.ImagePickerManager
 import com.careavatar.core_utils.FileUtils
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -49,7 +50,6 @@ class CommunityFragment : BaseFragment() {
     private val viewModel: SocialMeetViewmodel by viewModels()
     private val tabTitles = arrayOf("Explore", "Joined")
     private var selectDay = "1"
-    private var isApiHit = true
     private var selectedImageUri: Uri? = null
     private var selectedImageFile: File? = null
 
@@ -89,9 +89,43 @@ class CommunityFragment : BaseFragment() {
 
         setUpRecyclerview()
         setUpCommunityPostRecyclerview()
-        hitTodayEventList()
+
         obervationAPi()
         hitCategoryData()
+        tabFeature()
+
+
+
+    }
+
+    private fun tabFeature(){
+        // 1. Set the default selected tab (if needed)
+        binding.tabLayout.getTabAt(0)?.select() // selects the first tab by default
+
+        // 2. Apply margin for the default selected tab
+        val initialTabView = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(binding.tabLayout.selectedTabPosition)
+        val initialLayoutParams = initialTabView.layoutParams as ViewGroup.MarginLayoutParams
+        initialLayoutParams.setMargins(8, 8, 8, 8) // same margin as onTabSelected
+        initialTabView.layoutParams = initialLayoutParams
+
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                val tabView = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(tab.position)
+                val layoutParams = tabView.layoutParams as ViewGroup.MarginLayoutParams
+                layoutParams.setMargins(8, 8, 8, 8) // <-- set your margin for selected tab
+                tabView.layoutParams = layoutParams
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                val tabView = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(tab.position)
+                val layoutParams = tabView.layoutParams as ViewGroup.MarginLayoutParams
+                layoutParams.setMargins(0, 0, 0, 0) // remove margin when unselected
+                tabView.layoutParams = layoutParams
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -99,9 +133,12 @@ class CommunityFragment : BaseFragment() {
                 adjustViewPagerHeight()
             }
         })
-
     }
 
+    override fun onResume() {
+        super.onResume()
+        hitTodayEventList()
+    }
 
     fun adjustViewPagerHeight() {
         val recyclerView = binding.viewPager.getChildAt(0) as RecyclerView
@@ -228,7 +265,11 @@ class CommunityFragment : BaseFragment() {
 
     private fun setUpRecyclerview() {
         adapter = UpcomingEventAdapter(requireContext(), datalist,listener={
-            startActivity(Intent(requireContext(), EventDetailsActivity::class.java))
+            val intent = Intent(requireContext(), EventDetailsActivity::class.java)
+            intent.putExtra("eventId", it._id)
+            startActivity(intent)
+        },onClickItem = {
+
         })
         binding.upComingEventRecyclerview.adapter = adapter
         binding.upComingEventRecyclerview.layoutManager =

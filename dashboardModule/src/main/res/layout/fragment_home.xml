@@ -563,6 +563,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/medicalReminder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -702,6 +703,7 @@
                         app:cardElevation="5dp">
 
                         <LinearLayout
+                            android:id="@+id/alzimerLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/dementia_image_bg"

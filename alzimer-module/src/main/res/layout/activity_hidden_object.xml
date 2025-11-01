@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".HiddenObject">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/cross"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/cross"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/gold"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:src="@drawable/gold"
+                android:scaleType="centerInside"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/timertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1:00"
+                android:textSize="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/inter_semibold"
+                app:layout_constraintStart_toEndOf="@+id/gold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageButton
+            android:id="@+id/music"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/imageon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/top"
+        android:layout_marginTop="@dimen/_15sdp">
+
+        <View
+            android:id="@+id/progressView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_12sdp"
+            android:background="@drawable/level_background"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp"
+            android:text="16/16"
+            android:fontFamily="@font/istok_web_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9sdp"
+            android:gravity="center_horizontal"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/progress"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textSize="@dimen/_15sdp"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/jungle"
+        app:layout_constraintTop_toBottomOf="@+id/instruction">
+
+
+        <FrameLayout
+            android:id="@+id/imagecard6"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:background="@drawable/giraff"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard11"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_75sdp"
+            android:background="@drawable/elephant"
+            app:layout_constraintTop_toBottomOf="@+id/imagecard6"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="-30dp"
+            android:layout_marginStart="@dimen/_39sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard12"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:background="@drawable/frog"
+            app:layout_constraintStart_toEndOf="@id/imagecard11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_21sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard8"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/fox"
+            app:layout_constraintStart_toEndOf="@+id/imagecard12"
+            app:layout_constraintBottom_toTopOf="@+id/imagecard12"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard14"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/flamingo"
+            app:layout_constraintStart_toEndOf="@+id/imagecard8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_32sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard13"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_25sdp"
+            app:layout_constraintStart_toEndOf="@+id/imagecard11"
+            android:background="@drawable/crocodile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_6sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard9"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/squrill"
+            app:layout_constraintStart_toEndOf="@+id/imagecard14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_60sdp"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard10"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_40sdp"/>
+
+        <FrameLayout
+            android:id="@+id/imagecard7"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/gorilla"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_8sdp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/instruction2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap on the object in the image that matches the one shown below."
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintBottom_toTopOf="@+id/pickgrid"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"/>
+
+
+    <GridLayout
+        android:id="@+id/pickgrid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_4"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:columnCount="5"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+
+        <!-- One card (repeat 8 times) -->
+        <FrameLayout
+            android:id="@+id/pickcard1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:src="@drawable/lense"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"/>
+
+        </FrameLayout>
+
+        <!--        card 2-->
+        <FrameLayout
+            android:id="@+id/pickcard2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/temple" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/pickcard4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/basket" />
+
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/pickcard5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/jasmin_flower" />
+
+
+        </FrameLayout>
+
+
+    </GridLayout>
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        app:layout_constraintTop_toBottomOf="@+id/pickgrid"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:columnCount="5"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:padding="@dimen/_7sdp"
+        android:rowOrderPreserved="false">
+
+        <!-- One card (repeat 8 times) -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/first"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/correct" />
+
+        </FrameLayout>
+
+
+        <!--        card 2-->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/second"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/correct" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/fourth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/correct" />
+
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/fifth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/correct" />
+
+
+        </FrameLayout>
+
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/next_button_disable_background"
+        android:text="Finish"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:fontFamily="@font/inter_tight_semibold"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

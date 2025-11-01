@@ -25,72 +25,78 @@
                 android:layout_marginTop="30dp"
                 app:cardCornerRadius="20dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    >
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/itemImageView"
+                        <ImageView
+                            android:id="@+id/itemImageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/sample_image" />
+
+                        <ImageView
+                            android:id="@+id/crossbtn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/cross_btn_bg"
+                            android:padding="5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/cross_black_icon" />
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/imagepicker"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/sample_image" />
-
-                    <ImageView
-                        android:id="@+id/crossbtn"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/cross_btn_bg"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/cross_black_icon" />
-                </RelativeLayout>
+                        android:background="@drawable/image_upload_bg"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
 
-                <LinearLayout
-                    android:id="@+id/imagepicker"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/image_upload_bg"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_marginTop="16dp"
+                            android:src="@drawable/image_placeholder"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Upload Event Image"
+                            android:textColor="@color/dividerColor"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/inter"
+                            android:text="Tap to upload a photo"
+                            android:textColor="@color/dividerColor"
+                            android:textSize="16sp" />
 
 
-                    <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/image_placeholder"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="Upload Event Image"
-                        android:textColor="@color/dividerColor"
-
-                        android:textSize="16sp"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/inter"
-                        android:text="Tap to upload a photo"
-                        android:textColor="@color/dividerColor"
-                        android:textSize="16sp" />
-
+                    </LinearLayout>
 
                 </LinearLayout>
+
 
             </androidx.cardview.widget.CardView>
 

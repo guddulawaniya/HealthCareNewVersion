@@ -49,6 +49,7 @@ class CommunityMessageActivity : BaseActivity() {
         binding = ActivityCommunityMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         getGroupMessage()
         observer()
         handleBtn()
@@ -68,6 +69,7 @@ class CommunityMessageActivity : BaseActivity() {
     }
 
     private fun extractIntentData() {
+
         communityId = intent.getStringExtra("communityId") ?: ""
         communityName = intent.getStringExtra("communityName") ?: ""
         communityImage = intent.getStringExtra("communityImage") ?: ""
@@ -75,6 +77,8 @@ class CommunityMessageActivity : BaseActivity() {
         creatorName = intent.getStringExtra("creatorName") ?: ""
         memberCount = intent.getStringExtra("count") ?: ""
         members = intent.getStringArrayListExtra("members") ?: emptyList()
+
+        binding.firstmessage.text = "Welcome $creatorName to $communityName! Say Hi! "
     }
 
     private fun setupRecyclerView() {
@@ -94,11 +98,12 @@ class CommunityMessageActivity : BaseActivity() {
         }
 
         binding.ivEventIcon.setOnClickListener {
-            startActivity(Intent(this, EventActivity::class.java).putExtra("communityId",communityId))
+            startActivity(Intent(this, EventActivity::class.java)
+                .putExtra("communityId",communityId))
         }
 
-        binding.communityDetails.setOnClickListener {
-            startActivity(Intent(this, CommunityProfileActivtiy::class.java).putExtra("communityId",communityId))
+        binding.communitydetailLayout.setOnClickListener {
+            startActivity(Intent(this, CommunityDetailsActivity::class.java).putExtra("communityId",communityId))
         }
 
         binding.plusbutton.setOnClickListener {
@@ -124,6 +129,7 @@ class CommunityMessageActivity : BaseActivity() {
             val currentUserIdValue = currentUserId.first() // suspend function to get the value once
 
             collectApiResultOnStarted(viewModel.groupMessageResponse) { response ->
+
                 messages.clear()
                 messages.addAll(response.messages.map { msg ->
                     val isSender = msg.senderId._id == currentUserIdValue
@@ -184,8 +190,7 @@ class CommunityMessageActivity : BaseActivity() {
     }
 
     private fun hideMenu() {
-        val slideDown =
-            AnimationUtils.loadAnimation(this, com.careavatar.core_ui.R.anim.slide_down_fade_out)
+        val slideDown = AnimationUtils.loadAnimation(this, com.careavatar.core_ui.R.anim.slide_down_fade_out)
         binding.selectImageMenuLayout.startAnimation(slideDown)
         binding.selectImageMenuLayout.postDelayed({
             binding.selectImageMenuLayout.visibility = View.GONE

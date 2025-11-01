@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_light_blue_round"
+        android:padding="8dp"
+        android:src="@drawable/ic_water_drop" />
+
+    <TextView
+        android:id="@+id/tvTimeQauntity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8:00AM - 250ml"
+        android:textSize="15sp"
+        android:fontFamily="@font/inter_medium"
+        android:textColor="@color/textColor"
+        android:layout_marginStart="12dp" />
+</LinearLayout>

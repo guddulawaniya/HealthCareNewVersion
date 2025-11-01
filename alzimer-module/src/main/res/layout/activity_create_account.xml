@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccount">
+
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                    android:id="@+id/userProfile"-->
+                <!--                    android:layout_width="@dimen/_80sdp"-->
+                <!--                    android:layout_height="@dimen/_80sdp"-->
+                <!--                    android:layout_gravity="center_horizontal"-->
+                <!--                    android:layout_marginTop="@dimen/_40sdp"-->
+                <!--                    android:src="@drawable/profile_1" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvUpload"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center_horizontal"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:background="@drawable/button_background"-->
+                <!--                    android:fontFamily="@font/inter_semibold"-->
+                <!--                    android:paddingHorizontal="@dimen/_10sdp"-->
+                <!--                    android:paddingVertical="@dimen/_2sdp"-->
+                <!--                    android:text="Upload"-->
+                <!--                    android:textColor="@color/white"-->
+                <!--                    android:textSize="@dimen/_11sdp" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="back" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageupload"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:background="@drawable/image_"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:src="@drawable/required_icon"/>-->
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/box"
+
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/grey"
+                        android:hint="Enter your name"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:src="@drawable/required_icon"/>-->
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/box"
+
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/grey"
+                        android:hint="Enter your email"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dob"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:src="@drawable/required_icon"/>-->
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/etDob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/box"
+                        android:drawablePadding="@dimen/_10sdp"
+
+                        android:drawableTint="@color/grey"
+                        android:hint="dd/mm/yyyy"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="horizontal">
+
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:text="Gender"-->
+                        <!--                            android:textColor="@color/black"-->
+                        <!--                            android:textSize="@dimen/_11sdp" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:src="@drawable/required_icon"/>-->
+
+                    </LinearLayout>
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/etgender"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--                        android:background="@drawable/etbackground"-->
+                    <!--                        android:drawableStart="@drawable/baseline_date_range_24"-->
+                    <!--                        android:drawableTint="@color/primarycolor"-->
+                    <!--                        android:drawablePadding="@dimen/_10sdp"-->
+                    <!--                        android:hint="Select the Gender"-->
+                    <!--                        android:padding="@dimen/_10sdp"-->
+                    <!--                        android:textColor="@color/textcolor"-->
+                    <!--                        android:textColorHint="@color/hintColor"-->
+                    <!--                        android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="@dimen/_20sdp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Emergency Contact (Important)"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_11sdp" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:src="@drawable/required_icon"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/etemergencycontactnumber"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="@dimen/_5sdp"-->
+<!--                        android:background="@drawable/box"-->
+<!--                        android:drawablePadding="@dimen/_10sdp"-->
+
+<!--                        android:drawableTint="@color/grey"-->
+<!--                        android:hint="Enter emergency number"-->
+<!--                        android:inputType="number"-->
+<!--                        android:padding="@dimen/_10sdp"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textColorHint="@color/grey"-->
+<!--                        android:textSize="@dimen/_12sdp" />-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="Relatives Contact"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <EditText
+                        android:id="@+id/etrelativescontactnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/box"
+                        android:drawablePadding="@dimen/_10sdp"
+
+                        android:drawableTint="@color/black"
+                        android:hint="Enter relatives contact"
+                        android:inputType="number"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Height"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <EditText
+                        android:id="@+id/etheight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/box"
+
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/grey"
+                        android:hint="Enter your height"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Weight"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <EditText
+                        android:id="@+id/etweight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/box"
+
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/grey"
+                        android:hint="Enter your weight"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/signupBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_35sdp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:background="@drawable/button_background"
+                        android:minWidth="@dimen/_150sdp"
+                        android:text="Register"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--    <layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/main"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/background"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:orientation="vertical"-->
+<!--            tools:context=".activity.SignUpActivity">-->
+
+
+<!--            <ScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical" >-->
+
+<!--                    &lt;!&ndash;                <de.hdodenhof.circleimageview.CircleImageView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:id="@+id/userProfile"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_width="@dimen/_80sdp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_height="@dimen/_80sdp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_gravity="center_horizontal"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_marginTop="@dimen/_40sdp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:src="@drawable/profile_1" />&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:id="@+id/tvUpload"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_gravity="center_horizontal"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_marginTop="@dimen/_5sdp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:background="@drawable/button_background"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:fontFamily="@font/inter_semibold"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:paddingHorizontal="@dimen/_10sdp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:paddingVertical="@dimen/_2sdp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:text="Upload"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:textColor="@color/white"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:textSize="@dimen/_11sdp" />&ndash;&gt;-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="16dp"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:orientation="vertical">-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_10sdp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/tvName"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Name"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="@dimen/_11sdp" />-->
+
+<!--                            &lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:src="@drawable/required_icon"/>&ndash;&gt;-->
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etName"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:hint="Enter your name"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:drawableTint="@color/grey"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_20sdp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Email"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="@dimen/_11sdp" />-->
+
+<!--                            &lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:src="@drawable/required_icon"/>&ndash;&gt;-->
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etEmail"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:hint="Enter your email"-->
+<!--                            android:drawableTint="@color/grey"-->
+<!--                            android:inputType="textEmailAddress"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_20sdp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Dob"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="@dimen/_11sdp" />-->
+
+<!--                            &lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:src="@drawable/required_icon"/>&ndash;&gt;-->
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/etDob"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:drawableTint="@color/grey"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:hint="dd/mm/yyyy"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_20sdp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Gender"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="@dimen/_11sdp" />-->
+
+<!--                            &lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:src="@drawable/required_icon"/>&ndash;&gt;-->
+
+<!--                        </LinearLayout>-->
+
+<!--                        &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:id="@+id/etgender"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:layout_marginTop="@dimen/_5sdp"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:background="@drawable/etbackground"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:drawableStart="@drawable/baseline_date_range_24"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:drawableTint="@color/primarycolor"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:drawablePadding="@dimen/_10sdp"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:hint="Select the Gender"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:padding="@dimen/_10sdp"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:textColor="@color/textcolor"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:textColorHint="@color/hintColor"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        android:textSize="@dimen/_12sdp" />&ndash;&gt;-->
+
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_20sdp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Emergency Contact (Important)"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="@dimen/_11sdp" />-->
+
+<!--                            &lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            android:src="@drawable/required_icon"/>&ndash;&gt;-->
+
+<!--                        </LinearLayout>-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etemergencycontactnumber"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+<!--                            android:drawableTint="@color/grey"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:hint="Enter emergency number"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:inputType="number"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_20sdp"-->
+<!--                            android:text="Relatives Contact"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_11sdp" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etrelativescontactnumber"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+<!--                            android:drawableTint="@color/black"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:hint="Enter relatives contact"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:inputType="number"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_10sdp"-->
+<!--                            android:text="Height"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_11sdp" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etheight"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:hint="Enter your height"-->
+<!--                            android:drawableTint="@color/grey"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:inputType="numberDecimal"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_10sdp"-->
+<!--                            android:text="Weight"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_11sdp" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etweight"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:background="@drawable/box"-->
+
+<!--                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                            android:drawableTint="@color/grey"-->
+<!--                            android:hint="Enter your weight"-->
+<!--                            android:padding="@dimen/_10sdp"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:inputType="numberDecimal"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textColorHint="@color/grey"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                        <androidx.appcompat.widget.AppCompatButton-->
+<!--                            android:id="@+id/signupBtn"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_horizontal"-->
+<!--                            android:layout_marginTop="@dimen/_35sdp"-->
+<!--                            android:layout_marginBottom="@dimen/_20sdp"-->
+<!--                            android:background="@drawable/button_background"-->
+<!--                            android:minWidth="@dimen/_150sdp"-->
+<!--                            android:text="Register"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--            </ScrollView>-->
+
+
+<!--        </LinearLayout>-->
+<!--    </layout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

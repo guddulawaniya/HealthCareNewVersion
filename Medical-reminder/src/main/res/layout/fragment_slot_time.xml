@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    tools:context=".fragments.SlotTimeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Slot &amp; Timing Selection"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/inter_semibold"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Choose when you take your medicines. You can tap on any slot to adjust its timing."
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/inter_medium"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutMorning"
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:layout_marginEnd="8dp"
+                    android:elevation="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/slot_time_unselected"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="16dp"
+                        android:visibility="gone"
+                        android:src="@drawable/green_circle_btn"
+                        app:tint="@color/primaryColor" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="-5dp"
+                        android:src="@drawable/morning_sun_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Morning"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvMorningTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:minWidth="90dp"
+                        android:gravity="center"
+                        android:paddingVertical="4dp"
+                        android:paddingEnd="8dp"
+                        android:fontFamily="@font/inter"
+                        android:text="8:00 AM"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/afternoonLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:elevation="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/slot_time_unselected"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/green_circle_btn"
+                        android:visibility="gone"
+                        app:tint="@color/primaryColor" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="-5dp"
+                        android:src="@drawable/afternoon_sun_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Afternoon"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvAfterTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="90dp"
+                        android:gravity="center"
+                        android:paddingVertical="4dp"
+                        android:paddingEnd="8dp"
+                        android:fontFamily="@font/inter"
+                        android:text="12:00 PM"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="8dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/eveningLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:layout_marginEnd="8dp"
+                    android:elevation="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/slot_time_unselected"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/green_circle_btn"
+                        android:visibility="gone"
+                        app:tint="@color/primaryColor" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="-5dp"
+                        android:src="@drawable/evening_sun_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Evening"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvEveningTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="90dp"
+                        android:gravity="center"
+                        android:paddingVertical="4dp"
+                        android:fontFamily="@font/inter"
+                        android:text="05:00 PM"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/nightLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/slot_time_unselected"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/green_circle_btn"
+                        android:visibility="gone"
+                        app:tint="@color/primaryColor" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_height="65dp"
+                        android:src="@drawable/night_sun_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Night"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvNightTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="90dp"
+                        android:gravity="center"
+                        android:paddingVertical="4dp"
+                        android:fontFamily="@font/inter"
+                        android:text="09:00 PM"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnNext"
+        android:layout_width="57dp"
+        android:layout_gravity="right"
+        android:layout_height="57dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/preferenceInactive"
+        app:cardCornerRadius="50dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/next_arrow"
+            android:layout_gravity="center"
+            android:src="@drawable/right_arrow_image"
+            app:tint="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddManuallyFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:scrollbars="none"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Medicine Name"
+                    android:textColor="@color/textColor"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/etMedicineName"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/baseline_search_24"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="Medicine Name"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
+                    android:paddingHorizontal="12dp"
+                    android:fontFamily="@font/inter"
+                    android:textColor="@color/textColor"
+                    android:textSize="12dp"
+                    android:textColorHint="@color/hintColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Form"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                        <AutoCompleteTextView
+                            android:id="@+id/etFormQuantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_bg"
+                            android:hint="Tablet"
+                            android:drawableEnd="@drawable/keyboard_arrow_down_20px"
+                            android:paddingHorizontal="12dp"
+                            android:fontFamily="@font/inter"
+                            android:textColor="@color/textColor"
+                            android:textSize="12dp"
+                            android:textColorHint="@color/hintColor" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Strength"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/etStrengthQuantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_bg"
+                            android:hint="Strength"
+
+                            android:paddingHorizontal="12dp"
+                            android:fontFamily="@font/inter"
+                            android:textColor="@color/textColor"
+                            android:textSize="12dp"
+                            android:textColorHint="@color/hintColor" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Stock Quantity"
+                    android:textColor="@color/textColor"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/etStockQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="e.g. 30"
+                    android:inputType="number"
+                    android:paddingHorizontal="12dp"
+                    android:fontFamily="@font/inter"
+                    android:textColor="@color/textColor"
+                    android:textSize="12dp"
+                    android:textColorHint="@color/hintColor" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Set Timing"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/reminder_set_time_bg"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tvOneTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_bg"
+                            android:gravity="center"
+                            android:minWidth="92dp"
+                            android:paddingVertical="8dp"
+                            android:text="One-Time"
+                            android:textColor="@color/white"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvEveryday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:gravity="center"
+                            android:minWidth="92dp"
+                            android:text="Everyday"
+                            android:textColor="#5E6960"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvCustomdays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:minWidth="92dp"
+                            android:gravity="center"
+                            android:text="Custom days"
+                            android:textColor="#5E6960"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tvMon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circle"
+                            android:drawablePadding="10dp"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="MON"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvTue"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/water_log_card_bg"
+                            android:drawablePadding="10dp"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/primaryColor"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="center"
+                            android:text="TUE"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvWed"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/water_log_card_bg"
+                            android:drawablePadding="10dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:textColor="@color/primaryColor"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="center"
+                            android:text="Wed"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvThu"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/water_log_card_bg"
+                            android:drawablePadding="10dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:textColor="@color/primaryColor"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="center"
+                            android:text="Thur"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvFri"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/water_log_card_bg"
+                            android:drawablePadding="10dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:textColor="@color/primaryColor"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="center"
+                            android:text="Fri"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvSat"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/water_log_card_bg"
+                            android:drawablePadding="10dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:textColor="@color/primaryColor"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="center"
+                            android:text="Sat"
+                            android:textSize="10sp" />
+                        <TextView
+                            android:id="@+id/tvSun"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/water_log_card_bg"
+                            android:drawablePadding="10dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:textColor="@color/primaryColor"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="center"
+                            android:text="Sun"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_circle_bg"
+                    android:layout_marginTop="16dp"
+                    android:text="Add Medicine"
+                    android:textSize="15dp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Added  Medicine"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMedicineList"
+                    android:layout_marginTop="15dp"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/medicine_row_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnNext"
+            android:layout_width="57dp"
+            android:layout_gravity="right"
+            android:layout_height="57dp"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/preferenceInactive"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/next_arrow"
+                android:layout_gravity="center"
+                android:src="@drawable/right_arrow_image"
+                app:tint="@color/white" />
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</LinearLayout>

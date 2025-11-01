@@ -13,6 +13,7 @@ import com.careavatar.core_model.SearchCommunityResponse
 import com.careavatar.core_ui.R
 import com.careavatar.core_utils.Constants
 import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable
+import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 
 class SearchCommunityAdapter(
     val context: Context,
@@ -45,10 +46,10 @@ class SearchCommunityAdapter(
 
             Glide.with(context).load(Constants.IMAGE_BASEURL + array[position].communityLogo)
                 .placeholder(
-                    R.drawable.add_user_icon
+                    R.drawable.group_icon
                 ).into(ivProfile)
 
-            tvTime.text = formatDateToReadable(array[position].createdAt)
+            tvTime.text = formatDateToReadable1(array[position].createdAt)
             tvCommunityName.text = array[position].name
             tvCommunityType.text = array[position].type
         }
@@ -56,7 +57,6 @@ class SearchCommunityAdapter(
 
         holder.itemView.setOnClickListener {
             onItemClick(array[position])
-
         }
 
 

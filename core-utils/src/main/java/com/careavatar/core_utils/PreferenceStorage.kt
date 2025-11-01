@@ -19,6 +19,7 @@ class UserPref @Inject constructor(
         private val KEY_IS_LOGGED_IN = booleanPreferencesKey("is_logged_in")
         private val KEY_TOKEN = stringPreferencesKey("user_token")
         private val KEY_MOBILE_NUMBER = stringPreferencesKey("mobile_number")
+        private val KEY_RADUIS_Circle = stringPreferencesKey("RaduisCircle")
         private val KEY_USER_ID = stringPreferencesKey("user_id")
     }
 
@@ -56,6 +57,15 @@ class UserPref @Inject constructor(
 
     // Observe mobile number
     val mobileNumber: Flow<String?> = dataStore.data.map { prefs -> prefs[KEY_MOBILE_NUMBER] }
+
+
+   // Save mobile number
+    suspend fun setRaduisCircle(number: String) {
+        dataStore.edit { prefs -> prefs[KEY_RADUIS_Circle] = number }
+    }
+
+    // Observe mobile number
+    val raduisCircle: Flow<String?> = dataStore.data.map { prefs -> prefs[KEY_RADUIS_Circle] }
 
     // Save user id
     suspend fun setUserId(userId: String) {

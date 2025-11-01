@@ -7,6 +7,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.OffsetDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.*
@@ -53,6 +55,49 @@ object DateTimePickerUtil {
 
         datePicker.show()
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun formatDateToReadable1(inputDate: String): String {
+        return try {
+            val parsedDateTime = OffsetDateTime.parse(inputDate, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+            val zonedDateTime = parsedDateTime.atZoneSameInstant(ZoneId.systemDefault())
+
+            val localDateTime = zonedDateTime.toLocalDateTime()
+            val messageDate = localDateTime.toLocalDate()
+            val now = LocalDate.now()
+
+            val timeFormatter = DateTimeFormatter.ofPattern("h:mm a")
+            val dateFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy")
+
+            val timePart = localDateTime.format(timeFormatter)
+
+            when {
+                messageDate.isEqual(now) -> "Today, $timePart"
+                messageDate.isEqual(now.minusDays(1)) -> "Yesterday, $timePart"
+                else -> "${messageDate.format(dateFormatter)}, $timePart"
+            }
+        } catch (e: Exception) {
+            inputDate // fallback
+        }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun formatDateToReadable2(inputDate: String): String {
+        return try {
+            val parsedDateTime = OffsetDateTime.parse(inputDate, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+            val zonedDateTime = parsedDateTime.atZoneSameInstant(ZoneId.systemDefault())
+            val localDateTime = zonedDateTime.toLocalDateTime()
+
+            // Format → "Jan 15, 2024"
+            val dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy")
+
+            localDateTime.format(dateFormatter)
+        } catch (e: Exception) {
+            inputDate // fallback if parsing fails
+        }
+    }
+
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatDateToReadable(inputDate: String): String {

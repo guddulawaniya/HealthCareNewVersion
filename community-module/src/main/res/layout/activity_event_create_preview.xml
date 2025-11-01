@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/sample_image" />
+                    android:src="@drawable/logo" />
 
                 <ImageView
                     android:id="@+id/crossbtn"
@@ -129,7 +129,7 @@
                         app:cardElevation="0dp"
                         app:cardCornerRadius="10dp">
                         <fragment
-                            android:id="@+id/mapFragment"
+                            android:id="@+id/eventmapFragment"
                             android:name="com.google.android.gms.maps.SupportMapFragment"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:background="@color/white"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".MatchingPairsGame">-->
+
+
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:fillViewport="true"-->
+<!--            >-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:orientation="vertical"-->
+<!--                android:background="@color/white"-->
+<!--                android:layout_height="match_parent">-->
+
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                    tools:ignore="MissingConstraints">-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/cross"-->
+<!--                        android:layout_width="@dimen/_28sdp"-->
+<!--                        android:layout_height="@dimen/_28sdp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        android:src="@drawable/cross"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:scaleType="centerInside"-->
+<!--                        tools:ignore="MissingConstraints" />-->
+
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        tools:ignore="MissingConstraints">-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/gold"-->
+<!--                            android:layout_width="@dimen/_23sdp"-->
+<!--                            android:layout_height="@dimen/_23sdp"-->
+<!--                            android:src="@drawable/gold"-->
+<!--                            android:scaleType="centerInside"-->
+<!--                            tools:ignore="MissingConstraints" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/timertext"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="1:00"-->
+<!--                            android:textSize="@dimen/_16sdp"-->
+<!--                            android:layout_marginStart="@dimen/_5sdp"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:fontFamily="@font/inter_semibold"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/gold"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="@dimen/_17sdp"-->
+<!--                        android:layout_height="@dimen/_17sdp"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        android:src="@drawable/music"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:scaleType="centerInside"-->
+<!--                        tools:ignore="MissingConstraints" />-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                    android:layout_marginTop="@dimen/_15sdp">-->
+
+<!--                    <View-->
+<!--                        android:id="@+id/progressView"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="@dimen/_12sdp"-->
+<!--                        android:background="@drawable/level_background"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_10sdp"-->
+<!--                        android:text="1/16"-->
+<!--                        android:fontFamily="@font/istok_web_bold"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_9sdp"-->
+<!--                        android:gravity="center_horizontal"/>-->
+
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/instruction"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/inter_semibold"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:text=""-->
+<!--                    android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                    android:layout_marginTop="@dimen/_15sdp"-->
+<!--                    android:textSize="@dimen/_15sdp"/>-->
+
+<!--                <GridLayout-->
+<!--                    android:id="@+id/cardGrid"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/_10sdp"-->
+<!--                    android:columnCount="2"-->
+<!--                    android:rowCount="4"-->
+<!--                    android:alignmentMode="alignMargins"-->
+<!--                    android:rowOrderPreserved="false"-->
+<!--                    android:useDefaultMargins="true">-->
+
+<!--                    &lt;!&ndash; One card (repeat 8 times) &ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card1"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage1"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"/>-->
+<!--                        &lt;!&ndash;                        android:src="@drawable/tree_image" />&ndash;&gt;-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage1"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;        card 2&ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card2"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage2"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"/>-->
+<!--                        &lt;!&ndash;                        android:src="@drawable/squrel" />&ndash;&gt;-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage2"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;        card 3&ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card3"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage3"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"/>-->
+<!--                        &lt;!&ndash;                        android:src="@drawable/rabbit" />&ndash;&gt;-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage3"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;        card 4&ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card4"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage4"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"/>-->
+<!--                        &lt;!&ndash;                        android:src="@drawable/rabbit" />&ndash;&gt;-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage4"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;       card 5 &ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card5"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage5"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/tree_image" />-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage5"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;        card 6&ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card6"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage6"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/car" />-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage6"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;        card 7&ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card7"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage7"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/car" />-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage7"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash;        card 8&ndash;&gt;-->
+<!--                    <FrameLayout-->
+<!--                        android:id="@+id/card8"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_100sdp"-->
+<!--                        android:layout_rowWeight="1"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="@dimen/_5sdp">-->
+
+<!--                        &lt;!&ndash; Under image (revealed) &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/underImage8"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/squrel" />-->
+
+<!--                        &lt;!&ndash; Upper cover image &ndash;&gt;-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/coverImage8"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/cover_image"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true" />-->
+<!--                    </FrameLayout>-->
+
+<!--                    &lt;!&ndash; Copy and change ids for card2, card3...card8 &ndash;&gt;-->
+<!--                    &lt;!&ndash; Or inflate dynamically in Kotlin &ndash;&gt;-->
+<!--                </GridLayout>-->
+
+
+<!--                <TextView-->
+<!--                    android:id="@+id/next"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/next_button_disable_background"-->
+<!--                    android:text="Next"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="@dimen/_12sdp"-->
+<!--                    android:layout_gravity="end"-->
+<!--                    android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                    android:paddingVertical="@dimen/_5sdp"-->
+<!--                    android:paddingHorizontal="@dimen/_20sdp"-->
+<!--                    android:layout_marginTop="@dimen/_45sdp"-->
+<!--                    android:layout_marginBottom="@dimen/_20sdp"-->
+<!--                    android:fontFamily="@font/inter_tight_semibold"/>-->
+
+
+<!--            </LinearLayout>-->
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/centerOverlayImage"-->
+<!--        android:layout_width="@dimen/_150sdp"-->
+<!--        android:layout_height="@dimen/_150sdp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:src="@drawable/complete"-->
+<!--        android:visibility="gone"-->
+<!--        android:scaleType="centerInside" />-->
+
+
+
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MatchingPairsGame">
+
+    <!-- Top bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/cross"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/cross" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/gold"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/gold" />
+
+            <TextView
+                android:id="@+id/timertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="1:00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintStart_toEndOf="@id/gold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/music"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/imageon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Progress section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/progressView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_12sdp"
+            android:background="@drawable/level_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp"
+            android:fontFamily="@font/istok_web_bold"
+            android:gravity="center_horizontal"
+            android:text="1/16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_9sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Instruction text -->
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:fontFamily="@font/inter_semibold"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/progressContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Grid of cards -->
+    <GridLayout
+        android:id="@+id/cardGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_10sdp"
+        android:columnCount="2"
+        android:rowCount="4"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true"
+        app:layout_constraintTop_toBottomOf="@id/instruction"
+        app:layout_constraintBottom_toTopOf="@id/next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Card templates: copy for all 8 cards (IDs card1 to card8) -->
+
+        <!-- Example card -->
+        <FrameLayout
+            android:id="@+id/card1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <ImageView
+                android:id="@+id/underImage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside" />
+
+            <ImageView
+                android:id="@+id/coverImage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_image"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+
+
+        <!-- Repeat similar blocks for card2 to card8 -->
+
+
+        <FrameLayout
+            android:id="@+id/card2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/underImage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"/>
+            <!--                        android:src="@drawable/squrel" />-->
+
+            <!-- Upper cover image -->
+            <ImageView
+                android:id="@+id/coverImage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_image"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+        <!--        card 3-->
+        <FrameLayout
+            android:id="@+id/card3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/underImage3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"/>
+            <!--                        android:src="@drawable/rabbit" />-->
+
+            <!-- Upper cover image -->
+            <ImageView
+                android:id="@+id/coverImage3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_image"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+        <!--        card 4-->
+        <FrameLayout
+            android:id="@+id/card4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/underImage4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"/>
+            <!--                        android:src="@drawable/rabbit" />-->
+
+            <!-- Upper cover image -->
+            <ImageView
+                android:id="@+id/coverImage4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_image"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+        <!--       card 5 -->
+        <FrameLayout
+            android:id="@+id/card5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/underImage5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/tree_image" />
+
+            <!-- Upper cover image -->
+            <ImageView
+                android:id="@+id/coverImage5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_image"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+        <!--        card 6-->
+        <FrameLayout
+            android:id="@+id/card6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_5sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/underImage6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/car" />
+
+            <!-- Upper cover image -->
+            <ImageView
+                android:id="@+id/coverImage6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_image"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+        <!--        card 7-->
+        <FrameLayout
+                                android:id="@+id/card7"
+                                android:layout_width="0dp"
+            android:layout_height="0dp"
+                                android:layout_rowWeight="1"
+                                android:layout_columnWeight="1"
+                                android:layout_margin="@dimen/_5sdp">
+
+                                <!-- Under image (revealed) -->
+                                <ImageView
+                                    android:id="@+id/underImage7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/car" />
+
+                                <!-- Upper cover image -->
+                                <ImageView
+                                    android:id="@+id/coverImage7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/cover_image"
+                                    android:clickable="true"
+                                    android:focusable="true" />
+                            </FrameLayout>
+
+                            <!--        card 8-->
+        <FrameLayout
+                                android:id="@+id/card8"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_rowWeight="1"
+                                android:layout_columnWeight="1"
+                                android:layout_margin="@dimen/_5sdp">
+
+                                <!-- Under image (revealed) -->
+                                <ImageView
+                                    android:id="@+id/underImage8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/squrel" />
+
+                                <!-- Upper cover image -->
+                                <ImageView
+                                    android:id="@+id/coverImage8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/cover_image"
+                                    android:clickable="true"
+                                    android:focusable="true" />
+                            </FrameLayout>
+
+    </GridLayout>
+
+    <!-- Next button -->
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:layout_gravity="end"
+        android:background="@drawable/next_button_disable_background"
+        android:fontFamily="@font/inter_tight_semibold"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@+id/cardGrid"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Completion overlay -->
+    <ImageView
+        android:id="@+id/centerOverlayImage"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:scaleType="centerInside"
+        android:src="@drawable/complete"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

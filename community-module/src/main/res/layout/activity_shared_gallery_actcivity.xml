@@ -9,16 +9,10 @@
     android:layout_height="match_parent"
     tools:context=".SharedGalleryActcivity">
 
-    <androidx.appcompat.widget.Toolbar
+
+    <include
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:title="Shared Gallery"
-        app:menu="@menu/chat_menu"
-        app:titleTextColor="@color/black"
-        app:navigationIcon="@drawable/back_btn_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        layout="@layout/custom_toolbar_layout"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,12 +33,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Images"
-                android:textColor="@color/hintColor"
+                android:textColor="@color/textColor"
+                android:background="@drawable/height_active_tab_bg"
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:layout_margin="3dp"
-                android:fontFamily="@font/inter_semibold"
-                android:textSize="10sp"/>
+                android:fontFamily="@font/inter_medium"
+                android:textSize="12sp"/>
         </LinearLayout>
         <LinearLayout
             android:gravity="center"
@@ -56,13 +51,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Documents"
-                android:textColor="@color/textColor"
+                android:textColor="@color/hintColor"
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:layout_margin="3dp"
-                android:background="@drawable/height_active_tab_bg"
-                android:fontFamily="@font/inter_semibold"
-                android:textSize="10sp"/>
+
+                android:fontFamily="@font/inter_medium"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -79,8 +74,8 @@
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:layout_margin="3dp"
-                android:fontFamily="@font/inter_semibold"
-                android:textSize="10sp"/>
+                android:fontFamily="@font/inter_medium"
+                android:textSize="12sp"/>
         </LinearLayout>
 
 

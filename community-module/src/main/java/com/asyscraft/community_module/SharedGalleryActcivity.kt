@@ -22,9 +22,13 @@ class SharedGalleryActcivity : BaseActivity() {
         binding = ActivitySharedGalleryActcivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        binding.toolbar.btnBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        binding.toolbar.tvTitle.text = "Shared Gallery"
+
         // Default tab
         replaceFragment(ShareImageFragment())
-        setActiveTab(binding.tabDocuments)
+        setActiveTab(binding.tabImages)
 
         // Click listeners
         binding.tabImages.setOnClickListener {
@@ -42,8 +46,6 @@ class SharedGalleryActcivity : BaseActivity() {
             setActiveTab(binding.tabAudio)
         }
 
-        // Toolbar navigation back
-        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun replaceFragment(fragment: Fragment) {

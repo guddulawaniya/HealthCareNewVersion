@@ -17,6 +17,7 @@ class CreateEventActivity : BaseActivity() {
 
     private lateinit var imageAdapter: ImageAdapter
     private val selectedImages = mutableListOf<String>()
+
     private var selectedImageUri: Uri? = null
 
 
@@ -45,9 +46,6 @@ class CreateEventActivity : BaseActivity() {
             binding.itemImageView.setImageDrawable(null)
             binding.imagepicker.visibility = View.VISIBLE
             binding.imagelayout.visibility = View.GONE
-            if (selectedImages.size < 3) {
-                binding.btnAttachDocument.visibility = View.GONE
-            }
         }
 
         binding.btninclude.buttonNext.setOnClickListener {
@@ -56,7 +54,7 @@ class CreateEventActivity : BaseActivity() {
                 val intent = Intent(this, CreateEventNextActivity::class.java).apply {
                     putExtra("title", binding.title.text.toString())
                     putExtra("description", binding.description.text.toString())
-                    putExtra("mainImage", selectedImageUri)
+                    putExtra("mainImage", selectedImageUri?.toString())
                     putExtra("communityId", communityId)
                     putStringArrayListExtra("selectedImages", ArrayList(selectedImages))
                 }

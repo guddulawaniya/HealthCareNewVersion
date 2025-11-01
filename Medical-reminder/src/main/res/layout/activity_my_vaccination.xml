@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyVaccinationActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/back_btn_image"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_height="wrap_content"
+            android:text="My Vaccination"/>
+        <ImageView
+            android:id="@+id/addVaccination"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/add_ic_pink"
+            app:tint="#00B1FF" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="18dp"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/inter_medium"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Vaccination"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/upcomming_vaccination_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/vaccination_image"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:text="Upcoming Vaccination"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Hepatitis B dose 2"
+                android:textColor="@color/textColor"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            >
+
+<!--            <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--                android:id="@+id/progressRing"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                app:indicatorInset="0dp"-->
+<!--                app:trackThickness="5dp"-->
+<!--                app:progressCompat="75"-->
+<!--                app:max="100"-->
+<!--                app:indicatorDirectionCircular="clockwise"-->
+<!--                app:showAnimationBehavior="none"-->
+<!--                app:hideAnimationBehavior="none"-->
+<!--                app:indeterminate="false" />-->
+
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- Center Number -->
+                <TextView
+                    android:id="@+id/tvNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#00B1FF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+                <!-- Center Number -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="days"
+                    android:textColor="#00B1FF"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textSize="6sp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="18dp"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/inter_medium"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:text="All Vaccinations "/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVaccination"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/upcoming_vaccination_row_item"
+        android:orientation="vertical"/>
+</LinearLayout>

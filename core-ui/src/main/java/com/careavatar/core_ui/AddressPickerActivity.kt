@@ -91,20 +91,6 @@ class AddressPickerActivity : AppCompatActivity(),OnMapReadyCallback {
 
         setupSearchListener()
 
-        binding.nextbtn.setOnClickListener {
-            val center = googleMap.cameraPosition.target
-            val address = binding.editAddress.text.toString()
-
-            val resultIntent = Intent().apply {
-                putExtra("selected_address", address)
-                putExtra("selected_latitude", center.latitude)
-                putExtra("selected_longitude", center.longitude)
-            }
-
-            setResult(RESULT_OK, resultIntent)
-            finish()
-        }
-
 
     }
 

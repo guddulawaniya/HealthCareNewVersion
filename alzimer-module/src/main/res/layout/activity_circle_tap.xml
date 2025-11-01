@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:background="@drawable/background_circle_game"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".CircleTap">-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/backgroundImage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/background_circle_game"-->
+<!--        android:contentDescription="@null"-->
+<!--        android:adjustViewBounds="true" />-->
+
+
+<!--   <androidx.core.widget.NestedScrollView-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="match_parent"-->
+<!--       android:fillViewport="true">-->
+<!--           <LinearLayout-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:orientation="vertical"-->
+<!--               android:layout_height="match_parent"-->
+<!--               >-->
+
+
+<!--               <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_marginTop="@dimen/_10sdp"-->
+<!--                   app:layout_constraintTop_toTopOf="parent"-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   tools:ignore="MissingConstraints">-->
+
+<!--                   <ImageButton-->
+<!--                       android:id="@+id/cross"-->
+<!--                       android:layout_width="@dimen/_28sdp"-->
+<!--                       android:layout_height="@dimen/_28sdp"-->
+<!--                       app:layout_constraintStart_toStartOf="parent"-->
+<!--                       android:src="@drawable/cross"-->
+<!--                       android:background="@android:color/transparent"-->
+<!--                       android:scaleType="centerInside"-->
+<!--                       tools:ignore="MissingConstraints" />-->
+
+<!--                   <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                       android:layout_width="wrap_content"-->
+<!--                       android:layout_height="wrap_content"-->
+<!--                       app:layout_constraintStart_toStartOf="parent"-->
+<!--                       app:layout_constraintEnd_toEndOf="parent"-->
+<!--                       tools:ignore="MissingConstraints">-->
+<!--                       <ImageView-->
+<!--                           android:id="@+id/gold"-->
+<!--                           android:layout_width="@dimen/_23sdp"-->
+<!--                           android:layout_height="@dimen/_23sdp"-->
+<!--                           android:src="@drawable/gold"-->
+<!--                           android:scaleType="centerInside"-->
+<!--                           tools:ignore="MissingConstraints" />-->
+
+<!--                       <TextView-->
+<!--                           android:id="@+id/timertext"-->
+<!--                           android:layout_width="wrap_content"-->
+<!--                           android:layout_height="wrap_content"-->
+<!--                           android:text="1:00"-->
+<!--                           android:textSize="@dimen/_16sdp"-->
+<!--                           android:layout_marginStart="@dimen/_5sdp"-->
+<!--                           android:textColor="@color/black"-->
+<!--                           android:fontFamily="@font/inter_semibold"-->
+<!--                           app:layout_constraintStart_toEndOf="@+id/gold"-->
+<!--                           app:layout_constraintTop_toTopOf="parent"-->
+<!--                           app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--                   </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--                   <ImageButton-->
+<!--                       android:layout_width="@dimen/_17sdp"-->
+<!--                       android:layout_height="@dimen/_17sdp"-->
+<!--                       app:layout_constraintEnd_toEndOf="parent"-->
+<!--                       android:src="@drawable/music"-->
+<!--                       app:layout_constraintTop_toTopOf="parent"-->
+<!--                       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                       android:background="@android:color/transparent"-->
+<!--                       android:scaleType="centerInside"-->
+<!--                       tools:ignore="MissingConstraints" />-->
+<!--               </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--               <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   android:layout_marginTop="@dimen/_15sdp">-->
+
+<!--                   <View-->
+<!--                       android:id="@+id/progressView"-->
+<!--                       android:layout_width="wrap_content"-->
+<!--                       android:layout_height="@dimen/_12sdp"-->
+<!--                       android:background="@drawable/level_background"/>-->
+
+<!--                   <TextView-->
+<!--                       android:layout_width="match_parent"-->
+<!--                       android:layout_height="@dimen/_10sdp"-->
+<!--                       android:text="2/16"-->
+<!--                       android:fontFamily="@font/istok_web_bold"-->
+<!--                       app:layout_constraintTop_toTopOf="parent"-->
+<!--                       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                       android:textColor="@color/black"-->
+<!--                       android:textSize="@dimen/_9sdp"-->
+<!--                       android:gravity="center_horizontal"/>-->
+
+<!--               </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--               <TextView-->
+<!--                   android:id="@+id/instruction"-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:fontFamily="@font/inter_semibold"-->
+<!--                   android:textColor="@color/black"-->
+<!--                   android:text="Tap the circle when it "-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   android:layout_marginTop="@dimen/_25sdp"-->
+<!--                   android:textSize="@dimen/_15sdp"/>-->
+
+
+<!--               <ImageButton-->
+<!--                   android:id="@+id/image1"-->
+<!--                   android:layout_width="@dimen/_100sdp"-->
+<!--                   android:layout_height="@dimen/_100sdp"-->
+<!--                   android:src="@drawable/rectangle"-->
+<!--                   android:background="@android:color/transparent"-->
+<!--                   android:scaleType="centerInside"-->
+<!--                   android:tag="square"-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   android:layout_marginTop="@dimen/_30sdp"-->
+<!--                   android:layout_gravity="center_horizontal"/>-->
+
+<!--               <ImageButton-->
+<!--                   android:id="@+id/image2"-->
+<!--                   android:layout_width="@dimen/_100sdp"-->
+<!--                   android:layout_height="@dimen/_100sdp"-->
+<!--                   android:src="@drawable/circle"-->
+<!--                   android:background="@android:color/transparent"-->
+<!--                   android:scaleType="centerInside"-->
+<!--                   android:tag="circle"-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   android:layout_marginStart="@dimen/_30sdp"-->
+<!--                   android:layout_marginTop="@dimen/_50sdp"-->
+<!--                   android:layout_gravity="start"/>-->
+
+
+<!--               <ImageButton-->
+<!--                   android:id="@+id/image3"-->
+<!--                   android:layout_width="@dimen/_100sdp"-->
+<!--                   android:layout_height="@dimen/_100sdp"-->
+<!--                   android:src="@drawable/triangle"-->
+<!--                   android:background="@android:color/transparent"-->
+<!--                   android:scaleType="centerInside"-->
+<!--                   android:tag="triangle"-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   android:layout_marginEnd="@dimen/_30sdp"-->
+<!--                   android:layout_gravity="end"/>-->
+
+
+
+<!--               <TextView-->
+<!--                   android:id="@+id/next"-->
+<!--                   android:layout_width="wrap_content"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:background="@drawable/next_button_disable_background"-->
+<!--                   android:text="Next"-->
+<!--                   android:textColor="@color/white"-->
+<!--                   android:textSize="@dimen/_12sdp"-->
+<!--                   android:layout_gravity="end"-->
+<!--                   android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                   android:paddingVertical="@dimen/_5sdp"-->
+<!--                   android:paddingHorizontal="@dimen/_20sdp"-->
+<!--                   android:layout_marginTop="@dimen/_105sdp"-->
+<!--                   android:layout_marginBottom="@dimen/_20sdp"-->
+<!--                   android:fontFamily="@font/inter_tight_semibold"/>-->
+
+
+
+<!--           </LinearLayout>-->
+<!--   </androidx.core.widget.NestedScrollView>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/centerOverlayImage"-->
+<!--        android:layout_width="@dimen/_200sdp"-->
+<!--        android:layout_height="@dimen/_200sdp"-->
+<!--        android:src="@drawable/timeup"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:visibility="gone"-->
+<!--        android:scaleType="centerInside" />-->
+
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_circle_game"
+    tools:context=".CircleTap">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_circle_game"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Top Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/cross"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/cross"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/gold"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/gold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/timertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="1:00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/gold"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageButton
+            android:id="@+id/music"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/imageon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Progress Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/progressView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_12sdp"
+            android:background="@drawable/level_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/levelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2/16"
+            android:textSize="@dimen/_9sdp"
+            android:gravity="center"
+            android:fontFamily="@font/istok_web_bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/progressView"
+            app:layout_constraintBottom_toBottomOf="@id/progressView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Instruction Text -->
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tap the circle when it"
+        android:fontFamily="@font/inter_semibold"
+        android:textSize="@dimen/_15sdp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/progressContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Image Buttons -->
+<!--    <ImageButton-->
+<!--        android:id="@+id/image1"-->
+<!--        android:layout_width="@dimen/_100sdp"-->
+<!--        android:layout_height="@dimen/_100sdp"-->
+<!--        android:layout_marginTop="@dimen/_30sdp"-->
+<!--        android:src="@drawable/rectangle"-->
+<!--        android:tag="square"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:scaleType="centerInside"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/instruction"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/image2"-->
+<!--        android:layout_width="@dimen/_100sdp"-->
+<!--        android:layout_height="@dimen/_100sdp"-->
+<!--        android:layout_marginTop="@dimen/_40sdp"-->
+<!--        android:src="@drawable/circle"-->
+<!--        android:tag="circle"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:scaleType="centerInside"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/image1"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginStart="@dimen/_30sdp" />-->
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/image3"-->
+<!--        android:layout_width="@dimen/_100sdp"-->
+<!--        android:layout_height="@dimen/_100sdp"-->
+<!--        android:src="@drawable/triangle"-->
+<!--        android:tag="triangle"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:scaleType="centerInside"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/image2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginEnd="@dimen/_30sdp" />-->
+
+
+
+
+
+
+
+    <!-- Green Square (Centered) -->
+    <ImageButton
+        android:id="@+id/image1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toBottomOf="@id/instruction"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintWidth_percent="0.25"/>
+<!--    android:src="@drawable/rectangle"-->
+
+    <!-- Red Circle -->
+    <ImageButton
+        android:id="@+id/image2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+
+        app:layout_constraintTop_toBottomOf="@+id/instruction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_marginStart="@dimen/_30sdp" />
+<!--    android:src="@drawable/circle"-->
+
+    <!-- Blue Triangle -->
+    <ImageButton
+        android:id="@+id/image3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toBottomOf="@id/image2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_marginEnd="@dimen/_30sdp" />
+
+<!--    android:src="@drawable/triangle"-->
+
+
+    <!-- Next Button -->
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:background="@drawable/next_button_disable_background"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/inter_tight_semibold"
+        app:layout_constraintTop_toBottomOf="@id/image3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginEnd="@dimen/_10sdp" />
+
+    <!-- Center Overlay Image -->
+    <ImageView
+        android:id="@+id/centerOverlayImage"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:visibility="gone"
+        android:scaleType="centerInside"
+        android:src="@drawable/timeup"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+

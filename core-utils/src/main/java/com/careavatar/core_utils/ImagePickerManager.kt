@@ -62,8 +62,34 @@ object ImagePickerManager {
 
         galleryLauncher =
             activityResultCaller.registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-                callback?.invoke(uri)
+                if (uri != null && appContext != null) {
+                    try {
+                        // Copy the picked image to cache
+                        val inputStream = appContext!!.contentResolver.openInputStream(uri)
+                        val tempFile = File.createTempFile("picked_", ".jpg", appContext!!.cacheDir)
+                        inputStream?.use { input ->
+                            tempFile.outputStream().use { output ->
+                                input.copyTo(output)
+                            }
+                        }
+
+                        // ✅ Convert to Uri so rest of your code still works
+                        val safeUri = FileProvider.getUriForFile(
+                            appContext!!,
+                            "${appContext!!.packageName}.fileprovider",
+                            tempFile
+                        )
+
+                        callback?.invoke(safeUri)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        callback?.invoke(null)
+                    }
+                } else {
+                    callback?.invoke(null)
+                }
             }
+
     }
 
     fun showImageSourceDialog(context: Context, resultCallback: (Uri?) -> Unit) {

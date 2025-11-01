@@ -32,9 +32,9 @@ class CommunityHightlightCategoryAdapter(
 
 
         if (position == selectedPosition) {
-            holder.binding.categoryName.setBackgroundColor(com.careavatar.core_ui.R.drawable.category_select_highlight_bg) // selected color
+            holder.binding.categoryName.setBackgroundResource(com.careavatar.core_ui.R.drawable.category_select_highlight_bg) // selected color
         } else {
-            holder.binding.categoryName.setBackgroundColor(com.careavatar.core_ui.R.drawable.category_select_highlight_bg) // default color
+            holder.binding.categoryName.setBackgroundResource(com.careavatar.core_ui.R.drawable.edit_text_bg) // default color
         }
         val currentPosition = position
 

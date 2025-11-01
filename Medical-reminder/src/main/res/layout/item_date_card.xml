@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="57dp"
+    android:layout_height="59dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="8dp"
+    android:padding="8dp"
+    android:background="@drawable/medical_types_bg">
+
+    <TextView
+        android:id="@+id/tvDayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MON"
+        android:textSize="14sp"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/primaryColor" />
+
+    <TextView
+        android:id="@+id/tvDayNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor" />
+</LinearLayout>

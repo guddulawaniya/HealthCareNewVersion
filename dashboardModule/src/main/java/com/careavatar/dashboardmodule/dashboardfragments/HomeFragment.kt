@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.asyscraft.alzimer_module.AlzimerMainActivity
+import com.asyscraft.medical_reminder.ReminderTypeActivity
 import com.asyscraft.service_module.ui.BookCaretakerActivity
 import com.asyscraft.service_module.ui.MedicalServicesActivity
 import com.careavatar.dashboardmodule.adapters.ViewPagerAdapter
@@ -24,7 +26,6 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel: DashBoardViewModel by viewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +42,13 @@ class HomeFragment : BaseFragment() {
 
         binding.medicalOrderNow.setOnClickListener {
             startActivity(Intent(requireContext(), MedicalServicesActivity::class.java))
+        }
+        binding.medicalReminder.setOnClickListener {
+            startActivity(Intent(requireContext(), ReminderTypeActivity::class.java))
+        }
+
+        binding.alzimerLayout.setOnClickListener {
+            startActivity(Intent(requireContext(), AlzimerMainActivity::class.java))
         }
 
 

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.community.FindPeopleActivity">
+    tools:context=".FindPeopleActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,45 +44,9 @@
 
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="10dp"
-        app:strokeColor="#1A000000"
-        app:strokeWidth="1dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/baseline_search_24"
-                app:tint="@color/hintColor" />
-
-            <EditText
-                android:id="@+id/etSearch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:fontFamily="@font/inter_medium"
-                android:hint="Search by name"
-                android:padding="12dp"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="@color/hintColor"
-                android:textSize="14dp" />
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    <include
+        android:id="@+id/include_search"
+        layout="@layout/custom_search_layout"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

@@ -29,10 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
@@ -102,8 +104,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_marginTop="28dp"
+                    android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingHorizontal="16dp"
 
@@ -192,14 +194,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            tools:itemCount="3"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="3"
                             tools:listitem="@layout/event_add_image_row_layout" />
 
 
                     </LinearLayout>
-
-
 
 
                 </LinearLayout>
@@ -224,8 +224,6 @@
 
             </LinearLayout>
         </ScrollView>
-
-
 
 
     </LinearLayout>

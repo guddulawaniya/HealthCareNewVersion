@@ -10,12 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.careavatar.core_model.UpcomingTodayEventList
 import com.careavatar.dashboardmodule.databinding.UpcomingEventRowLayoutBinding
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.asyscraft.community_module.adpaters.ImageAdapter
 import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable
+import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 
 class UpcomingEventAdapter(
     val content: Context,
     val datalist: MutableList<UpcomingTodayEventList>,
-    private val listener: (UpcomingTodayEventList) -> Unit
+    private val listener: (UpcomingTodayEventList) -> Unit,
+    private val onClickItem: (position: Int) -> Unit
 ) : RecyclerView.Adapter<UpcomingEventAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: UpcomingEventRowLayoutBinding) :
@@ -36,7 +40,7 @@ class UpcomingEventAdapter(
 
         holder.binding.eventTitle.text = item.title
         holder.binding.tvDescription.text = item.description
-        holder.binding.eventDate.text = formatDateToReadable(item.eventDate)
+        holder.binding.eventDate.text = formatDateToReadable1(item.eventDate)
 
         holder.itemView.setOnClickListener {
             listener(item)
@@ -50,6 +54,9 @@ class UpcomingEventAdapter(
             }
 
         }
+        holder.binding.imageRecylerview.layoutManager = LinearLayoutManager(content,
+            LinearLayoutManager.HORIZONTAL,false)
+        holder.binding.imageRecylerview.adapter = ImageAdapter(item.attachment?.toMutableList() ?: ArrayList(),true,onClickItem)
 
     }
 

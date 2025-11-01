@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.careavatar.core_model.UpcomingTodayEventList
 import com.careavatar.core_utils.Constants
 import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable
+import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 
 
 class EventAdapter(
@@ -38,7 +39,7 @@ class EventAdapter(
 
         holder.binding.tvEventTitle.text = item.title
         holder.binding.tvEventDesc.text = item.description
-        holder.binding.tvEventDateTime.text = formatDateToReadable(item.eventDate)
+        holder.binding.tvEventDateTime.text = formatDateToReadable1(item.eventDate)
 
         if (item.attachment?.isNotEmpty() ?: false){
             Glide.with(holder.itemView.context).load(Constants.IMAGE_BASEURL+ item.attachment!![0]).into(holder.binding.eventImage)

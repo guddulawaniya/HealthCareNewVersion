@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="10dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:textSize="18sp"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/textColor"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/water_log_card_bg"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIntakeWaterTime"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_water_log"/>
+        <View
+            android:layout_width="match_parent"
+            android:background="#80000000"
+            android:layout_marginHorizontal="16dp"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/tvTotalWater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: 1.05L"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:drawableEnd="@drawable/total_water_drop_icon"
+            android:fontFamily="@font/inter_medium"
+            android:textColor="@color/textColor"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -56,7 +56,8 @@ class JoinedFragment : BaseFragment() {
 
             startActivity(Intent(requireContext(), CommunityMessageActivity::class.java)
                 .putExtra("communityId", array._id)
-                    .putExtra("creatorId", array.creator)
+                    .putExtra("creatorId", array.creatorId)
+                    .putExtra("creatorName", array.creatorId)
                     .putStringArrayListExtra("members", memberIds)
                     .putExtra("communityName", array.name)
                     .putExtra("communityImage", array.communityLogo)

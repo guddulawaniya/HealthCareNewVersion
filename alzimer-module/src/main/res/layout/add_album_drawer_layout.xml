@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/voice_adding_background"
+    android:elevation="20dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:orientation="vertical"
+    tools:ignore="MissingClass">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/cross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Album"
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/time"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/_150sdp"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/top"-->
+    <!--        android:layout_marginTop="@dimen/_25sdp"-->
+    <!--        android:src="@drawable/image_add_logo"-->
+    <!--        android:background="@drawable/add_image_dotted_outline"-->
+    <!--        android:layout_marginHorizontal="@dimen/_10sdp"-->
+    <!--        />-->
+
+
+    <FrameLayout
+        android:id="@+id/addimage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        app:layout_constraintTop_toBottomOf="@+id/top"
+        android:layout_marginHorizontal="@dimen/_10sdp">
+
+        <ImageButton
+            android:id="@+id/opengalarry"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/image_add_logo"
+            android:background="@drawable/add_image_dotted_outline"
+            android:scaleType="centerInside" />
+
+        <!-- Hint text -->
+        <TextView
+            android:id="@+id/time_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Album"
+            android:gravity="center"
+            android:textColor="@color/C928F8F"
+            android:textSize="@dimen/_12sdp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@android:color/transparent" />
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/addedimage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/addimage"/>
+
+
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:background="@drawable/add_title_outline"
+        app:layout_constraintTop_toBottomOf="@+id/addedimage"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="Title"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/inter"/>
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:background="@drawable/add_title_outline"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:hint="Description"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:gravity="top|start"
+        android:padding="@dimen/_10sdp"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

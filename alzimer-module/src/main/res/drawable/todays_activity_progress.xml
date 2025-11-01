@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background Circle (outermost) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#F0F0F0" />
+        </shape>
+    </item>
+
+    <!-- First inner white circle -->
+    <item android:left="10dp" android:top="10dp" android:right="10dp" android:bottom="10dp">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+    <!-- Second inner colored circle -->
+    <item android:left="14dp" android:top="14dp" android:right="14dp" android:bottom="14dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/light_pink" />
+        </shape>
+    </item>
+
+    <!-- Progress Ring -->
+    <item android:id="@android:id/progress">
+        <rotate
+            android:fromDegrees="270"
+            android:toDegrees="270">
+            <shape
+                android:shape="ring"
+                android:innerRadiusRatio="2.5"
+                android:thicknessRatio="10"
+                android:useLevel="true">
+                <solid android:color="#A020F0" />
+            </shape>
+        </rotate>
+    </item>
+
+</layer-list>

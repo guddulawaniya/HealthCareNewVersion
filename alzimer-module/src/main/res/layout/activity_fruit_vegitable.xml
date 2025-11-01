@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".FruitVegitable">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.86   "/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/cross"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/cross"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/gold"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:src="@drawable/gold"
+                android:scaleType="centerInside"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/timertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1:00"
+                android:textSize="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/inter_semibold"
+                app:layout_constraintStart_toEndOf="@+id/gold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageButton
+            android:id="@+id/music"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/imageon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/top"
+        android:layout_marginTop="@dimen/_15sdp">
+
+        <View
+            android:id="@+id/progressView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_12sdp"
+            android:background="@drawable/level_background"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp"
+            android:text="14/16"
+            android:fontFamily="@font/istok_web_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9sdp"
+            android:gravity="center_horizontal"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/black"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/progress"
+        android:textSize="@dimen/_15sdp"/>
+
+
+    <GridLayout
+        android:id="@+id/pickgrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_4"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:columnCount="4"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:padding="@dimen/_5sdp"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+
+        <!-- One card (repeat 8 times) -->
+        <FrameLayout
+            android:id="@+id/pickcard1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_2sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:contentDescription="fruit"
+                android:tag="fruit"
+                 />
+
+        </FrameLayout>
+
+        <!--        card 2-->
+        <FrameLayout
+            android:id="@+id/pickcard2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_2sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:contentDescription="vegetable"
+                android:tag="vegitable"
+                />
+
+        </FrameLayout>
+
+        <!--        card 3-->
+        <FrameLayout
+            android:id="@+id/pickcard3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_2sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:contentDescription="vegetable"
+                android:tag="fruit"
+                 />
+
+
+        </FrameLayout>
+
+        <!--        card 4-->
+        <FrameLayout
+            android:id="@+id/pickcard4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/_2sdp">
+
+            <!-- Under image (revealed) -->
+            <ImageView
+                android:id="@+id/pickImage4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:contentDescription="fruit"
+                android:tag="vegitable"
+                 />
+
+
+        </FrameLayout>
+
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/instruction2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/black"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/pickgrid"
+        android:textSize="@dimen/_12sdp"/>
+
+    <LinearLayout
+        android:id="@+id/gridsecond"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.22"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toTopOf="@id/guideline_5"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        >
+
+<!--            <ImageView-->
+<!--                android:id="@+id/pickImage5"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="@dimen/_120sdp"-->
+<!--                android:layout_weight="1"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                />-->
+
+        <LinearLayout
+            android:id="@+id/pickImage5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/cart"
+            android:paddingBottom="@dimen/_60sdp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:layout_margin="@dimen/_5sdp"
+            />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/pickImage6"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="@dimen/_120sdp"-->
+<!--                android:layout_weight="1"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                />-->
+
+
+        <LinearLayout
+            android:id="@+id/pickImage6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/cart_1"
+            android:paddingBottom="@dimen/_60sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_6"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Fruits in\nthis basket"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:background="@drawable/word_pink_bgd"
+            android:padding="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Vegetable\nin this basket"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:background="@drawable/word_green_back"
+            android:padding="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/next_button_disable_background"
+            android:text="Next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/inter_tight_semibold"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -143,14 +143,14 @@ class VerifyOtpActivity : BaseActivity() {
                     // Save token and user info first
                     userPref.setCachedToken(response.token.toString())
                     userPref.setToken(response.token.toString())
-
+                    userPref.setMobileNumber(intent.getStringExtra("mobile").orEmpty())
 
                     if (response.isFirstTime) {
                         // Navigate to PreferenceActivity if first time
                         val intent = Intent(this@VerifyOtpActivity, PreferenceActivity::class.java)
                         startActivity(intent)
                     } else {
-                        userPref.setMobileNumber(intent.getStringExtra("mobile").orEmpty())
+
                         userPref.setUserId(response.id.toString())
                         userPref.setLoggedIn(true)
 

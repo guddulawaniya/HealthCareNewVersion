@@ -54,7 +54,13 @@ class ChatFragment : BaseFragment() {
             datalist.clear()
             datalist.addAll(it)
             adapter.notifyDataSetChanged()
-//            adapter.filterList(datalist)
+            if (datalist.isEmpty()){
+                binding.noFoundImage.visibility = View.VISIBLE
+                binding.chatRecyclerView.visibility = View.GONE
+            }else{
+                binding.noFoundImage.visibility = View.GONE
+                binding.chatRecyclerView.visibility = View.VISIBLE
+            }
         }
     }
 

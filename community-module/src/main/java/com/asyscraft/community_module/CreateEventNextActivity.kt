@@ -3,6 +3,7 @@ package com.asyscraft.community_module
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
@@ -25,6 +26,7 @@ class CreateEventNextActivity : BaseActivity() {
     private var latitude = 0.0
     private var longitude = 0.0
     private var eventMode : Boolean = true
+    private var selecteddate : String?=null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +40,7 @@ class CreateEventNextActivity : BaseActivity() {
 
         binding.datePickTextView.setOnClickListener {
             pickDate(this,onDatePicked={
+                selecteddate = it
                 binding.datePickTextView.text = formatDateToReadable(it)
 
             })
@@ -94,11 +97,17 @@ class CreateEventNextActivity : BaseActivity() {
                 val mainImage = intent.getStringExtra("mainImage")
                 val selectedImages = intent.getStringArrayListExtra("selectedImages")
 
+                Log.d("latitude",latitude.toString())
+                Log.d("longitude",longitude.toString())
+                Log.d("address",binding.locationField.text.toString())
+
+                Log.d("mainimage",mainImage.toString())
 
                 startActivity(
                     Intent(this@CreateEventNextActivity, EventCreatePreviewActivity::class.java)
                         .putExtra("eventmode", eventMode)
                         .putExtra("eventdate", binding.datePickTextView.text.toString().trim())
+                        .putExtra("selectedEventdate", selecteddate)
                         .putExtra("location", binding.locationField.text.toString().trim())
                         .putExtra("meetingLinkField", binding.meetingLinkField.text.toString().trim())
                         .putExtra("timePickTextView", binding.timePickTextView.text.toString().trim())
@@ -162,6 +171,11 @@ class CreateEventNextActivity : BaseActivity() {
                 val selectedaddress = data?.getStringExtra("selected_address")
                 val selected_latitude = data?.getDoubleExtra("selected_latitude", 0.0)
                 val selected_longitude = data?.getDoubleExtra("selected_longitude", 0.0)
+
+                Log.d("latitude",selected_latitude.toString())
+                Log.d("longitude",selected_longitude.toString())
+                Log.d("address",selectedaddress.toString())
+
 
 
                 latitude = selected_latitude ?: 0.0

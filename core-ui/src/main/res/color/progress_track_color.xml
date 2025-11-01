@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- When progress bar is disabled -->
+    <item android:color="#AFECF9" android:state_enabled="false"/>
+    <!-- Default (normal track color) -->
+    <item android:color="#FAD3F8"/>
+
+</selector>

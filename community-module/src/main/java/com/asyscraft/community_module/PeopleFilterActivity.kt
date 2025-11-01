@@ -1,43 +1,105 @@
 package com.asyscraft.community_module
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColorInt
+import androidx.lifecycle.lifecycleScope
 import com.asyscraft.community_module.databinding.ActivityPeopleFilterBinding
+import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
+import com.careavatar.core_model.CategoryPost
+import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_network.base.BaseActivity
-
+import com.careavatar.core_ui.R
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PeopleFilterActivity : BaseActivity() {
 
     private lateinit var binding: ActivityPeopleFilterBinding
+    private val viewModel: SocialMeetViewmodel by viewModels()
+
+    private val categoryList = mutableListOf<CategoryPost>()
+
+    private var selectedDistance: Int = 50
+    private var selectedCategory: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPeopleFilterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btninclude.buttonNext.text = "Apply"
 
         binding.crossbtn.setOnClickListener {
             finish()
         }
+        binding.btninclude.buttonNext.setOnClickListener {
 
-        val options = listOf("Yoga Fitness","Autism Care","Alzheimer’s Support","Autism Support","General Wellness","Caregiver Tools","Emergency Alert","Community Support")
+            if (selectedCategory.isNullOrEmpty()) {
+                showToast("Please select category")
+                return@setOnClickListener
+            }
 
-        val primarycolor = ContextCompat.getColor(this, com.careavatar.core_ui.R.color.primaryColor)
-        val secondarycolor = ContextCompat.getColor(this, com.careavatar.core_ui.R.color.secondaryColor)
-        val selectedCardbg = ContextCompat.getColor(this, com.careavatar.core_ui.R.color.selectedCardbg)
+            val resultIntent = Intent().apply {
+                putExtra("distance", selectedDistance)
+                putExtra("categoryId", selectedCategory)
+
+            }
+
+            setResult(RESULT_OK, resultIntent)
+            finish()
+        }
 
 
-        options.forEach { text ->
+        binding.distanceSeekBar.addOnChangeListener { slider, value, fromUser ->
+            if (fromUser) {
+
+                selectedDistance = value.toInt()
+                binding.distanceTextView.text = "$selectedDistance km"
+                lifecycleScope.launch {
+                    userPref.setRaduisCircle(selectedDistance.toString())
+                }
+            }
+        }
+
+        fetchCategoryData()
+        observeViewModel()
+
+    }
+
+    private fun observeViewModel() = with(viewModel) {
+
+        collectApiResultOnStarted(categoryListResponse) {
+            if (it.status) {
+                categoryList.clear()
+                categoryList.addAll(it.categories)
+                showOption()
+
+            }
+        }
+
+    }
+
+    private fun showOption() {
+        val primaryColor = ContextCompat.getColor(this, com.careavatar.core_ui.R.color.primaryColor)
+        val secondaryColor = ContextCompat.getColor(this, com.careavatar.core_ui.R.color.secondaryColor)
+        val selectedCardBg = ContextCompat.getColor(this, R.color.selectedCardbg)
+
+        binding.chipGroup.removeAllViews() // Clear old chips before adding new ones
+        binding.chipGroup.isSingleSelection = true // ✅ Only one chip can be selected
+
+        categoryList.forEach { category ->
             val chip = Chip(this).apply {
-                this.text = text
+                text = category.name
                 isCheckable = true
                 checkedIcon = null
+                tag = category.id // ✅ Store category ID in tag
 
                 // Text color states
                 setTextColor(
@@ -46,7 +108,7 @@ class PeopleFilterActivity : BaseActivity() {
                             intArrayOf(android.R.attr.state_checked),
                             intArrayOf(-android.R.attr.state_checked)
                         ),
-                        intArrayOf(secondarycolor,primarycolor)
+                        intArrayOf(secondaryColor, primaryColor)
                     )
                 )
 
@@ -56,7 +118,7 @@ class PeopleFilterActivity : BaseActivity() {
                         intArrayOf(android.R.attr.state_checked),
                         intArrayOf(-android.R.attr.state_checked)
                     ),
-                    intArrayOf(selectedCardbg, Color.WHITE)
+                    intArrayOf(selectedCardBg, Color.WHITE)
                 )
 
                 // Outline stroke
@@ -66,41 +128,41 @@ class PeopleFilterActivity : BaseActivity() {
                         intArrayOf(android.R.attr.state_checked),
                         intArrayOf(-android.R.attr.state_checked)
                     ),
-                    intArrayOf(secondarycolor,primarycolor)
+                    intArrayOf(secondaryColor, primaryColor)
                 )
 
                 // Rounded corners
                 shapeAppearanceModel = shapeAppearanceModel.toBuilder()
-                    .setAllCornerSizes(15f) // corner radius px
+                    .setAllCornerSizes(15f)
                     .build()
             }
+
             binding.chipGroup.addView(chip)
         }
 
+        // ✅ Listener for selection
+        binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                val checkedChipId = checkedIds[0]
+                val chip = group.findViewById<Chip>(checkedChipId)
+                val selectedCategoryId = chip.tag as String
+                val selectedCategoryName = chip.text.toString()
 
-        binding.apply {
-            chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
-                if (checkedIds.isNotEmpty()) {
-                    btninclude.buttonNext.isEnabled = true
-                    btninclude.buttonNext.backgroundTintList = ColorStateList.valueOf("#4CAF50".toColorInt())
+                // Use this ID as needed
+                Log.d("SelectedCategory", "ID = $selectedCategoryId, Name = $selectedCategoryName")
 
-
-                } else {
-                    btninclude.buttonNext.isEnabled = false
-                    btninclude.buttonNext.backgroundTintList = ColorStateList.valueOf(Color.GRAY)
-                }
-            }
-
-            btninclude.buttonNext.setOnClickListener {
-                val selectedOptions = chipGroup.checkedChipIds.map { id ->
-                    val chip = chipGroup.findViewById<Chip>(id)
-                    chip.text.toString()
-                }
-
-              finish()
+                // Example: store in a variable if needed
+                selectedCategory = selectedCategoryId
             }
         }
+    }
 
 
+    private fun fetchCategoryData() {
+
+        val request = GetCategoryRquest("0")
+        launchIfInternetAvailable {
+            viewModel.hitGetCategoryList(request)
+        }
     }
 }

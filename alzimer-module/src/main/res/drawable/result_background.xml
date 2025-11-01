@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/background" />
+        </shape>
+    </item>
+
+    <!-- Foreground Fill Layer -->
+    <item android:id="@+id/fill">
+        <clip
+            android:drawable="@drawable/background_result_fill"
+            android:clipOrientation="horizontal"
+            android:gravity="left" />
+    </item>
+
+
+</layer-list>

@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/medical_types_bg"
+    android:padding="12dp"
+    android:layout_marginVertical="10dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/medicine_image"
+        android:layout_marginEnd="12dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="Vitamin C Capsules"
+            android:fontFamily="@font/inter_semibold"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/tvTime"
+            android:text="8:00 AM"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/textColor" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_height="10dp"
+            android:src="@drawable/green_dot"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/tvStatus"
+            android:text="Taken"
+            android:fontFamily="@font/inter_semibold"
+            android:textSize="12sp"
+            android:textColor="@color/primaryColor"
+            android:drawablePadding="4dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

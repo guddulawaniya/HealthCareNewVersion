@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reminder_create_navbar"
+    app:startDestination="@id/diseaseFragment">
+
+    <fragment
+        android:id="@+id/diseaseFragment"
+        android:name="com.asyscraft.medical_reminder.fragments.DiseaseFragment"
+        android:label="fragment_disease"
+        tools:layout="@layout/fragment_disease" >
+        <action
+            android:id="@+id/action_diseaseFragment_to_uploadPrescriptionFragment"
+            app:destination="@id/uploadPrescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadPrescriptionFragment"
+        android:name="com.asyscraft.medical_reminder.fragments.UploadPrescriptionFragment"
+        android:label="fragment_upload_prescription"
+        tools:layout="@layout/fragment_upload_prescription" >
+        <action
+            android:id="@+id/action_uploadPrescriptionFragment_to_slotTimeFragment"
+            app:destination="@id/slotTimeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/slotTimeFragment"
+        android:name="com.asyscraft.medical_reminder.fragments.SlotTimeFragment"
+        android:label="fragment_slot_time"
+        tools:layout="@layout/fragment_slot_time" >
+        <action
+            android:id="@+id/action_slotTimeFragment_to_addMedicineFragement"
+            app:destination="@id/addMedicineFragement" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMedicineFragement"
+        android:name="com.asyscraft.medical_reminder.fragments.AddMedicineFragement"
+        android:label="fragment_add_medicine_fragement"
+        tools:layout="@layout/fragment_add_medicine_fragement" >
+        <action
+            android:id="@+id/action_addMedicineFragement_to_medicineListFragment"
+            app:destination="@id/medicineListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineListFragment"
+        android:name="com.asyscraft.medical_reminder.fragments.MedicineListFragment"
+        android:label="fragment_medicine_list"
+        tools:layout="@layout/fragment_medicine_list" />
+</navigation>

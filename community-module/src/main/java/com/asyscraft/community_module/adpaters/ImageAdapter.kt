@@ -1,11 +1,11 @@
 package com.asyscraft.community_module.adpaters
 
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.careavatar.core_ui.R
@@ -13,6 +13,7 @@ import com.careavatar.core_utils.Constants
 
 class ImageAdapter(
     private val images: MutableList<String>,
+    private val hideDelete: Boolean = false,
     private val onClickItem: (position: Int) -> Unit
 ) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
@@ -20,7 +21,6 @@ class ImageAdapter(
         val imageView: ImageView = itemView.findViewById(R.id.imageattech)
         val crossimage: ImageView = itemView.findViewById(R.id.crossimage)
     }
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -40,13 +40,16 @@ class ImageAdapter(
 
         if (imagePath.startsWith("content://") || imagePath.startsWith("file://")) {
 
-            glideRequest.load(Uri.parse(imagePath))
+            glideRequest.load(imagePath.toUri())
                 .into(holder.imageView)
         } else {
 
-            val fullUrl = Constants.socket_URL + imagePath
+            val fullUrl = Constants.IMAGE_BASEURL + imagePath
             glideRequest.load(fullUrl)
                 .into(holder.imageView)
+        }
+        if (hideDelete) {
+            holder.crossimage.visibility = View.GONE
         }
 
         holder.crossimage.setOnClickListener {
