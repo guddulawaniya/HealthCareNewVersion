@@ -6,6 +6,33 @@
 
     <application>
         <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuotationsReceivedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewYourRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FindChemistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectedOrderMedicineListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderMedicineListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReminderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReminderHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".medicalReminder.CreateMedicalReminderActivity"
             android:exported="false" />
         <activity

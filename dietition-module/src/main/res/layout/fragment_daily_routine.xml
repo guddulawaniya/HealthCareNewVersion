@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".DailyRoutineFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let’s learn about your daily routine"
+                android:textSize="25dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What is your profession?"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/black" />
+
+            <AutoCompleteTextView
+                android:id="@+id/professionAutocomplete"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:elevation="8dp"
+                android:drawableEnd="@drawable/keyboard_arrow_down_20px"
+                android:drawableTint="@color/primaryColor"
+                android:hint="Select your profession"
+                android:textColorHint="@color/hintColor"
+                android:textSize="15dp"
+                android:inputType="none"
+                android:background="@drawable/edit_text_bg"
+                android:textColor="@color/textColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How active are you on a typical day?"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutSedentary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tvSedentaryIcon"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="@drawable/sofa_icon"
+                        app:tint="@color/textColor" />
+
+                    <TextView
+                        android:id="@+id/tvSedentary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Sedentary"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutLightActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tvLightActiveIcon"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="@drawable/walk_person_icon" />
+
+                    <TextView
+                        android:id="@+id/tvLightActive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Light Active"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutModerately"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tvModeratelyIcon"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="@drawable/dambble_icon" />
+
+                    <TextView
+                        android:id="@+id/tvModerately"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Moderately Active"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutVeryActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tvVeryActiveIcon"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="@drawable/running_person_icon" />
+
+                    <TextView
+                        android:id="@+id/tvVeryActive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Very Active"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What are your typical wake and sleep times?"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wake Up"
+                        android:textSize="12dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:textColor="@color/hintColor"/>
+
+                    <TextView
+                        android:id="@+id/wakeUpTime"
+                        android:layout_width="match_parent"
+                        android:paddingVertical="12dp"
+                        android:paddingHorizontal="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/medical_types_bg"
+                        android:hint="8:00AM"
+                        android:textSize="15dp"
+                        android:drawableEnd="@drawable/clock_icon"
+                        android:drawableTint="@color/hintColor"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sleep"
+                        android:textSize="12dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:textColor="@color/hintColor"/>
+
+                    <TextView
+                        android:id="@+id/sleepTime"
+                        android:layout_width="match_parent"
+                        android:paddingVertical="12dp"
+                        android:paddingHorizontal="16dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/medical_types_bg"
+                        android:hint="8:00AM"
+                        android:textSize="15dp"
+                        android:layout_marginTop="10dp"
+                        android:drawableEnd="@drawable/clock_icon"
+                        android:drawableTint="@color/hintColor"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <include
+        android:id="@+id/nextBtn"
+        layout="@layout/custom_button"/>
+
+
+</LinearLayout>

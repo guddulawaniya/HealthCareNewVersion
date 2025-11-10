@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReviewYourRequestActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/custom_toolbar_layout"/>
+
+            <!-- Title -->
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Your Medicine"
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMedicineRequest"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:itemCount="2"
+                tools:listitem="@layout/request_medicine_row_layout"/>
+
+            <!-- Title -->
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Selected Chemist"
+                android:textColor="#353535"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:useDefaultMargins="true">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="143dp"
+                        android:layout_marginEnd="8dp"
+                        android:elevation="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/slot_time_unselected"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="16dp"
+                            android:visibility="gone"
+                            android:src="@drawable/green_circle_btn"
+                            app:tint="@color/primaryColor" />
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="-5dp"
+                            android:src="@drawable/medicine_plus_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Wellness Pharmacy"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="90dp"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:paddingEnd="8dp"
+                            android:fontFamily="@font/inter"
+                            android:text="123 Health St, Medville"
+                            android:textColor="@color/textColor"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="143dp"
+                        android:layout_marginEnd="8dp"
+                        android:elevation="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/slot_time_unselected"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="16dp"
+                            android:visibility="gone"
+                            android:src="@drawable/green_circle_btn"
+                            app:tint="@color/primaryColor" />
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="-5dp"
+                            android:src="@drawable/medicine_plus_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Wellness Pharmacy"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="90dp"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:paddingEnd="8dp"
+                            android:fontFamily="@font/inter"
+                            android:text="123 Health St, Medville"
+                            android:textColor="@color/textColor"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="8dp"
+                    android:useDefaultMargins="true">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="143dp"
+                        android:layout_marginEnd="8dp"
+                        android:elevation="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/slot_time_unselected"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="16dp"
+                            android:visibility="gone"
+                            android:src="@drawable/green_circle_btn"
+                            app:tint="@color/primaryColor" />
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="-5dp"
+                            android:src="@drawable/medicine_plus_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Wellness Pharmacy"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="90dp"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:paddingEnd="8dp"
+                            android:fontFamily="@font/inter"
+                            android:text="123 Health St, Medville"
+                            android:textColor="@color/textColor"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/nightLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="143dp"
+                        android:layout_marginStart="8dp"
+                        android:elevation="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/add_more_item_bg"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/green_circle_btn"
+                            android:visibility="gone"
+                            app:tint="@color/primaryColor" />
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:tint="@color/primaryColor"
+                            android:src="@drawable/add_ic_pink" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Add more"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/includebtn"
+                layout="@layout/custom_button"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

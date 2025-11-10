@@ -9,6 +9,7 @@ import com.careavatar.core_model.medicalReminder.CreatePeriodResponseModel
 import com.careavatar.core_model.medicalReminder.CreateWaterReminderRequest
 import com.careavatar.core_model.medicalReminder.CreateWaterReminderResponse
 import com.careavatar.core_model.medicalReminder.GetDiseaseResponse
+import com.careavatar.core_model.medicalReminder.HistoryReminderResponse
 import com.careavatar.core_model.medicalReminder.PeriodGetAllDataResponse
 import com.careavatar.core_model.medicalReminder.VaccinationDetailsResponse
 import com.careavatar.core_model.medicalReminder.VaccinationResponse
@@ -68,6 +69,11 @@ class MedicalViewModel @Inject constructor(private val repository: UserRepositor
         MutableStateFlow<ApiResult<GetDiseaseResponse>>(ApiResult.Idle)
     val getDiseaseResponse: StateFlow<ApiResult<GetDiseaseResponse>> =
         _GetDiseaseResponse
+
+    private val _HistoryReminderResponse =
+        MutableStateFlow<ApiResult<HistoryReminderResponse>>(ApiResult.Idle)
+    val getHistoryReminderResponse: StateFlow<ApiResult<HistoryReminderResponse>> =
+        _HistoryReminderResponse
 
 
     fun hitGetVaccinationList(userId: String) {
@@ -133,9 +139,17 @@ class MedicalViewModel @Inject constructor(private val repository: UserRepositor
             else throw Exception(response.message())
         }
     }
+
     fun hitGetDisease() {
         safeFlowApiCall(_GetDiseaseResponse) {
             val response = repository.hitGetDisease()
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+    fun hitGetReminderHistory(type : String) {
+        safeFlowApiCall(_HistoryReminderResponse) {
+            val response = repository.hitReminderHistory(type)
             if (response.isSuccessful) response.body()!!
             else throw Exception(response.message())
         }

@@ -8,7 +8,7 @@
     android:background="#F6F8F7"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.services.ScheduleAppoinmentActivity">
+    tools:context=".ui.ScheduleAppoinmentActivity">
 
     <include
         android:id="@+id/toolbar"

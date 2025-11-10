@@ -45,6 +45,58 @@
                 tools:listitem="@layout/item_date_card" />
 
             <LinearLayout
+                android:id="@+id/lowStockMedication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/low_stock_medicine_card_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/alert_image" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="2 medicines \nrunning low"
+                        android:textColor="#B2610A"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="Tap to restock the supply"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#B2610A"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Order\nMedicine"
+                    android:textColor="#B2610A"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_semibold" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/upcommingVaccination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -506,12 +558,46 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/fabAdd"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingHorizontal="16dp"
+            android:gravity="center"
+            android:paddingVertical="12dp"
+            android:text="Add Reminder"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="Add Stock"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
     <!-- Floating Add Button -->
     <ImageView
         android:id="@+id/fabAdd"
         android:layout_width="57dp"
         android:layout_height="57dp"
-        android:layout_margin="20dp"
         android:src="@drawable/floating_button_reminder_img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

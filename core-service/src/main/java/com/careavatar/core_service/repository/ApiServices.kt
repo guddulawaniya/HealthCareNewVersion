@@ -84,6 +84,24 @@ import com.careavatar.core_model.alzimer.updatetodo_request
 import com.careavatar.core_model.alzimer.videodetails_response
 import com.careavatar.core_model.alzimer.voice_response
 import com.careavatar.core_model.UserDetailsResponse
+import com.careavatar.core_model.dietition.AddCartListResponse
+import com.careavatar.core_model.dietition.DailyRoutineResponse
+import com.careavatar.core_model.dietition.DietAddCartModelResponse
+import com.careavatar.core_model.dietition.DietCategoryResponse
+import com.careavatar.core_model.dietition.DietFoodAllergiesResponse
+import com.careavatar.core_model.dietition.DietQuestionPostRequest
+import com.careavatar.core_model.dietition.DietQuestionResponse
+import com.careavatar.core_model.dietition.ExpertBookingAvailableResponse
+import com.careavatar.core_model.dietition.ExpertRequest
+import com.careavatar.core_model.dietition.GetAllMedicineResponse
+import com.careavatar.core_model.dietition.GetExpertResponse2
+import com.careavatar.core_model.dietition.HealthMonitorQuestions
+import com.careavatar.core_model.dietition.PrimaryReasonJoinApp
+import com.careavatar.core_model.dietition.ProfessionCategoryResponse
+import com.careavatar.core_model.dietition.RecipeResponse
+import com.careavatar.core_model.dietition.RecipeResponsedetails
+import com.careavatar.core_model.dietition.SpecificDietResponse
+import com.careavatar.core_model.dietition.dietAddCartModelRequest
 import com.careavatar.core_model.medicalReminder.AddVaccinationRequest
 import com.careavatar.core_model.medicalReminder.CreateMedicalReminderRequest
 import com.careavatar.core_model.medicalReminder.CreateMedicalReminderResponse
@@ -92,6 +110,7 @@ import com.careavatar.core_model.medicalReminder.CreatePeriodResponseModel
 import com.careavatar.core_model.medicalReminder.CreateWaterReminderRequest
 import com.careavatar.core_model.medicalReminder.CreateWaterReminderResponse
 import com.careavatar.core_model.medicalReminder.GetDiseaseResponse
+import com.careavatar.core_model.medicalReminder.HistoryReminderResponse
 import com.careavatar.core_model.medicalReminder.PeriodGetAllDataResponse
 import com.careavatar.core_model.medicalReminder.VaccinationDetailsResponse
 import com.careavatar.core_model.medicalReminder.VaccinationResponse
@@ -778,4 +797,80 @@ interface ApiServices {
     @GET("preDifine/deases")
     suspend fun hitGetDisease(
     ): Response<GetDiseaseResponse>
+
+
+    @GET("medicalRemainderHistory")
+    suspend fun hitHistoryReminder(
+        @Query("type") type: String
+    ): Response<HistoryReminderResponse>
+
+    @GET("diechart/profession")
+    suspend fun hitProfessionCategory(
+    ): Response<ProfessionCategoryResponse>
+
+    @GET("diechart/daily-routine")
+    suspend fun hitDailyRoutineResponseList(
+    ): Response<DailyRoutineResponse>
+
+    @GET("diechart/primary-reason")
+    suspend fun hitPrimaryReason(
+    ): Response<PrimaryReasonJoinApp>
+
+    @GET("medicines")
+    suspend fun hitAllMedicine(
+        @Query("target") target: String,
+        @Query("page") page: Int,
+        @Query("pageSize") pageSize: Int
+    ): Response<GetAllMedicineResponse>
+
+    @GET("diechart/foodAllergies")
+    suspend fun hitFoodAllergies(): Response<DietFoodAllergiesResponse>
+
+    @GET("diechart/specific-diet")
+    suspend fun hitSpecificDiet(): Response<SpecificDietResponse>
+
+    @GET("fitness/fitnessExpert")
+    suspend fun hitGetFitnessExpert(
+        @Query("category") category: String
+    ): Response<GetExpertResponse2>
+
+    @GET("diechart/receipe")
+    suspend fun hitRecipeList(
+        @Query("meal_category") categories: List<String>,
+        @Query("type") dietType: List<String>,
+        @Query("typeOfReceipe") typeOfReceipe: String?="",
+        @Query("chartId") dietChartId: String?=""
+    ): Response<RecipeResponse>
+
+    @POST("diechart/receipe/addToCart")
+    suspend fun hitAddIntoCart(
+        @Body request: dietAddCartModelRequest
+    ): Response<DietAddCartModelResponse>
+
+
+    @POST("fitness/availableSlots")
+    suspend fun hitGetAvailableSlot(
+        @Body request: ExpertRequest
+    ): Response<ExpertBookingAvailableResponse>
+
+    @GET("fitness/fitnessCategory")
+    suspend fun hitCategoryWithSubcategories(
+    ): Response<HealthMonitorQuestions>
+
+    @GET("diechart/diet-category")
+    suspend fun hitCategoryList(
+    ): Response<DietCategoryResponse>
+
+    @POST("diechart/dietQuestion")
+    suspend fun hitQuestionPost(@Body request: DietQuestionPostRequest
+    ): Response<DietQuestionResponse>
+
+    @GET("diechart/cartList")
+    suspend fun hitAddIntoCartList(): Response<AddCartListResponse>
+
+    @GET("diechart/receipe/{recipeId}")
+    suspend fun hitRecipeById(
+        @Path("recipeId") id: String,
+    ): Response<RecipeResponsedetails>
+
 }

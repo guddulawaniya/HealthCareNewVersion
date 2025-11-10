@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/core-utils" />
             <option value="$PROJECT_DIR$/dashboardModule" />
+            <option value="$PROJECT_DIR$/dietition-module" />
             <option value="$PROJECT_DIR$/login-module" />
             <option value="$PROJECT_DIR$/service-module" />
           </set>

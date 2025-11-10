@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
+    android:background="@drawable/medical_types_bg"
+    android:layout_marginHorizontal="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="12dp">
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_outline_icon"/>
+                <TextView
+                    android:id="@+id/startText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="4.5 stars"
+                    android:textColor="@color/hintColor"
+                    android:textSize="9dp" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvDoctorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anika Sharma , RDN"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvDoctorCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sports Nutrition"
+                android:textSize="9sp"
+                android:textColor="@color/hintColor"
+                android:fontFamily="@font/inter"
+                android:layout_marginTop="2dp" />
+
+
+            <TextView
+                android:id="@+id/selecteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:background="@drawable/expert_button_bg"
+                android:gravity="center"
+                android:layout_marginStart="16dp"
+                android:minWidth="100dp"
+                android:textSize="9sp"
+                android:textColor="@color/primaryColor"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="View Profile"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/viewProfileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Profile"
+                android:layout_marginStart="25dp"
+                android:padding="4dp"
+                android:minWidth="82dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="9sp"
+                app:cornerRadius="20dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/primaryColor"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/doctorImage"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImage"
+            android:src="@drawable/doctor_image" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

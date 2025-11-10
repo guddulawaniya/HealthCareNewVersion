@@ -7,16 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.asyscraft.alzimer_module.AlzimerMainActivity
+import com.asyscraft.dietition_module.DietDashboardActivity
+import com.asyscraft.dietition_module.onBoardingQuestionActivity
 import com.asyscraft.medical_reminder.ReminderTypeActivity
 import com.asyscraft.service_module.ui.BookCaretakerActivity
 import com.asyscraft.service_module.ui.MedicalServicesActivity
+import com.careavatar.core_network.base.BaseFragment
+import com.careavatar.dashboardmodule.NotificationActivity
 import com.careavatar.dashboardmodule.adapters.ViewPagerAdapter
 import com.careavatar.dashboardmodule.databinding.FragmentHomeBinding
 import com.careavatar.dashboardmodule.viewModels.DashBoardViewModel
-import com.careavatar.core_network.base.BaseFragment
-import com.careavatar.dashboardmodule.NotificationActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 
 @AndroidEntryPoint
@@ -25,6 +26,9 @@ class HomeFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: DashBoardViewModel by viewModels()
+    private var dietIsFirstTime = 0
+    private var exerciseIsFirst = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,11 +48,21 @@ class HomeFragment : BaseFragment() {
             startActivity(Intent(requireContext(), MedicalServicesActivity::class.java))
         }
         binding.medicalReminder.setOnClickListener {
+
             startActivity(Intent(requireContext(), ReminderTypeActivity::class.java))
         }
 
         binding.alzimerLayout.setOnClickListener {
             startActivity(Intent(requireContext(), AlzimerMainActivity::class.java))
+        }
+
+        binding.dieticianLayout.setOnClickListener {
+            val intent = if (dietIsFirstTime == 1)
+                Intent(requireContext(), onBoardingQuestionActivity::class.java)
+            else
+                Intent(requireContext(), DietDashboardActivity::class.java)
+
+            startActivity(intent)
         }
 
 
@@ -82,11 +96,20 @@ class HomeFragment : BaseFragment() {
 
         }
 
+        collectApiResultOnStarted(getHealthMonitorQuestions) {
+            if (it.success) {
+                dietIsFirstTime = it.services[2].isFirstTime.toInt()
+                exerciseIsFirst = it.services[0].isFirstTime.toInt()
+            }
+
+        }
+
     }
 
     private fun fetchUserData() {
         launchIfInternetAvailable {
             // Main thread is fine here
+            viewModel.hitCategoryWithSubcategories()
             viewModel.userDetails()
             viewModel.hitBanner()
             viewModel.hitDashBoardHealth()

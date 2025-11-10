@@ -64,6 +64,7 @@ dependencies {
     implementation(project(":Upscale-module"))
     implementation(project(":core-navigation"))
     implementation(project(":Medical-reminder"))
+    implementation(project(":dietition-module"))
 
     ksp("com.google.dagger:hilt-compiler:2.54")
     implementation("com.google.dagger:hilt-android:2.54")

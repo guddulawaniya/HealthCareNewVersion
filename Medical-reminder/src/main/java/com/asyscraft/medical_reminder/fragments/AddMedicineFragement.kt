@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.asyscraft.medical_reminder.R
 import com.asyscraft.medical_reminder.adapters.TabsPagerAdapter
 import com.asyscraft.medical_reminder.databinding.FragmentAddMedicineFragementBinding
@@ -34,5 +35,13 @@ class AddMedicineFragement : BaseFragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = adapter.getTitle(position)
         }.attach()
+
+        setupNextButton()
+    }
+
+    private fun setupNextButton() {
+        binding.btnNext.setOnClickListener {
+            findNavController().navigate(R.id.action_uploadPrescriptionFragment_to_slotTimeFragment)
+        }
     }
 }

@@ -32,22 +32,10 @@ class AddManuallyFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupNextButton()
         setupDaysSelection()
         setupReminderOptions()
     }
 
-    /** ✅ Next button logic */
-    private fun setupNextButton() {
-        binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_uploadPrescriptionFragment_to_slotTimeFragment)
-//            selectedDisease?.let {
-//                saveDataViewModel.updateDiseaseId(it._id)
-//                findNavController().navigate(R.id.action_diseaseFragment_to_uploadPrescriptionFragment)
-//
-//            } ?: showToast("Please select a disease")
-        }
-    }
 
     /** ✅ Reminder Type (One-time / Everyday / Custom) */
     private fun setupReminderOptions() {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity
+            android:name=".VideoPlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PreConsultationFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DietitionDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookDieticianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DietDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".onBoardingQuestionActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

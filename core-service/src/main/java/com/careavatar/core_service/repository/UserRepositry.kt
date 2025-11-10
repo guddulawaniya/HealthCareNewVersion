@@ -53,6 +53,24 @@ import com.careavatar.core_model.alzimer.updateradius_request
 import com.careavatar.core_model.alzimer.updatetodo_request
 import com.careavatar.core_model.alzimer.videodetails_response
 import com.careavatar.core_model.alzimer.voice_response
+import com.careavatar.core_model.dietition.AddCartListResponse
+import com.careavatar.core_model.dietition.DailyRoutineResponse
+import com.careavatar.core_model.dietition.DietAddCartModelResponse
+import com.careavatar.core_model.dietition.DietCategoryResponse
+import com.careavatar.core_model.dietition.DietFoodAllergiesResponse
+import com.careavatar.core_model.dietition.DietQuestionPostRequest
+import com.careavatar.core_model.dietition.DietQuestionResponse
+import com.careavatar.core_model.dietition.ExpertBookingAvailableResponse
+import com.careavatar.core_model.dietition.ExpertRequest
+import com.careavatar.core_model.dietition.GetAllMedicineResponse
+import com.careavatar.core_model.dietition.GetExpertResponse2
+import com.careavatar.core_model.dietition.HealthMonitorQuestions
+import com.careavatar.core_model.dietition.PrimaryReasonJoinApp
+import com.careavatar.core_model.dietition.ProfessionCategoryResponse
+import com.careavatar.core_model.dietition.RecipeResponse
+import com.careavatar.core_model.dietition.RecipeResponsedetails
+import com.careavatar.core_model.dietition.SpecificDietResponse
+import com.careavatar.core_model.dietition.dietAddCartModelRequest
 import com.careavatar.core_model.medicalReminder.AddVaccinationRequest
 import com.careavatar.core_model.medicalReminder.CreateMedicalReminderRequest
 import com.careavatar.core_model.medicalReminder.CreateMedicalReminderResponse
@@ -61,6 +79,7 @@ import com.careavatar.core_model.medicalReminder.CreatePeriodResponseModel
 import com.careavatar.core_model.medicalReminder.CreateWaterReminderRequest
 import com.careavatar.core_model.medicalReminder.CreateWaterReminderResponse
 import com.careavatar.core_model.medicalReminder.GetDiseaseResponse
+import com.careavatar.core_model.medicalReminder.HistoryReminderResponse
 import com.careavatar.core_model.medicalReminder.PeriodGetAllDataResponse
 import com.careavatar.core_model.medicalReminder.VaccinationDetailsResponse
 import com.careavatar.core_model.medicalReminder.VaccinationResponse
@@ -804,5 +823,86 @@ class UserRepository(private val apiService: ApiServices) {
         return apiService.hitGetDisease()
     }
 
+    suspend fun hitReminderHistory(type: String): Response<HistoryReminderResponse> {
+        return apiService.hitHistoryReminder(type)
+    }
 
+    suspend fun hitProfessionCategory(): Response<ProfessionCategoryResponse> {
+        return apiService.hitProfessionCategory()
+    }
+
+    suspend fun hitDailyRoutineResponseList(): Response<DailyRoutineResponse> {
+        return apiService.hitDailyRoutineResponseList()
+    }
+
+    suspend fun hitPrimaryReason(): Response<PrimaryReasonJoinApp> {
+        return apiService.hitPrimaryReason()
+    }
+
+    suspend fun hitFoodAllergies(): Response<DietFoodAllergiesResponse> {
+        return apiService.hitFoodAllergies()
+    }
+
+    suspend fun hitSpecificDiet(): Response<SpecificDietResponse> {
+        return apiService.hitSpecificDiet()
+    }
+
+    suspend fun hitAddIntoCart(request: dietAddCartModelRequest): Response<DietAddCartModelResponse> {
+        return apiService.hitAddIntoCart(request)
+    }
+
+    suspend fun hitRecipeById(id: String): Response<RecipeResponsedetails> {
+        return apiService.hitRecipeById(id)
+    }
+
+
+    suspend fun hitGetFitnessExpert(category: String): Response<GetExpertResponse2> {
+        return apiService.hitGetFitnessExpert(category)
+    }
+
+    suspend fun hitRecipeList(
+        dietType: List<String>,
+        category: List<String>,
+        typeOfReceipe: String,
+        dietChartId: String? = "",
+    ): Response<RecipeResponse> {
+        return apiService.hitRecipeList(
+            categories = category,
+            dietType = dietType,
+            typeOfReceipe = typeOfReceipe,
+            dietChartId = dietChartId
+        )
+    }
+
+    suspend fun hitAllMedicine(
+        target: String,
+        page: Int,
+        pageSize: Int,
+    ): Response<GetAllMedicineResponse> {
+        return apiService.hitAllMedicine(
+            target = target,
+            page = page,
+            pageSize = pageSize,
+        )
+    }
+
+    suspend fun hitGetAvailableSlot(request: ExpertRequest): Response<ExpertBookingAvailableResponse> {
+        return apiService.hitGetAvailableSlot(request)
+    }
+
+    suspend fun hitQuestionPost(request: DietQuestionPostRequest): Response<DietQuestionResponse> {
+        return apiService.hitQuestionPost(request)
+    }
+
+    suspend fun hitCategoryWithSubcategories(): Response<HealthMonitorQuestions> {
+        return apiService.hitCategoryWithSubcategories()
+    }
+
+    suspend fun hitCategoryList(): Response<DietCategoryResponse> {
+        return apiService.hitCategoryList()
+    }
+
+    suspend fun hitAddIntoCartList(): Response<AddCartListResponse> {
+        return apiService.hitAddIntoCartList()
+    }
 }

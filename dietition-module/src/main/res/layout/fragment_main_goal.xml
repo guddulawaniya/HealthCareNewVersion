@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".DailyRoutineFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What’s your main goal?"
+                android:textSize="15dp"
+
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutSedentary"
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/ivLoseWeightIcon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/weight_loss_icon"
+                        app:tint="@color/textColor" />
+
+                    <TextView
+                        android:id="@+id/tvLoseWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Lose Weight"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutMedicine"
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tvGainMuscleIcon"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/weight_gain_icon"
+                        app:tint="@color/textColor" />
+
+                    <TextView
+                        android:id="@+id/weightGain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Gain Muscle"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutModerately"
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/ivMaintainIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/goal_icon"
+                        app:tint="@color/textColor" />
+
+                    <TextView
+                        android:id="@+id/tvMaintain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Maintain"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutVeryActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/medical_types_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tvImproveHealthIcon"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:src="@drawable/like_outline_icon"
+                        app:tint="@color/textColor" />
+
+                    <TextView
+                        android:id="@+id/tvImproveHealth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Improve Health"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutManageDiet"
+                android:layout_width="match_parent"
+                android:layout_height="93dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/medical_types_bg"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/tvManageDietIcon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/salad_vegetable_diet_icon" />
+
+                <TextView
+                    android:id="@+id/tvManageDiet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Manage Diet"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Medications? (optional)"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/black"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/medicineAutocomplete"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:drawableEnd="@drawable/keyboard_arrow_down_20px"
+                android:drawableTint="@color/primaryColor"
+                android:hint="Search Medical issues..."
+                android:textColorHint="@color/hintColor"
+                android:textSize="15dp"
+                android:background="@drawable/edit_text_bg"
+                android:textColor="@color/textColor"/>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <include
+        android:id="@+id/nextBtn"
+        layout="@layout/custom_button"/>
+
+
+</LinearLayout>

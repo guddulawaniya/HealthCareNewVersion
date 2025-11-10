@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReminderDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="91dp"
+                android:background="@drawable/medical_types_bg"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/medicine_image"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:text="Vitamin C Capsules"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="200mg, Tablet"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTimeFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="Morning 8:00AM - After Food"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutTotalReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/total_reminder_card_bg"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="TOTAL REMINDERS"
+                        android:textColor="#00B1FF"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="20"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#00B1FF"
+                        android:textSize="30sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutCompleteReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/complete_reminder_card_bg"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="COMPLETED REMINDERS"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="20"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutMissedReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/missed_card_bg"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="MISSED REMINDERS"
+                        android:textColor="@color/red"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="04"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/red"
+                        android:textSize="30sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutMedicine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/skipped_reminder_card_bg"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="SKIPPED REMINDERS"
+                        android:textColor="@color/dietPlannerbg"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="20"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dietPlannerbg"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:text="Prescription Details"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="139dp"
+                android:background="@drawable/medical_types_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="Alzheimer's Support"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter"
+                            android:layout_marginTop="2dp"
+                            android:text="Dr. Robert Dayln, Cardiologist"
+                            android:textColor="@color/textColor"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                    
+                    <TextView
+                        android:layout_width="183dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="View Full Prescription"
+                        android:paddingVertical="8dp"
+                        android:background="@drawable/community_online_selected_bg"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="12sp" />
+                    
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:src="@drawable/sample_image"
+                    android:scaleType="fitXY" />
+                
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:text="Schedule Info"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/medical_types_bg"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Frequency"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/hintColor"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Twice a day"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/primaryColor"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#33000000"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Duration"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/hintColor"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="For 20 days"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/primaryColor"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#33000000"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Slot Timings"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/hintColor"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Morning, Night"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/primaryColor"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#33000000"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Food Instruction"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/hintColor"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="After Food"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="14dp"
+                    android:textColor="@color/primaryColor"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_marginEnd="10dp"
+                    android:text="Edit"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Mark as Taken"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/button_bg"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

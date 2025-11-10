@@ -22,6 +22,7 @@ import com.careavatar.core_model.GetUserByCategoryRequest
 import com.careavatar.core_model.GetUserByCategoryResponse
 import com.careavatar.core_model.SendRequestModelRequestBody
 import com.careavatar.core_network.base.BaseActivity
+import com.careavatar.core_utils.setupSearchFilter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -129,25 +130,16 @@ class FindPeopleActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun setupSearchFilter() {
-        binding.includeSearch.etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s?.toString()?.trim().orEmpty()
-
-                val filteredExperts = if (query.isEmpty()) {
-                    memberList
-                } else {
-                    memberList.filter {
-                        it.name?.contains(query, ignoreCase = true) == true
-                    }
-                }
-
-                adapter.updateList(filteredExperts.toMutableList())
+        binding.includeSearch.etSearch.setupSearchFilter(
+            memberList,
+            filterCondition = { item, query ->
+                item.name?.contains(query, ignoreCase = true) == true
             }
+        ) { filteredList ->
+            adapter.updateList(filteredList.toMutableList())
+        }
 
-            override fun afterTextChanged(s: Editable?) {}
-        })
     }
 
 

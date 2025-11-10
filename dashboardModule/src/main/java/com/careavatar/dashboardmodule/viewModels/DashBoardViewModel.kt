@@ -5,6 +5,8 @@ import com.careavatar.core_model.BannerResponse
 import com.careavatar.core_model.HealthResponse
 import com.careavatar.core_model.UpcommingResponseModel
 import com.careavatar.core_model.UserDetailsResponse
+import com.careavatar.core_model.dietition.DietCategoryResponse
+import com.careavatar.core_model.dietition.HealthMonitorQuestions
 import com.careavatar.core_service.repository.UserRepository
 import com.careavatar.core_utils.ApiResult
 import com.careavatar.core_utils.SafeFlowApiCall.safeFlowApiCall
@@ -34,6 +36,21 @@ class DashBoardViewModel @Inject constructor(
     private val _upComingResponseModel =
         MutableStateFlow<ApiResult<UpcommingResponseModel>>(ApiResult.Idle)
     val upComingResponseModel: StateFlow<ApiResult<UpcommingResponseModel>> = _upComingResponseModel
+
+
+    private val _HealthMonitorQuestions =
+        MutableStateFlow<ApiResult<HealthMonitorQuestions>>(ApiResult.Idle)
+    val getHealthMonitorQuestions: StateFlow<ApiResult<HealthMonitorQuestions>> = _HealthMonitorQuestions
+
+
+
+    fun hitCategoryWithSubcategories() {
+        safeFlowApiCall(_HealthMonitorQuestions) {
+            val response = repository.hitCategoryWithSubcategories()
+            if (response.isSuccessful) response.body()!!
+            else throw kotlin.Exception(response.message())
+        }
+    }
 
     fun userDetails() {
         safeFlowApiCall(_userDetailsResponse) {

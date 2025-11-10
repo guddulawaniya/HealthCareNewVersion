@@ -47,8 +47,9 @@ dependencies {
     //google map
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation ("com.google.android.gms:play-services-location:21.0.1")
-
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.google.android.libraries.places:places:5.0.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

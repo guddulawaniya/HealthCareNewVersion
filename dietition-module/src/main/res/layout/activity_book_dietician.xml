@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookDieticianActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/custom_toolbar_layout"/>
+
+        <include
+            android:id="@+id/search_bar"
+            layout="@layout/custom_search_layout"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_circle_bg"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="11dp"
+                    android:textColor="@color/white"
+                    android:paddingVertical="10dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Dietician"/>
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:padding="3dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/cross_black_icon"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expert_button_bg"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="11dp"
+                    android:textColor="@color/primaryColor"
+                    android:paddingVertical="10dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_height="wrap_content"
+                    android:text="Session"/>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:padding="3dp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/cross_black_icon"
+                    app:tint="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expert_button_bg"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="11dp"
+                    android:textColor="@color/primaryColor"
+                    android:paddingVertical="10dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_height="wrap_content"
+                    android:text="Schedule"/>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:padding="3dp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/cross_black_icon"
+                    app:tint="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expert_button_bg"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="11dp"
+                    android:textColor="@color/primaryColor"
+                    android:paddingVertical="10dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_height="wrap_content"
+                    android:text="Confirm"/>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:padding="3dp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/cross_black_icon"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:listitem="@layout/book_dietician_row_layout"/>
+    </LinearLayout>
+<!--  <include-->
+<!--      android:id="@+id/includedbtn"-->
+<!--      layout="@layout/custom_button"/>-->
+
+</LinearLayout>

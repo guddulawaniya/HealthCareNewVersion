@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/question_onboarding_navbar"
+    app:startDestination="@id/dailyRoutineFragment">
+
+    <fragment
+        android:id="@+id/dailyRoutineFragment"
+        android:name="com.asyscraft.dietition_module.DailyRoutineFragment"
+        android:label="fragment_daily_routine"
+        tools:layout="@layout/fragment_daily_routine" >
+        <action
+            android:id="@+id/action_dailyRoutineFragment_to_mainGoalFragment"
+            app:destination="@id/mainGoalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lifeStyleFragment"
+        android:name="com.asyscraft.dietition_module.LifeStyleFragment"
+        android:label="fragment_life_style"
+        tools:layout="@layout/fragment_life_style" />
+    <fragment
+        android:id="@+id/mainGoalFragment"
+        android:name="com.asyscraft.dietition_module.MainGoalFragment"
+        android:label="fragment_main_goal"
+        tools:layout="@layout/fragment_main_goal" >
+        <action
+            android:id="@+id/action_mainGoalFragment_to_lifeStyleFragment"
+            app:destination="@id/lifeStyleFragment" />
+    </fragment>
+</navigation>
