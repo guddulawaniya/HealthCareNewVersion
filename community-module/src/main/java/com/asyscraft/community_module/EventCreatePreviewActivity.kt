@@ -51,10 +51,14 @@ class EventCreatePreviewActivity : BaseActivity() ,OnMapReadyCallback{
     private lateinit var geocoder: Geocoder
     private var pendingLatLng: LatLng? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventCreatePreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btninclude.buttonNext.text = "Create Event"
 
         // ✅ Initialize FusedLocationProviderClient
         fusedLocationClient = com.google.android.gms.location.LocationServices.getFusedLocationProviderClient(this)
@@ -65,23 +69,77 @@ class EventCreatePreviewActivity : BaseActivity() ,OnMapReadyCallback{
         mapFragment.getMapAsync(this)
 
         binding.btninclude.buttonNext.setOnClickListener {
-            launchIfInternetAvailable {
-                hitCreateEvent()
+            if (intent.getStringExtra("updateEvent")=="update"){
+                launchIfInternetAvailable {
+                    hitUpdateEvent()
+                }
+            }else{
+                launchIfInternetAvailable {
+                    hitCreateEvent()
+                }
             }
+
+
 
         }
         binding.toolbar.btnBack.setOnClickListener {
             finish()
         }
         setDataFromIntent()
-        obsever()
+        observer()
+
+        if (intent.getStringExtra("updateEvent")=="update"){
+            binding.btninclude.buttonNext.text = "Save Changes"
+            observer()
+        }
+
     }
 
-    private fun obsever(){
+    private fun observer(){
         collectApiResultOnStarted(viewModel.eventPostResponse){
             val intent = Intent(this, EventActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
+        }
+    }
+
+
+
+    private fun hitUpdateEvent() {
+
+        val eventId = intent.getStringExtra("updateEvent").toString()
+        val communityId = intent.getStringExtra("communityId").orEmpty()
+        val title = intent.getStringExtra("title").orEmpty()
+        val description = intent.getStringExtra("description").orEmpty()
+        val eventMode = intent.getBooleanExtra("eventmode", false)
+        val eventDate = intent.getStringExtra("selectedEventdate").orEmpty()
+        val meetingLink = intent.getStringExtra("meetingLinkField").orEmpty()
+        val eventTime = intent.getStringExtra("timePickTextView").orEmpty()
+        val location = intent.getStringExtra("location").orEmpty()
+
+        Log.d("PreviewEvent","latitude : "+ pendingLatLng?.latitude)
+        Log.d("PreviewEvent","longitude"+pendingLatLng?.longitude)
+        Log.d("PreviewEvent","address"+location.toString())
+
+
+        val mode = if (eventMode) "online" else "offline"
+
+        lifecycleScope.launch {
+
+            viewModel.hitUpdateEvent(
+                eventId = eventId,
+                communityId = communityId,
+                eventDate = eventDate,
+                description = description,
+                eventLink = meetingLink,
+                eventMode = mode,
+                eventTime = eventTime,
+                latitude = pendingLatLng?.latitude.toString(),
+                location = location,
+                longitude = pendingLatLng?.longitude.toString(),
+                title = title,
+                visibility = "all",
+            )
         }
     }
     private fun hitCreateEvent() {
@@ -93,16 +151,16 @@ class EventCreatePreviewActivity : BaseActivity() ,OnMapReadyCallback{
 
         val eventMode = intent.getBooleanExtra("eventmode", false)
         val eventDate = intent.getStringExtra("selectedEventdate").orEmpty()
-        val location = intent.getStringExtra("location").orEmpty()
         val meetingLink = intent.getStringExtra("meetingLinkField").orEmpty()
         val eventTime = intent.getStringExtra("timePickTextView").orEmpty()
-        val latitude = intent.getStringExtra("latitude").orEmpty()
-        val longitude = intent.getStringExtra("longitude").orEmpty()
+        val latitude = intent.getDoubleExtra("latitude",0.0)
+        val longitude = intent.getDoubleExtra("longitude",0.0)
+        val location = intent.getStringExtra("location").orEmpty()
         val eventDuration = intent.getStringExtra("eventTimeDuration").orEmpty()
 
-        Log.d("latitude",latitude.toString())
-        Log.d("longitude",longitude.toString())
-        Log.d("address",location.toString())
+        Log.d("PreviewEvent","latitude : "+ pendingLatLng?.latitude)
+        Log.d("PreviewEvent","longitude"+pendingLatLng?.longitude)
+        Log.d("PreviewEvent","address"+location.toString())
 
 
         val mode = if (eventMode) "online" else "offline"
@@ -144,9 +202,9 @@ class EventCreatePreviewActivity : BaseActivity() ,OnMapReadyCallback{
                 eventLink = meetingLink,
                 eventMode = mode,
                 eventTime = eventTime,
-                latitude = latitude,
+                latitude = pendingLatLng?.latitude.toString(),
                 location = location,
-                longitude = longitude,
+                longitude = pendingLatLng?.longitude.toString(),
                 title = title,
                 visibility = "all",
                 notifiedMembers = membersList,
@@ -263,6 +321,10 @@ class EventCreatePreviewActivity : BaseActivity() ,OnMapReadyCallback{
             val location = intent.getStringExtra("location")
             val latitudeStr = intent.getStringExtra("latitude")
             val longitudeStr = intent.getStringExtra("longitude")
+
+            Log.d("PreviewEvent","latitude : "+ latitudeStr)
+            Log.d("PreviewEvent","longitude : "+longitudeStr)
+            Log.d("PreviewEvent","address"+location.toString())
 
             binding.locationTextView.text = location ?: ""
 

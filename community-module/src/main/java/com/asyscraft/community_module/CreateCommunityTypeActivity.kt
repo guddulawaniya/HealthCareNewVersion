@@ -2,6 +2,7 @@ package com.asyscraft.community_module
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -9,7 +10,10 @@ import kotlin.getValue
 import androidx.core.net.toUri
 import com.asyscraft.community_module.databinding.ActivityCreateCommunityTypeBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
+import com.bumptech.glide.Glide
+import com.careavatar.core_model.CommnityMemberListResponse
 import com.careavatar.core_network.base.BaseActivity
+import com.careavatar.core_utils.Constants
 import com.careavatar.core_utils.FileUtils
 
 @AndroidEntryPoint
@@ -32,7 +36,6 @@ class CreateCommunityTypeActivity : BaseActivity() {
         }
 
 
-
         binding.toolbar.btnBack.setOnClickListener { finish() }
         binding.toolbar.tvTitle.text = getString(com.careavatar.core_ui.R.string.create_community)
 
@@ -52,10 +55,27 @@ class CreateCommunityTypeActivity : BaseActivity() {
         }
 
         binding.includedbtn.buttonNext.setOnClickListener {
-            hitCreateCommunity()
+            if (intent.getStringExtra("update")=="update"){
+                hitUpdateCommunity()
+            }else{
+                hitCreateCommunity()
+            }
+
         }
         updateSelection()
         observeViewModel()
+        if (intent.getStringExtra("update")=="update"){
+            updateData()
+        }
+    }
+
+    private fun updateData(){
+        isPublicSelected = if(intent.getStringExtra("type")=="public") 1 else 2
+        updateSelection()
+        binding.includedbtn.buttonNext.text = "Save Changes"
+        binding.toolbar.tvTitle.text = "Edit Group Info"
+
+
     }
 
     private fun observeViewModel() = with(viewModel) {
@@ -67,6 +87,46 @@ class CreateCommunityTypeActivity : BaseActivity() {
 
         }
 
+        collectApiResultOnStarted(updateCommunityResponse) {
+            if(it.status){
+                showToast("Community updated successfully")
+                navigateDashboard()
+            }
+        }
+
+    }
+
+    private fun navigateDashboard() {
+        try {
+            val intent = Intent(
+                this,
+                Class.forName("com.careavatar.dashboardmodule.DashboardActivity")
+            ).apply {
+                // YE FLAGS IMPORTANT HAI - back stack clear karne ke liye
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            intent.putExtra("selectIndex",2)
+
+            startActivity(intent)
+            finish()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Fallback: App restart
+            restartApp()
+        }
+    }
+
+    private fun restartApp() {
+        val intent =
+            packageManager.getLaunchIntentForPackage(packageName)
+                ?.apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+        startActivity(intent)
+        finishAffinity()
     }
 
     private fun hitCreateCommunity() {
@@ -78,6 +138,25 @@ class CreateCommunityTypeActivity : BaseActivity() {
             val type = if (isPublicSelected == 1) "public" else "private"
 
             viewModel.hitCreateCommunity(
+                name = name,
+                type = type,
+                interestsId = interestsId,
+                image = selectedImageFile
+            )
+        }
+    }
+
+    private fun hitUpdateCommunity() {
+        launchIfInternetAvailable {
+            if (!isValidInput()) return@launchIfInternetAvailable
+
+           val communityId = intent.getStringExtra("communityId")
+            val name = intent.getStringExtra("communityTitle").orEmpty()
+            val interestsId = intent.getStringExtra("interests").orEmpty()
+            val type = if (isPublicSelected == 1) "public" else "private"
+
+            viewModel.hitUpdateCommunity(
+                communityId = communityId.toString(),
                 name = name,
                 type = type,
                 interestsId = interestsId,
@@ -124,7 +203,7 @@ class CreateCommunityTypeActivity : BaseActivity() {
             binding.layoutPrivate.setBackgroundResource(com.careavatar.core_ui.R.drawable.unselected_gender_bg)
             binding.imgPublic.isChecked = true
             binding.imgPrivate.isChecked = false
-            binding.imgPublic.setBackgroundResource(com.careavatar.core_ui.R.drawable.selected_icon)
+            binding.imgPublic.setBackgroundResource(com.careavatar.core_ui.R.drawable.green_circle_btn)
             binding.imgPrivate.setBackgroundResource(com.careavatar.core_ui.R.drawable.radio_btn_outline_bg)
         } else if (isPublicSelected == 2) {
             // Private selected
@@ -132,7 +211,7 @@ class CreateCommunityTypeActivity : BaseActivity() {
             binding.layoutPublic.setBackgroundResource(com.careavatar.core_ui.R.drawable.unselected_gender_bg)
             binding.imgPrivate.isChecked = true
             binding.imgPublic.isChecked = false
-            binding.imgPrivate.setBackgroundResource(com.careavatar.core_ui.R.drawable.selected_icon)
+            binding.imgPrivate.setBackgroundResource(com.careavatar.core_ui.R.drawable.green_circle_btn)
             binding.imgPublic.setBackgroundResource(com.careavatar.core_ui.R.drawable.radio_btn_outline_bg)
         }
 

@@ -10,9 +10,13 @@ import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
 import com.asyscraft.community_module.databinding.ActivityCreateCommunityBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
+import com.bumptech.glide.Glide
 import com.careavatar.core_model.CategoryPost
+import com.careavatar.core_model.CommnityMemberListResponse
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_network.base.BaseActivity
+import com.careavatar.core_utils.AutoCompleteUtils.setupAutoComplete
+import com.careavatar.core_utils.Constants
 import com.careavatar.core_utils.ImagePickerManager
 import com.careavatar.core_utils.FileUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +29,9 @@ class CreateCommunityActivity : BaseActivity() {
     private val viewModel: SocialMeetViewmodel by viewModels()
     private var selectedImageUri: Uri? = null
     private var selectedImageFile: File? = null
-    var selectedCategoryId: String? = null
+    private var selectedCategoryId: String? = null
+    private var communityId: String? = null
+    private var communityType: String? = null
     private val categoryList = mutableListOf<CategoryPost>()
 
 
@@ -34,6 +40,9 @@ class CreateCommunityActivity : BaseActivity() {
         binding = ActivityCreateCommunityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolbar.btnBack.setImageResource(com.careavatar.core_ui.R.drawable.cross_black_icon)
+        binding.toolbar.btnBack.setOnClickListener { finish() }
+        binding.toolbar.tvTitle.text = "Create Community "
         ImagePickerManager.init(this, this)
         binding.includedbtn.buttonNext.text = "Next"
 
@@ -63,6 +72,19 @@ class CreateCommunityActivity : BaseActivity() {
         }
 
 
+        // Handle item selection
+        binding.interests.setOnItemClickListener { parent, view, position, id ->
+            val selectedCategory = categoryList[position]
+            val selectedId = selectedCategory.id
+            val selectedName = selectedCategory.name
+
+            // Example: store or log it
+            Log.d("CreateCommunity", "Selected category: $selectedName (id=$selectedId)")
+
+            // You can also save it in ViewModel or a variable
+            selectedCategoryId = selectedId
+        }
+
         // Disable Next initially
         binding.includedbtn.buttonNext.isEnabled = false
 
@@ -73,12 +95,36 @@ class CreateCommunityActivity : BaseActivity() {
                     putExtra("selectedImageUri", selectedImageUri.toString())
                     putExtra("communityTitle", binding.communityTitle.text.toString().trim())
                     putExtra("interests", selectedCategoryId)
+                    putExtra("update", intent.getStringExtra("update"))
+                    putExtra("communityId", communityId)
+                    putExtra("type", communityType)
                 })
             }
         }
 
         fetchCategoryData()
         observeViewModel()
+        if (intent.getStringExtra("update")=="update"){
+            updateData()
+        }
+    }
+    private fun updateData(){
+        val communityData = intent.getParcelableExtra<CommnityMemberListResponse.CommnityMemberListResponseItem.Community>("communityData")
+        if (communityData!=null){
+            selectedCategoryId = communityData.category._id
+            communityId = communityData._id
+            communityType = communityData.type
+            binding.userProfile.visibility = View.VISIBLE
+            binding.removebtn.visibility = View.VISIBLE
+            binding.imagepicker.visibility = View.GONE
+            binding.communityTitle.setText(communityData.name)
+            binding.interests.setText(communityData.category.name)
+            Glide.with(this).load(Constants.IMAGE_BASEURL+communityData.communityLogo).into(binding.userProfile)
+        }
+        binding.includedbtn.buttonNext.text = "Save Changes"
+        binding.toolbar.tvTitle.text = "Edit Group Info"
+
+
     }
 
     private fun updateNextButtonState() {
@@ -115,30 +161,11 @@ class CreateCommunityActivity : BaseActivity() {
                 categoryList.clear()
                 categoryList.addAll(it.categories)
 
-                val adapter = ArrayAdapter(
-                    this@CreateCommunityActivity,
-                    com.careavatar.core_ui.R.layout.dropdown_item,
+                setupAutoComplete(
+                    binding.interests,
                     categoryList.map { it.name }
                 )
 
-                binding.interests.setAdapter(adapter)
-
-                binding.interests.setOnClickListener {
-                    binding.interests.showDropDown()
-                }
-
-                // Handle item selection
-                binding.interests.setOnItemClickListener { parent, view, position, id ->
-                    val selectedCategory = categoryList[position]
-                    val selectedId = selectedCategory.id
-                    val selectedName = selectedCategory.name
-
-                    // Example: store or log it
-                    Log.d("CreateCommunity", "Selected category: $selectedName (id=$selectedId)")
-
-                    // You can also save it in ViewModel or a variable
-                    selectedCategoryId = selectedId
-                }
             }
         }
     }

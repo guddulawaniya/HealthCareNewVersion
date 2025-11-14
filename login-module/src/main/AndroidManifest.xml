@@ -3,39 +3,4 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <application>
-        <activity
-            android:name=".ui.SplashScreenActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.LoadingActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.OnBoardingActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.VerifyOtpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.PreferenceActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".ui.healthonboardingactivity.InformationOnboardingActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.healthonboardingactivity.CommitActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.healthonboardingactivity.Information_loading_Activity"
-            android:exported="true" />
-    </application>
-
 </manifest>

@@ -24,10 +24,11 @@ class LeaveCommunityMemberListAdapter(
     val context: Context,
     val userId: String,
     var array: MutableList<CommnityMemberListResponse.CommnityMemberListResponseItem.Community.Member>,
+    val hidebtn: Boolean = false,
     private val onItemClick: (CommnityMemberListResponse.CommnityMemberListResponseItem.Community.Member) -> Unit
 ) : RecyclerView.Adapter<LeaveCommunityMemberListAdapter.ContactViewHolder>() {
 
-    private var  selectedItem = -1
+    private var selectedItem = -1
 
     class ContactViewHolder(val binding: AddPoepleRowLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -39,34 +40,70 @@ class LeaveCommunityMemberListAdapter(
     override fun getItemCount(): Int = array.size
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        holder.binding.apply {
-            val user = array[position]
-            tvUserName.text = user.name
+        val user = array[position]
+        val binding = holder.binding
 
-            // Hide add button for the logged-in user
-            if (user._id == userId) {
-                radiobtn.visibility = View.GONE
+        binding.tvUserName.text = user.name
+
+        // ✅ Highlight selected item
+        if (selectedItem == position) {
+            binding.radiobtn.setBackgroundResource(R.drawable.green_circle_btn)
+        } else {
+            binding.radiobtn.setBackgroundResource(R.drawable.radio_btn_outline_bg)
+        }
+
+        // ✅ Hide or show button
+        if (hidebtn || user._id == userId) {
+            binding.radiobtn.visibility = View.GONE
+        } else {
+            binding.radiobtn.visibility = View.VISIBLE
+        }
+
+        // ✅ Load profile image safely
+        Glide.with(context)
+            .load(IMAGE_BASEURL + user.avatar)
+            .placeholder(R.drawable.profile_1)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .thumbnail(0.25f)
+            .into(binding.tvProfile)
+
+        // ✅ Safe single-selection logic
+        binding.radiobtn.setOnClickListener {
+            val adapterPos = holder.bindingAdapterPosition
+            if (adapterPos == RecyclerView.NO_POSITION) return@setOnClickListener
+
+            val previousSelected = selectedItem
+            selectedItem = adapterPos
+
+            // Update only changed items
+            if (previousSelected != -1 && previousSelected < array.size) {
+                notifyItemChanged(previousSelected)
             }
+            notifyItemChanged(selectedItem)
 
-            // Load profile image safely
-            Glide.with(context)
-                .load(IMAGE_BASEURL + user.avatar)
-                .placeholder(R.drawable.profile_1)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .thumbnail(0.25f)
-                .into(tvProfile)
+            onItemClick(array[selectedItem])
+        }
 
-
-            radiobtn.setOnClickListener {
-                onItemClick(array[position])
+        // ✅ Handle full row click when hidebtn = true
+        if (hidebtn) {
+            holder.itemView.setOnClickListener {
+                val adapterPos = holder.bindingAdapterPosition
+                if (adapterPos != RecyclerView.NO_POSITION) {
+                    onItemClick(array[adapterPos])
+                }
             }
         }
     }
 
-
     fun updateList(newList: MutableList<CommnityMemberListResponse.CommnityMemberListResponseItem.Community.Member>) {
         array = newList
+        selectedItem = -1  // Reset selection when list updates
         notifyDataSetChanged()
     }
 
+    // ✅ Optional: helper to get selected user
+    fun getSelectedUser(): CommnityMemberListResponse.CommnityMemberListResponseItem.Community.Member? {
+        return array.getOrNull(selectedItem)
+    }
 }
+

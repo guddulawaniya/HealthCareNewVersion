@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asyscraft.community_module.R
 import com.asyscraft.community_module.adpaters.GalleryImageAdapter
@@ -42,6 +43,6 @@ class ShareImageFragment : BaseFragment() {
         imageAdapter = GalleryImageAdapter(imageDataList)
         binding.shareGalleryRecyclerview.adapter = imageAdapter
         binding.shareGalleryRecyclerview.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            GridLayoutManager(requireContext(),3 , LinearLayoutManager.VERTICAL,false)
     }
 }

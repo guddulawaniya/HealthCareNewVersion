@@ -11,13 +11,12 @@ import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.asyscraft.login_module.databinding.ActivityLoginBinding
+import com.asyscraft.login_module.viewModel.LoginViewModel
 import com.careavatar.core_model.LoginRequest
 import com.careavatar.core_network.base.BaseActivity
-import com.careavatar.core_ui.R
-import com.asyscraft.login_module.viewModel.LoginViewModel
 import com.careavatar.core_service.repository.viewModels.OnboardingRepositoryUserHobbies
+import com.careavatar.core_ui.R
 import com.careavatar.userapploginmodule.utils.LocationHelper
-import com.careavatar.core_service.repository.viewModels.OnboardingViewModel
 import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,9 +62,7 @@ class LoginActivity : BaseActivity() {
             binding.ccp.selectedCountryNameCode
         )
 
-
         binding.buttonNextInclude.buttonNext.isEnabled = isValid
-        binding.buttonNextInclude.buttonNext.alpha = if (isValid) 1.0f else 0.8f
 
         loginObserver()
         checkLocation()
@@ -113,7 +110,6 @@ class LoginActivity : BaseActivity() {
                 val isValid = isValidPhoneNumber(mobileNumber, binding.ccp.selectedCountryNameCode)
 
                 binding.buttonNextInclude.buttonNext.isEnabled = isValid
-                binding.buttonNextInclude.buttonNext.alpha = if (isValid) 1.0f else 0.8f
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -160,6 +156,7 @@ class LoginActivity : BaseActivity() {
                     .putExtra("otp", it.otp)
                     .putExtra("mobile", it.phoneNumber)
             )
+            viewModel.resetLoginState()
 
         }
     }

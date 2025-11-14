@@ -16,31 +16,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp">
-
-                <include
-                    android:id="@+id/toolbar"
-                    layout="@layout/custom_toolbar_layout" />
-
-            </LinearLayout>
+                android:background="@color/white"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                app:title="Event Details"
+                app:menu="@menu/event_delete_menu"
+                app:titleTextColor="@color/black"
+                app:navigationIcon="@drawable/back_btn_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="16dp">
 
                 <ImageView
                     android:id="@+id/itemImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
+                    android:layout_height="match_parent"
                     android:src="@drawable/logo" />
 
                 <ImageView
@@ -69,7 +70,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="Health and Fitness"
                     android:textColor="@color/textColor"
                     android:textSize="20sp" />
 
@@ -79,7 +79,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/inter_medium"
-                    android:text="Join for the evening health classes and get to know deep insight of meditation daily life."
                     android:textColor="@color/grayTextColor"
                     android:textSize="15sp" />
 
@@ -139,7 +138,6 @@
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/inter_medium"
                         android:drawablePadding="8dp"
-                        android:text="Central Park , New York"
                         android:textColor="@color/textColor"
                         android:textSize="15sp" />
 
@@ -215,6 +213,7 @@
 
 
                     <TextView
+                        android:id="@+id/copyTextBtn"
                         android:layout_width="match_parent"
                         android:text="Copy Link"
                         android:textColor="@color/primaryColor"
@@ -242,6 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/edit_text_bg"
                     android:orientation="horizontal"
                     android:padding="14dp">
@@ -278,26 +278,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="30dp"
-                android:orientation="vertical">
-
-                <include
-                    android:id="@+id/btninclude"
-                    layout="@layout/custom_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
 
 

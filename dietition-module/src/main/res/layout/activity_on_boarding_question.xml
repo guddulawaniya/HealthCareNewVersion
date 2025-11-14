@@ -40,7 +40,7 @@
                 android:id="@+id/tvStep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Step 1 of 3"
+                android:text="Step 1 of 4"
                 android:textSize="12sp"
                 android:textColor="@color/dividerColor"
                 android:fontFamily="@font/inter_medium"
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="7dp"
                 android:layout_marginTop="5dp"
-                android:max="3"
+                android:max="4"
                 android:progress="1"
                 android:progressDrawable="@drawable/progress_bar_drawable" />
 

@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".AudioCallActivity">
+    tools:context=".callActivity.AudioCallActivity">
 
 
 
@@ -30,14 +30,14 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_height="150dp"
-            android:src="@drawable/profile_sample_image" />
+            android:src="@drawable/profile_1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textSize="20dp"
-            android:text="Nikunj Tyagi"
+            android:text=""
             android:textColor="@color/textColor"
             android:layout_gravity="center"
             android:fontFamily="@font/inter_semibold" />
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            android:text="Incomming"
+            android:text="calling"
             android:textColor="@color/hintColor"
             android:layout_gravity="center"
             android:fontFamily="@font/inter" />
@@ -60,6 +60,24 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/speakerbtn"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/circle"
+                android:padding="16dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/speaker_ic"
+                app:tint="@color/white" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/callbtn"
@@ -79,10 +97,28 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:id="@+id/muteMicbtn"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/circle"
+                android:padding="16dp"
+                android:src="@drawable/mic_icon"
+                app:tint="@color/white" />
+        </LinearLayout>
 
 
     </LinearLayout>
+
+
 
 
 </LinearLayout>

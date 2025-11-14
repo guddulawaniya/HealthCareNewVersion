@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -52,23 +53,6 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.primaryColor)
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(window.decorView.rootView) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-            )
-        }
 
         // Setup AppNavigator globally
         AppNavigator.setNavigator(object : Navigator {
@@ -90,8 +74,38 @@ open class BaseActivity : AppCompatActivity() {
             setMIUIStatusBarDarkMode(this, darkMode = true)
         }
     }
-    inline fun <reified T : Activity> launchActivity() {
-        startActivity(Intent(this, T::class.java))
+
+    private fun restartApp() {
+        val intent =
+            packageManager.getLaunchIntentForPackage(packageName)
+                ?.apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+        startActivity(intent)
+        finishAffinity()
+    }
+
+    fun navigateDashboard(selectIndex : Int) {
+        try {
+            val intent = Intent(
+                this,
+                Class.forName("com.careavatar.dashboardmodule.DashboardActivity")
+            ).apply {
+                // YE FLAGS IMPORTANT HAI - back stack clear karne ke liye
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            intent.putExtra("selectIndex",selectIndex)
+
+            startActivity(intent)
+            finish()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Fallback: App restart
+            restartApp()
+        }
     }
 
 
@@ -166,19 +180,6 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected fun showProgressDialog() {
-        if (mDialog == null) {
-            mDialog = Dialog(this).apply {
-                requestWindowFeature(Window.FEATURE_NO_TITLE)
-                window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
-                setContentView(R.layout.pop_up_custom_progress)
-                window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-                setCanceledOnTouchOutside(false)
-            }
-        }
-        mDialog?.show()
-    }
-
     fun setMIUIStatusBarDarkMode(activity: Activity, darkMode: Boolean) {
         val window: Window = activity.window
         try {
@@ -203,15 +204,37 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    protected fun showProgressDialog() {
+        // Don't show if activity is finishing or destroyed
+        if (isFinishing || isDestroyed) return
+
+        if (mDialog == null) {
+            mDialog = Dialog(this).apply {
+                requestWindowFeature(Window.FEATURE_NO_TITLE)
+                window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+                setContentView(R.layout.pop_up_custom_progress)
+                window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+                setCanceledOnTouchOutside(false)
+            }
+        }
+
+        if (mDialog?.isShowing == false) {
+            mDialog?.show()
+        }
+    }
+
     protected fun hideProgressDialog() {
-        mDialog?.dismiss()
+        mDialog?.takeIf { it.isShowing }?.dismiss()
         mDialog = null
     }
 
     override fun onDestroy() {
+        // Dismiss progress dialog safely
+        mDialog?.takeIf { it.isShowing }?.dismiss()
+        mDialog = null
         super.onDestroy()
-        dialog?.dismiss()
     }
+
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (shouldHideKeyboardOnTouchOutside && ev.action == MotionEvent.ACTION_DOWN) {

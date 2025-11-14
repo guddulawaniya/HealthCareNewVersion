@@ -1,13 +1,19 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="ring"
-    android:innerRadiusRatio="3"
-    android:thicknessRatio="8"
-    android:useLevel="false">
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="0"
+    android:toDegrees="360">
 
-    <gradient
-        android:type="sweep"
-        android:useLevel="false"
-        android:startColor="@color/primaryColor"
-        android:endColor="@android:color/transparent"
-        android:angle="0"/>
-</shape>
+    <shape
+        android:innerRadiusRatio="3"
+        android:shape="ring"
+        android:thicknessRatio="8"
+        android:useLevel="false">
+
+        <gradient
+            android:angle="0"
+            android:endColor="@android:color/transparent"
+            android:startColor="@color/primaryColor"
+            android:type="sweep"
+            android:useLevel="false" />
+
+    </shape>
+</rotate>

@@ -4,6 +4,7 @@ import android.util.Log
 import com.careavatar.core_model.AddMemberCommunityRequest
 import com.careavatar.core_model.AddToCommunityRequest
 import com.careavatar.core_model.ApproveRejectRequest
+import com.careavatar.core_model.DeleteEventRequest
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_model.GetUserByCategoryRequest
 import com.careavatar.core_model.LoginRequest
@@ -128,6 +129,12 @@ class UserRepository(private val apiService: ApiServices) {
     suspend fun hitSearchCategory(categoryName: String) =
         apiService.hitSearchCategory(categoryName)
 
+    suspend fun hitAllCommunityList() =
+        apiService.hitAllCommunityList()
+
+    suspend fun hitDeletePost(id : String) =
+        apiService.hitDeletePost(id)
+
     suspend fun hitLeaveCommunity(communityId: String) =
         apiService.hitLeaveCommunity(communityId)
 
@@ -160,6 +167,12 @@ class UserRepository(private val apiService: ApiServices) {
 
     suspend fun hitGetEventdetailbyid(eventId: String) =
         apiService.hitGetEventdetailbyid(eventId)
+
+    suspend fun hitDeleteEventImage(eventId: String,request: DeleteEventRequest) =
+        apiService.deleteEventImage(eventId,request)
+
+    suspend fun hitUploadEventImage(eventId: String,image: MultipartBody.Part? = null) =
+        apiService.hitUploadEventImage(eventId,image)
 
     suspend fun hitEventsByDateAndCommunity(communityId: String, date: String) =
         apiService.hitEventsByDateAndCommunity(communityId, date)
@@ -198,6 +211,35 @@ class UserRepository(private val apiService: ApiServices) {
         )
 
 
+    suspend fun hitUpdateEvent(
+        eventId: String,
+        communityId: String,
+        eventDate: String,
+        description: String,
+        eventLink: String,
+        eventMode: String,
+        eventTime: String,
+        latitude: String,
+        location: String,
+        longitude: String,
+        title: String,
+        visibility: String,
+    ) = apiService.hitUpdateEvent(
+            eventId,
+            communityId.toRequestBody(),
+            description.toRequestBody(),
+            eventDate.toRequestBody(),
+            eventLink.toRequestBody(),
+            eventMode.toRequestBody(),
+            eventTime.toRequestBody(),
+            latitude.toRequestBody(),
+            location.toRequestBody(),
+            longitude.toRequestBody(),
+            title.toRequestBody(),
+            visibility.toRequestBody(),
+        )
+
+
     suspend fun hitCreateCommunity(
         name: RequestBody,
         type: RequestBody,
@@ -205,6 +247,21 @@ class UserRepository(private val apiService: ApiServices) {
         image: MultipartBody.Part?
     ) =
         apiService.createCommunity(
+            name = name,
+            type = type,
+            categoryId = categoryId,
+            image = image
+        )
+
+    suspend fun hitUpdateCommunity(
+        communityId: RequestBody,
+        name: RequestBody,
+        type: RequestBody,
+        categoryId: RequestBody,
+        image: MultipartBody.Part?
+    ) =
+        apiService.hitUpdateCommunity(
+            communityId = communityId,
             name = name,
             type = type,
             categoryId = categoryId,

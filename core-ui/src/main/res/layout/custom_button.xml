@@ -9,6 +9,7 @@
         android:fontFamily="@font/inter_semibold"
         android:text="@string/continuetext"
         android:textColor="@color/white"
+
         android:background="@drawable/button_bg"
         android:textSize="15sp"
         app:cornerRadius="10dp" />

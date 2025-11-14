@@ -1,6 +1,10 @@
 package com.asyscraft.community_module
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -8,16 +12,27 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.asyscraft.community_module.databinding.ActivityCreateEventNextBinding
+import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
+import com.bumptech.glide.Glide
 import com.careavatar.core_network.base.BaseActivity
 import com.careavatar.core_ui.AddressPickerActivity
+import com.careavatar.core_ui.R
+import com.careavatar.core_utils.Constants
 import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable
+import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 import com.careavatar.core_utils.DateTimePickerUtil.pickDate
 import com.careavatar.core_utils.DateTimePickerUtil.pickDateTime
 import com.careavatar.core_utils.DateTimePickerUtil.pickTime
+import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import kotlin.getValue
 
 @AndroidEntryPoint
 class CreateEventNextActivity : BaseActivity() {
@@ -25,8 +40,10 @@ class CreateEventNextActivity : BaseActivity() {
     private lateinit var addressPickerLauncher: ActivityResultLauncher<Intent>
     private var latitude = 0.0
     private var longitude = 0.0
+
     private var eventMode : Boolean = true
     private var selecteddate : String?=null
+    private val viewmodel: SocialMeetViewmodel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,6 +122,8 @@ class CreateEventNextActivity : BaseActivity() {
 
                 startActivity(
                     Intent(this@CreateEventNextActivity, EventCreatePreviewActivity::class.java)
+                        .putExtra("updateEvent", intent.getStringExtra("updateEvent"))
+                        .putExtra("eventId", intent.getStringExtra("eventId"))
                         .putExtra("eventmode", eventMode)
                         .putExtra("eventdate", binding.datePickTextView.text.toString().trim())
                         .putExtra("selectedEventdate", selecteddate)
@@ -115,8 +134,8 @@ class CreateEventNextActivity : BaseActivity() {
                         .putExtra("communityId", communityId)
                         .putExtra("title", title)
                         .putExtra("description", description)
-                        .putExtra("latitude", latitude)
-                        .putExtra("longitude", longitude)
+                        .putExtra("latitude", latitude.toString())
+                        .putExtra("longitude", longitude.toString())
                         .putExtra("mainImage", mainImage)
                         .putStringArrayListExtra("selectedImages", ArrayList(selectedImages))
                 )
@@ -125,7 +144,44 @@ class CreateEventNextActivity : BaseActivity() {
 
         getLocation()
 
+        if (intent.getStringExtra("updateEvent")=="update"){
+            binding.btninclude.buttonNext.text = "Save Changes"
+            fetchEventDetails()
+            observer()
+        }
     }
+    private fun fetchEventDetails() {
+        val eventId = intent.getStringExtra("eventId").toString()
+        launchIfInternetAvailable {
+            viewmodel.hitGetEventdetailbyid(eventId)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun observer() {
+        collectApiResultOnStarted(viewmodel.getEventDetailResponse) { it ->
+            if (it.success) {
+                val event = it.data
+                binding.datePickTextView.text = formatDateToReadable1(event.eventDate ?: "")
+                binding.eventTimeDuration.setText("50")
+
+                eventMode = event.eventMode == "online"
+
+                updateSwitchTabLayout()
+                if (eventMode){
+                    binding.meetingLinkField.setText(event.eventLink)
+                }
+                else{
+                    binding.locationField.text = event.location
+                    latitude = event.latitude.toDouble()
+                    longitude = event.longitude.toDouble()
+                }
+
+            }
+        }
+
+    }
+
 
     private fun validateEventInputs(): Boolean {
         val eventDate = binding.datePickTextView.text.toString().trim()
@@ -177,7 +233,6 @@ class CreateEventNextActivity : BaseActivity() {
                 Log.d("address",selectedaddress.toString())
 
 
-
                 latitude = selected_latitude ?: 0.0
                 longitude = selected_longitude ?: 0.0
 
@@ -187,6 +242,34 @@ class CreateEventNextActivity : BaseActivity() {
         }
     }
 
+    private fun updateSwitchTabLayout(){
+
+        if (eventMode){
+            binding.onlineText.setBackgroundResource(com.careavatar.core_ui.R.drawable.community_online_selected_bg)
+            binding.onlineText.setTextColor(ContextCompat.getColor(this, com.careavatar.core_ui.R.color.primaryColor))
+
+            binding.offlineText.setBackgroundResource(com.careavatar.core_ui.R.drawable.edit_text_bg)
+            binding.offlineText.setTextColor(ContextCompat.getColor(this, com.careavatar.core_ui.R.color.textColor))
+
+            binding.meetingLinkField.visibility = View.VISIBLE
+            binding.meetingLinkFieldtextview.visibility = View.VISIBLE
+            binding.locationField.visibility = View.GONE
+            binding.locationFieldTextview.visibility = View.GONE
+        }else
+        {
+            binding.offlineText.setBackgroundResource(com.careavatar.core_ui.R.drawable.community_online_selected_bg)
+            binding.offlineText.setTextColor(ContextCompat.getColor(this, com.careavatar.core_ui.R.color.primaryColor))
+
+            binding.onlineText.setBackgroundResource(com.careavatar.core_ui.R.drawable.edit_text_bg)
+            binding.onlineText.setTextColor(ContextCompat.getColor(this, com.careavatar.core_ui.R.color.textColor))
+
+            binding.meetingLinkField.visibility = View.GONE
+            binding.meetingLinkFieldtextview.visibility = View.GONE
+            binding.locationField.visibility = View.VISIBLE
+            binding.locationFieldTextview.visibility = View.VISIBLE
+        }
+
+    }
     private fun switchTabLayout(){
 
         binding.onlineText.setOnClickListener {

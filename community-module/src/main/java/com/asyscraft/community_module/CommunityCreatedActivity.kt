@@ -22,45 +22,47 @@ class CommunityCreatedActivity : BaseActivity() {
 
         if (intent.getBooleanExtra("leaveCommunity",false)){
 
+            val adminName = intent.getStringExtra("adminName")
             binding.toolbar.buttonNext.text = "Done"
             binding.titleText.text = "Transferred Successfully"
-            binding.descriptionText.text = "You have successfully transferred admin rights to Riya Dixit. They now have full control over community settings"
+            binding.descriptionText.text = "You have successfully transferred admin rights to $adminName. They now have full control over community settings"
+
+            binding.toolbar.buttonNext.setOnClickListener {
+                navigateDashboard(2)
+            }
         }
         else
         {
 
             binding.toolbar.buttonNext.text = "Go to community"
-
+            val memberIds = ArrayList<String>()
             val array = intent.getParcelableExtra<Data>("communityData")
 
-            binding.descriptionText.text =
-                "Your community '${array?.name}' has been successfully created. You can now start sharing content and engaging with members."
+            array?.let { data ->
+                binding.descriptionText.text =
+                    "Your community '${data.name}' has been successfully created. You can now start sharing content and engaging with members."
 
-            val memberIds = ArrayList<String>()
-
-            array?.members?.let { members ->
-                for (member in members) {
+                for (member in data.members) {
                     memberIds.add(member)
                 }
-            } ?: run {
-                Log.e("CommunityCreatedActivity", "Members list is null")
-            }
 
-            binding.toolbar.buttonNext.setOnClickListener {
-                if (array != null) {
-                    startActivity(
-                        Intent(this, CommunityMessageActivity::class.java)
-                            .putExtra("communityId", array._id)
-                            .putExtra("creatorId", array.creatorId)
-                            .putStringArrayListExtra("members", memberIds)
-                            .putExtra("communityName", array.name)
-                            .putExtra("communityImage", array.communityLogo)
-                            .putExtra("type1", array.type)
+                binding.toolbar.buttonNext.setOnClickListener {
+
+                    startActivity(Intent(this, CommunityMessageActivity::class.java)
+                        .putExtra("createdCommunity", true)
+                        .putExtra("communityId", array._id)
+                        .putExtra("creatorId", array.creatorId)
+                        .putStringArrayListExtra("members", memberIds)
+                        .putExtra("communityName", array.name)
+                        .putExtra("communityImage", array.communityLogo)
+                        .putExtra("count", array.members.size.toString())
+                        .putExtra("type1", array.type)
+
                     )
-                } else {
-                    Log.e("CommunityCreatedActivity", "Community data is null")
+
                 }
             }
+
 
         }
 

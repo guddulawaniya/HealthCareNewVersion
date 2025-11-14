@@ -1,240 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <androidx.core.widget.NestedScrollView
+    <!-- Collapsing toolbar + header -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Light"
+        app:elevation="0dp">
 
-        <LinearLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/white">
 
-
+            <!-- Header Content -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:paddingHorizontal="16dp"
+                app:layout_collapseMode="parallax">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Toolbar Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/community"
-                    android:textColor="@color/textColor"
-                    android:textSize="25sp" />
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-
-                <ImageView
-                    android:id="@+id/addPostbtn"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/plus_btn_icon_outline" />
-
-                <RelativeLayout
-                    android:id="@+id/chatMessage"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:gravity="center">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="@string/community"
+                        android:textColor="@color/textColor"
+                        android:textSize="25sp" />
 
                     <ImageView
-                        android:id="@+id/notificationIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:src="@drawable/message_icon"
-                        app:tint="@color/black" />
+                        android:id="@+id/addPostbtn"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/plus_btn_icon_outline" />
+
+                    <RelativeLayout
+                        android:id="@+id/chatMessage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/notificationIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:padding="5dp"
+                            android:src="@drawable/message_icon"
+                            app:tint="@color/black" />
+
+                        <TextView
+                            android:id="@+id/badgeCount"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/notificationcount_bg"
+                            android:gravity="center"
+                            android:text="4"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <!-- Community RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/communityPostRecylerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/community_status_row_lyout" />
+
+                <!-- Upcoming Events -->
+                <LinearLayout
+                    android:id="@+id/eventLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/badgeCount"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/notificationcount_bg"
-                        android:gravity="center"
-                        android:text="4"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-                </RelativeLayout>
-            </LinearLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="@string/upcoming_event"
+                        android:textColor="@color/homeTextColor"
+                        android:textSize="20sp" />
+                    <include
+                        android:id="@+id/upcomingEventLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        layout="@layout/upcoming_event_row_layout"/>
+                </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/communityPostRecylerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/community_status_row_lyout" />
-
-
-
-            <LinearLayout
-                android:id="@+id/eventLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                <!-- Find Friends -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/inter_medium"
-                    android:text="@string/upcoming_event"
-                    android:textColor="@color/homeTextColor"
+                    android:text="@string/find_friend"
+                    android:textColor="@color/headingBtnColor"
                     android:textSize="20sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/upComingEventRecyclerview"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/findNewPeople"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="130dp"
                     android:layout_marginTop="16dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/upcoming_event_row_layout" />
-            </LinearLayout>
+                    android:background="@drawable/find_people_card_gradientbg_color"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/find_friend"
-                android:textColor="@color/headingBtnColor"
-                android:textSize="20sp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/findNewPeople"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/find_people_card_gradientbg_color"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
+                    <!-- Card Content -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter_bold"
-                        android:text="@string/lets_connect_to_the_people_near_you"
-                        android:textColor="#F0F0F0"
-                        android:textSize="15sp" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/btnNext"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="16dp"
-                        android:elevation="0dp"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="0dp"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:strokeColor="#E57A27"
-                        app:strokeWidth="1dp">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/next_arrow"
-                            android:padding="10dp"
-                            android:rotation="-45"
-                            android:src="@drawable/right_arrow_image"
-                            app:tint="#E57A27" />
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_bold"
+                            android:text="@string/lets_connect_to_the_people_near_you"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
 
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnNext"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="16dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="50dp"
+                            app:strokeColor="#E57A27"
+                            app:strokeWidth="1dp">
 
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:orientation="vertical"
-                    android:paddingStart="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/next_arrow"
+                                android:padding="10dp"
+                                android:rotation="-45"
+                                android:src="@drawable/right_arrow_image"
+                                app:tint="#E57A27" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/rvOverlapImages"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/recentJoinImage1"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="-10dp"
-                            android:scaleType="centerCrop"
                             android:src="@drawable/profile_sample_image"
                             app:civ_border_color="@color/white"
                             app:civ_border_width="1dp" />
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/recentJoinImage2"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="-10dp"
-                            android:scaleType="centerCrop"
                             android:src="@drawable/profile_sample_image"
                             app:civ_border_color="@color/white"
                             app:civ_border_width="1dp" />
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/recentJoinImage3"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="-10dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/profile_sample_image"
-                            app:civ_border_color="@color/white"
-                            app:civ_border_width="1dp" />
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/recentJoinImage4"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="-10dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/profile_sample_image"
-                            app:civ_border_color="@color/white"
-                            app:civ_border_width="1dp" />
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/recentJoinImage5"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="-10dp"
-                            android:scaleType="centerCrop"
                             android:src="@drawable/profile_sample_image"
                             app:civ_border_color="@color/white"
                             app:civ_border_width="1dp" />
@@ -246,109 +218,57 @@
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/inter_medium"
                             android:gravity="center_vertical"
-                            android:text="56 Near You"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>
-                </LinearLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Community"
-                    android:textColor="@color/headingBtnColor"
-                    android:textSize="20sp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </LinearLayout>
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!-- Community Label -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:elevation="0dp"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/inActivetab"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
+                android:fontFamily="@font/inter_semibold"
+                android:text="Community"
+                android:textColor="@color/headingBtnColor"
+                android:textSize="20sp" />
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/newtext"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/height_active_tab_bg"
-                        android:fontFamily="@font/inter_medium"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Explore"
-                        android:textColor="@color/textColor"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/usedtext"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter_medium"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Joined"
-                        android:textColor="@color/textColor"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+            <!-- Tabs (stick below header) -->
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:animateLayoutChanges="true"
                 android:background="@drawable/tab_bg"
                 app:tabBackground="@drawable/height_active_tab_bg"
                 app:tabIndicatorColor="@android:color/transparent"
                 app:tabIndicatorHeight="0dp"
                 app:tabTextColor="@color/textColor" />
 
-
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1" />
-
-
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 
+    </com.google.android.material.appbar.AppBarLayout>
 
-</LinearLayout>
+    <!-- ViewPager content -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

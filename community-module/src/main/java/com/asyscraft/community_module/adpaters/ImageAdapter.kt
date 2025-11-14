@@ -44,7 +44,7 @@ class ImageAdapter(
                 .into(holder.imageView)
         } else {
 
-            val fullUrl = Constants.IMAGE_BASEURL + imagePath
+            val fullUrl = Constants.socket_URL + imagePath
             glideRequest.load(fullUrl)
                 .into(holder.imageView)
         }

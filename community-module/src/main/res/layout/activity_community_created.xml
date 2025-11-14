@@ -18,9 +18,9 @@
         android:gravity="center"
         android:layout_weight="1">
         <ImageView
-            android:layout_width="50dp"
-            android:src="@drawable/green_circle_btn"
-            android:layout_height="50dp" />
+            android:layout_width="103dp"
+            android:src="@drawable/community_create_image"
+            android:layout_height="103dp" />
 
         <TextView
             android:id="@+id/titleText"

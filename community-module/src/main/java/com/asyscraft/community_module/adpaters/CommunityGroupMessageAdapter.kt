@@ -1,5 +1,6 @@
 package com.asyscraft.community_module.adpaters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.asyscraft.community_module.R
 import com.bumptech.glide.Glide
 import com.careavatar.core_model.GroupChatMessageModel
+import com.careavatar.core_utils.Constants
 import com.google.android.material.imageview.ShapeableImageView
 import de.hdodenhof.circleimageview.CircleImageView
 
 class CommunityGroupMessageAdapter(
-    private val chatList: List<GroupChatMessageModel>,
+    private val chatList: MutableList<GroupChatMessageModel>,
     private val onEventJoinClick: (GroupChatMessageModel) -> Unit,
     private val onEventConfirmClick: (GroupChatMessageModel, Boolean) -> Unit // true = confirm, false = decline
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -26,8 +28,10 @@ class CommunityGroupMessageAdapter(
         private const val TYPE_RECEIVER_EVENT = 6
     }
 
+
     override fun getItemViewType(position: Int): Int {
         val message = chatList[position]
+        Log.d("TAG", "getItemViewType: ${message.type}")
         return when (message.type) {
             "text" -> if (message.isSender) TYPE_SENDER_TEXT else TYPE_RECEIVER_TEXT
             "image", "video", "audio", "document" ->
@@ -88,9 +92,11 @@ class CommunityGroupMessageAdapter(
             time.text = model.messagetime
             username.text = model.username
             Glide.with(profile.context)
-                .load(model.profileimage)
-                .placeholder(com.careavatar.core_ui.R.drawable.add_user_icon)
+                .load(Constants.IMAGE_BASEURL + model.profileimage)
+                .placeholder(com.careavatar.core_ui.R.drawable.profile_1)
                 .into(profile)
+
+
         }
     }
 
@@ -140,7 +146,7 @@ class CommunityGroupMessageAdapter(
         private val eventTimeDuration = itemView.findViewById<TextView>(R.id.eventTimeDuration)
         private val modeType = itemView.findViewById<TextView>(R.id.modeType)
         private val eventTypeIcon = itemView.findViewById<ImageView>(R.id.eventTypeIcon)
-        private val meetingLink = itemView.findViewById<ImageView>(R.id.meetingLink)
+        private val meetingLink = itemView.findViewById<TextView>(R.id.meetingLink)
         private val confirmedAttendees = itemView.findViewById<TextView>(R.id.confirmedAttendees)
 
         fun bind(model: GroupChatMessageModel) {

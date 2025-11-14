@@ -13,7 +13,7 @@ data class UsersNotInApp(
 
 data class UsersInApp(
     val _id: String?,
-    val name: String,
+    val name: String?, // ← make nullable
     val avatar: String?,
     val phoneNumber: String?,
     val userId: String?,

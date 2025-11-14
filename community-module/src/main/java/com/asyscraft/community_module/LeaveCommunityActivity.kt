@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.asyscraft.community_module.adpaters.CommunityMemberListAdapter
 import com.asyscraft.community_module.adpaters.LeaveCommunityMemberListAdapter
 import com.asyscraft.community_module.databinding.ActivityLeaveCommunityBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
@@ -24,8 +23,7 @@ class LeaveCommunityActivity : BaseActivity() {
     private var userId: String? = null
     private var isCurrentUserAdmin: Boolean = false
     private var creatorId: String? = null
-    private val memberList =
-        mutableListOf<CommnityMemberListResponse.CommnityMemberListResponseItem.Community.Member>()
+    private val memberList = mutableListOf<CommnityMemberListResponse.CommnityMemberListResponseItem.Community.Member>()
     private lateinit var memeberlistcommunity: CommnityMemberListResponse.CommnityMemberListResponseItem.Community
     private lateinit var adapterMember: LeaveCommunityMemberListAdapter
 
@@ -83,7 +81,7 @@ class LeaveCommunityActivity : BaseActivity() {
     private fun setUpRecyclerViewMember() {
 
 
-        adapterMember = LeaveCommunityMemberListAdapter(this, userId.toString(), memberList) { position ->
+        adapterMember = LeaveCommunityMemberListAdapter(this, userId.toString(), memberList) { item ->
 
         }
         binding.communityMemberRv.layoutManager = LinearLayoutManager(this)
@@ -94,7 +92,11 @@ class LeaveCommunityActivity : BaseActivity() {
 
 
         collectApiResultOnStarted(viewModel.deleteCommunitiesResponse) {
-            startActivity(Intent(this, CommunityCreatedActivity::class.java).putExtra("leaveCommunity",true))
+            val item = adapterMember.getSelectedUser()
+            startActivity(Intent(this, CommunityCreatedActivity::class.java)
+                .putExtra("leaveCommunity",true)
+                .putExtra("adminName", item?.name)
+            )
         }
 
 

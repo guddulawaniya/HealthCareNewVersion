@@ -12,6 +12,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+
 
     <application
         android:name=".HealthCareApplication"
@@ -27,6 +33,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCareNewVersion">
+
+        <activity
+            android:name="com.careavatar.dashboardmodule.DashboardActivity"
+            android:theme="@style/Base.Theme.Healthcare20"
+            android:exported="true" />
+
+        <activity
+            android:name="com.careavatar.dashboardmodule.NotificationActivity"
+            android:exported="true" />
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.careavatar.userapp.fileprovider"
@@ -41,9 +58,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAxmRrwWLag7plK-SQFtQvQxlhRVwI09tY"/>
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.gms.auth.api.fitness"
+            android:value="true" />
+
 
         <activity
             android:name=".MainActivity"
+            android:theme="@style/LaunchTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,6 +77,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.asyscraft.login_module.ui.LoginActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name="com.asyscraft.login_module.ui.SplashScreenActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.asyscraft.login_module.ui.LoadingActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.asyscraft.login_module.ui.OnBoardingActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.asyscraft.login_module.ui.VerifyOtpActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.asyscraft.login_module.ui.PreferenceActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.asyscraft.login_module.ui.healthonboardingactivity.InformationOnboardingActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.asyscraft.login_module.ui.healthonboardingactivity.CommitActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.asyscraft.login_module.ui.healthonboardingactivity.Information_loading_Activity"
+            android:exported="true" />
 
 
     </application>

@@ -130,7 +130,7 @@
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/inter_semibold"
                 android:gravity="right"
-                android:text="23 attendees confirmed"
+                android:text="1 attendees confirmed"
                 android:textColor="@color/white"
                 android:textSize="10dp" />
 
@@ -143,6 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginEnd="10dp"
+        android:visibility="gone"
         android:orientation="horizontal">
 
 

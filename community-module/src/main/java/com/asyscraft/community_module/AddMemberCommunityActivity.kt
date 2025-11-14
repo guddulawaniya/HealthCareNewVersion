@@ -1,6 +1,9 @@
 package com.asyscraft.community_module
 
 import android.Manifest
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -22,6 +25,7 @@ import com.careavatar.core_model.Data
 import com.careavatar.core_model.UsersInApp
 import com.careavatar.core_network.base.BaseActivity
 import com.careavatar.core_service.repository.viewModels.ContactViewModel
+import com.careavatar.core_utils.setupSearchFilter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -51,11 +55,14 @@ class AddMemberCommunityActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.toolbar.btnBack.setOnClickListener { finish() }
+        binding.toolbar.tvTitle.text = "Add Participants"
 
         if (intent.getBooleanExtra("AddMember",false)){
             communityId = intent.getStringExtra("communityId").toString()
             binding.includeBtn.buttonNext.text = "done"
             binding.includeBtn.buttonNext.setOnClickListener { finish() }
+
+
         }else
         {
             val array = intent.getParcelableExtra<Data>("communityData")
@@ -63,13 +70,43 @@ class AddMemberCommunityActivity : BaseActivity() {
 
 
             binding.includeBtn.buttonNext.setOnClickListener {
-                val intent = Intent(this, CommunityCreatedActivity::class.java).apply {
-                    intent.putExtra("communityData",array)
-                }
-                startActivity(intent)
+                startActivity(
+                    Intent(this, CommunityCreatedActivity::class.java)
+                        .putExtra("communityData", array)
+                )
 
             }
         }
+
+        binding.copyLayoutlink.setOnClickListener {
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("community link", binding.copyLinkText.text)
+            clipboard.setPrimaryClip(clip)
+            showToast("Link copied to clipboard!")
+        }
+
+        binding.shareBtn.setOnClickListener {
+
+            // 👇 Example: Your community or event share link
+            val communityLink = "https://careavatar.com/community/12345"
+
+            // 👇 Message to share
+            val shareMessage = """
+        🌟 Join our community on CareAvatar!
+        Check it out here: $communityLink
+    """.trimIndent()
+
+            // 👇 Create share intent
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_SUBJECT, "Join our community")
+                putExtra(Intent.EXTRA_TEXT, shareMessage)
+            }
+
+            // 👇 Open the system share sheet
+            startActivity(Intent.createChooser(shareIntent, "Share community via"))
+        }
+
 
 
         lifecycleScope.launch {
@@ -86,9 +123,9 @@ class AddMemberCommunityActivity : BaseActivity() {
         observer()
         setupSearchFilter()
 
-
-
     }
+
+
 
     private fun setupSearchFilter() {
         binding.customSearchbar.etSearch.addTextChangedListener(object : TextWatcher {
@@ -99,8 +136,9 @@ class AddMemberCommunityActivity : BaseActivity() {
                 val filteredCategories = if (query.isEmpty()) {
                     userappList
                 } else {
-                    userappList.filter { it.name.contains(query, ignoreCase = true) }
+                    userappList.filter { it.name?.contains(query, ignoreCase = true) == true }
                 }
+
                 adapter.updateList(filteredCategories.toMutableList())
                 loadContacts(query)
             }

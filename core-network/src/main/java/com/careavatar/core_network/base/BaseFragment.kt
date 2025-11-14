@@ -40,6 +40,8 @@ open class BaseFragment : Fragment() {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+
+
         if (Build.MANUFACTURER.equals("Xiaomi", ignoreCase = true)) {
             setMIUIStatusBarDarkMode(requireActivity(), darkMode = true)
         }
@@ -81,6 +83,9 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun showProgressDialog() {
+        // Check if fragment is added and activity is not finishing
+        if (!isAdded || activity == null || requireActivity().isFinishing) return
+
         if (mDialog == null) {
             mDialog = Dialog(requireContext()).apply {
                 requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -90,7 +95,11 @@ open class BaseFragment : Fragment() {
                 setCanceledOnTouchOutside(false)
             }
         }
-        mDialog?.show()
+
+        // Only show if not already showing
+        if (mDialog?.isShowing == false) {
+            mDialog?.show()
+        }
     }
 
     fun setMIUIStatusBarDarkMode(activity: Activity, darkMode: Boolean) {
@@ -118,13 +127,14 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun hideProgressDialog() {
-        mDialog?.dismiss()
+        mDialog?.takeIf { it.isShowing }?.dismiss()
         mDialog = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        dialog?.dismiss()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mDialog?.takeIf { it.isShowing }?.dismiss()
+        mDialog = null
     }
 
 

@@ -8,7 +8,7 @@
         android:layout_width="160dp"
         android:layout_height="146dp"
         app:cardCornerRadius="10dp"
-        android:layout_margin="10dp"
+        android:layout_marginEnd="16dp"
         app:cardElevation="4dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,12 +21,13 @@
                 android:src="@drawable/group_sample"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="#65000000"
+                android:paddingVertical="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="10dp"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 

@@ -66,8 +66,8 @@ class JoinedFragment : BaseFragment() {
 
             )
         })
-        binding.joinedRecyclervew.layoutManager = LinearLayoutManager(requireContext())
-        binding.joinedRecyclervew.adapter = joinedAdapter
+        binding.joinedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.joinedRecyclerView.adapter = joinedAdapter
     }
 
 
@@ -77,13 +77,13 @@ class JoinedFragment : BaseFragment() {
             searchDataList.addAll(it.communities.toMutableList())
             joinedAdapter.filterList(searchDataList)
 
-//            if (searchDataList.isEmpty()) {
-//                binding.nofounddata.visibility = View.VISIBLE
-//                binding.communityListRecycler.visibility = View.GONE
-//            } else {
-//                binding.nofounddata.visibility = View.GONE
-//                binding.communityListRecycler.visibility = View.VISIBLE
-//            }
+            if (searchDataList.isEmpty()) {
+                binding.notFoundText.visibility = View.VISIBLE
+                binding.joinedRecyclerView.visibility = View.GONE
+            } else {
+                binding.notFoundText.visibility = View.GONE
+                binding.joinedRecyclerView.visibility = View.VISIBLE
+            }
         }
 
 

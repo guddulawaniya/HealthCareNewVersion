@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".DailyRoutineFragment">
+    tools:context=".fragments.DailyRoutineFragment">
 
     <ScrollView
         android:layout_width="match_parent"

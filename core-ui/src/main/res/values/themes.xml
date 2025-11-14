@@ -11,6 +11,8 @@
 
     </style>
 
+    <style name="Theme.Healthcare20" parent="Base.Theme.Healthcare20" />
+
 
     <style name="TopRoundedImage">
         <item name="cornerFamily">rounded</item>
@@ -99,7 +101,7 @@
     </style>
 
 
-    <style name="Theme.Healthcare20" parent="Base.Theme.Healthcare20" />
+
 
     <style name="CountryCodeDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="android:background">@color/white</item>

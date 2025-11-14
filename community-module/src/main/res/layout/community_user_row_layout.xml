@@ -26,6 +26,7 @@
             android:id="@+id/tvCommunityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:fontFamily="@font/inter_semibold"
             android:textColor="@color/textColor"
             android:text="Mikey Janes"
@@ -36,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_medium"
-            android:text="7+ Messages"
+            android:text="public"
+            android:singleLine="true"
             android:textColor="@color/buttonColor"
             android:textSize="12sp" />
     </LinearLayout>

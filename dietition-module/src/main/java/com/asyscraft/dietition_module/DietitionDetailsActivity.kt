@@ -158,6 +158,7 @@ class DietitionDetailsActivity : BaseActivity() {
 
     private fun setDataUi() {
         val data = intent.getParcelableExtra<GetExpertResponse2.Expert>("expertDetails")
+
         if (data != null) {
             binding.apply {
                 tvName.text = data.expert.name

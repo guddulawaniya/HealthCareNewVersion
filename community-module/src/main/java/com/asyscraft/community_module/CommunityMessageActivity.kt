@@ -2,23 +2,29 @@ package com.asyscraft.community_module
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asyscraft.community_module.adpaters.CommunityGroupMessageAdapter
+import com.asyscraft.community_module.callActivity.GroupAudioCallActivity
 import com.asyscraft.community_module.databinding.ActivityCommunityMessageBinding
+import com.asyscraft.community_module.socketManager.SocketManager
+import com.asyscraft.community_module.socketManager.webrtc.CallViewModel
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
 import com.bumptech.glide.Glide
 import com.careavatar.core_model.GroupChatMessageModel
 import com.careavatar.core_network.base.BaseActivity
 import com.careavatar.core_utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -30,11 +36,9 @@ class CommunityMessageActivity : BaseActivity() {
     private lateinit var binding: ActivityCommunityMessageBinding
     private var isMenuVisible = false
     private val viewModel: SocialMeetViewmodel by viewModels()
-    private lateinit var adapter: CommunityGroupMessageAdapter
+    private lateinit var messageAdapter: CommunityGroupMessageAdapter
     private val messages = mutableListOf<GroupChatMessageModel>()
-
-    val currentUserId: Flow<String> get() = userPref.userId.map { it.toString() }
-
+    var currentUserId: String = ""
     private var communityId: String = ""
     private var communityName: String = ""
     private var communityImage: String = ""
@@ -42,22 +46,105 @@ class CommunityMessageActivity : BaseActivity() {
     private var creatorName: String = ""
     private var memberCount: String = ""
     private var members: List<String> = emptyList()
-
+    private lateinit var callViewModel: CallViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCommunityMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        callViewModel = CallViewModel(applicationContext)
+        lifecycleScope.launch {
+            val userId = userPref.userId.first()
+            currentUserId = userId.toString()
 
-        getGroupMessage()
+        }
+        setupSocket()
+
         observer()
         handleBtn()
         setupRecyclerView()
         extractIntentData()
         setupCommunityDetailsUI()
+        setupSendButton()
+        observeGroupMessages()
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        getGroupMessage()
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        return super.dispatchTouchEvent(ev)
+    }
+
+    private fun observeGroupMessages() {
+        lifecycleScope.launchWhenStarted {
+            SocketManager.onGroupMessageReceived.collect { data ->
+                Log.d("GroupChatActivity", "Collecting message: $data")
+
+                val senderJson = data.optJSONObject("senderId") ?: return@collect
+                val senderId = senderJson.optString("_id", "Unknown")
+                val message = data.optString("message", "")
+                val createdAt = data.optString("createdAt", "")
+
+                val chatMessage = GroupChatMessageModel(
+                    type = "text",
+                    event = "",
+                    messageId = data.optString("_id", ""),
+                    from = senderId,
+                    message = message,
+                    isSender = senderId == currentUserId,
+                    messagetime = formatDate(createdAt),
+                    profileimage = senderJson.optString("avatar", ""),
+                    username = senderJson.optString("name", "Anonymous"),
+                    userId = senderId,
+                    mobilenumber = senderJson.optString("phoneNumber", "")
+                )
+
+                withContext(Dispatchers.Main) {
+                    messages.add(chatMessage)
+                    messageAdapter.notifyItemInserted(messages.size - 1)
+                    binding.messageRv.scrollToPosition(messages.lastIndex)
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        SocketManager.disconnect()
+    }
+
+    private fun setupSocket() {
+        lifecycleScope.launch {
+            currentUserId = userPref.userId.first() ?: ""
+            SocketManager.connect(currentUserId)
+            SocketManager.addUser(currentUserId)
+            SocketManager.joinRoom(currentUserId,communityId)
+
+        }
+    }
+
+    private fun setupSendButton() {
+        binding.btnSend.setOnClickListener {
+            val messageText = binding.etMessage.text.toString().trim()
+
+            if (messageText.isNotEmpty()) {
+                val messageJson = JSONObject().apply {
+                    put("message", messageText)
+                    put("from", currentUserId)
+                    put("communityId", communityId)
+                }
+                SocketManager.sendGroundMessage(messageJson)
+                binding.etMessage.text.clear()
+            }
+        }
+    }
+
+
     private fun setupCommunityDetailsUI() {
         binding.tvName.text = communityName
         binding.totalMember.text = "($memberCount Members)"
@@ -78,32 +165,69 @@ class CommunityMessageActivity : BaseActivity() {
         memberCount = intent.getStringExtra("count") ?: ""
         members = intent.getStringArrayListExtra("members") ?: emptyList()
 
-        binding.firstmessage.text = "Welcome $creatorName to $communityName! Say Hi! "
+        lifecycleScope.launch {
+            userPref.user.collect { user ->
+                Log.d("UserPref", "User name: ${user?.name}")
+                val user = userPref.getUser()
+
+                binding.firstmessage.text = "Welcome ${user?.name} to $communityName! Say Hi! "
+            }
+        }
+
     }
 
     private fun setupRecyclerView() {
-        adapter = CommunityGroupMessageAdapter(messages, onEventJoinClick = {
+        messageAdapter = CommunityGroupMessageAdapter(
+            messages,
+            onEventJoinClick = {
 
-        }, onEventConfirmClick = { data, type -> })
+            }, onEventConfirmClick = { data, type ->
+
+            })
 
         binding.messageRv.apply {
-            adapter = adapter
-            layoutManager = LinearLayoutManager(this@CommunityMessageActivity)
+            layoutManager = LinearLayoutManager(this@CommunityMessageActivity).apply {
+                stackFromEnd = true
+            }
+            adapter = messageAdapter
         }
+
     }
 
+
     private fun handleBtn() {
+        val backbtn = intent.getBooleanExtra("createdCommunity",false)
         binding.backbtn.setOnClickListener {
-            finish()
+            if (backbtn){
+                navigateDashboard(2)
+            }else
+            {
+                finish()
+            }
+
         }
 
         binding.ivEventIcon.setOnClickListener {
-            startActivity(Intent(this, EventActivity::class.java)
-                .putExtra("communityId",communityId))
+            startActivity(
+                Intent(this, EventActivity::class.java)
+                    .putExtra("communityId", communityId)
+            )
+        }
+
+        binding.audioCall.setOnClickListener {
+            startActivity(
+                Intent(this, GroupAudioCallActivity::class.java)
+                    .putExtra("communityId", communityId)
+            )
         }
 
         binding.communitydetailLayout.setOnClickListener {
-            startActivity(Intent(this, CommunityDetailsActivity::class.java).putExtra("communityId",communityId))
+            startActivity(
+                Intent(this, CommunityDetailsActivity::class.java).putExtra(
+                    "communityId",
+                    communityId
+                )
+            )
         }
 
         binding.plusbutton.setOnClickListener {
@@ -126,13 +250,12 @@ class CommunityMessageActivity : BaseActivity() {
 
     private fun observer() {
         lifecycleScope.launch {
-            val currentUserIdValue = currentUserId.first() // suspend function to get the value once
 
             collectApiResultOnStarted(viewModel.groupMessageResponse) { response ->
-
+                Log.d("GroupChat", "Response messages count: ${response.messages.size}")
                 messages.clear()
                 messages.addAll(response.messages.map { msg ->
-                    val isSender = msg.senderId._id == currentUserIdValue
+                    val isSender = msg.senderId._id == currentUserId
                     val formattedDate = formatDate(msg.createdAt)
 
                     GroupChatMessageModel(
@@ -150,6 +273,9 @@ class CommunityMessageActivity : BaseActivity() {
                     )
 
                 })
+
+                Log.d("GroupChatMessage", "Response messages count: $messages")
+                messageAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -190,7 +316,8 @@ class CommunityMessageActivity : BaseActivity() {
     }
 
     private fun hideMenu() {
-        val slideDown = AnimationUtils.loadAnimation(this, com.careavatar.core_ui.R.anim.slide_down_fade_out)
+        val slideDown =
+            AnimationUtils.loadAnimation(this, com.careavatar.core_ui.R.anim.slide_down_fade_out)
         binding.selectImageMenuLayout.startAnimation(slideDown)
         binding.selectImageMenuLayout.postDelayed({
             binding.selectImageMenuLayout.visibility = View.GONE

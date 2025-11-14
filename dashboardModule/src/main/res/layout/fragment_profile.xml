@@ -27,13 +27,12 @@
                 android:layout_height="168dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="-85dp"
-                android:src="@drawable/profile_sample_image"/>
+                />
 
             <TextView
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nikunj_tyagi"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/textColor"
@@ -97,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="5dp"
                             android:fontFamily="@font/inter_medium"
-                            android:text="2300"
+
                             android:textColor="@color/textColor"
                             android:textSize="12sp" />
 
@@ -145,7 +144,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="5dp"
                             android:fontFamily="@font/inter_medium"
-                            android:text="120/80"
                             android:textColor="@color/textColor"
                             android:textSize="12sp" />
 
@@ -193,7 +191,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="5dp"
                             android:fontFamily="@font/inter_medium"
-                            android:text="72 to 108"
                             android:textColor="@color/textColor"
                             android:textSize="12sp" />
 

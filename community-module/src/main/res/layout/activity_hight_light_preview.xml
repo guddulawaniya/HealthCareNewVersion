@@ -42,6 +42,7 @@
         android:id="@+id/postImage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/sample_image"
         android:layout_marginTop="@dimen/gmp_ref_measurement_spacing_16"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"

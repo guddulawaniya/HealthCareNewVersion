@@ -53,6 +53,11 @@ class LoginViewModel @Inject constructor(
     val getCategoryListResponse: StateFlow<ApiResult<CategoryListResponse>> =
         _getCategoryListResponse
 
+
+    fun resetLoginState() {
+        _LoginResponse.value = ApiResult.Idle  // 👈 This clears it
+    }
+
     fun hitUserHobbies(categoryName: UserHobbiessResquest) {
         safeFlowApiCall(_userHobbiesResponse) {
             val response = repository.hitUserHobbies(categoryName)

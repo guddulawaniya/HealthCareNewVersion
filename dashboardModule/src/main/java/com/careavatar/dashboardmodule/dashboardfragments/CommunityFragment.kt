@@ -2,12 +2,15 @@ package com.careavatar.dashboardmodule.dashboardfragments
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +27,11 @@ import com.asyscraft.community_module.EventDetailsActivity
 import com.asyscraft.community_module.FindPeopleActivity
 import com.asyscraft.community_module.HightLightPreviewActivity
 import com.asyscraft.community_module.adpaters.CommunityPostAdapter
+import com.asyscraft.community_module.adpaters.ImageAdapter
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
 import com.careavatar.core_model.CommunityPostDatalist
 import com.careavatar.core_network.base.BaseFragment
+import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 import com.careavatar.core_utils.ImagePickerManager
 import com.careavatar.core_utils.FileUtils
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -43,7 +48,6 @@ import java.util.Locale
 class CommunityFragment : BaseFragment() {
 
     private lateinit var binding: FragmentCommunityBinding
-    private lateinit var adapter: UpcomingEventAdapter
     private lateinit var communityAdapter: CommunityPostAdapter
     private var datalist = mutableListOf<UpcomingTodayEventList>()
     private var communityPostDataList = mutableListOf<CommunityPostDatalist>()
@@ -63,6 +67,7 @@ class CommunityFragment : BaseFragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -87,10 +92,9 @@ class CommunityFragment : BaseFragment() {
             tab.text = tabTitles[position]
         }.attach()
 
-        setUpRecyclerview()
         setUpCommunityPostRecyclerview()
 
-        obervationAPi()
+        observationAPi()
         hitCategoryData()
         tabFeature()
 
@@ -130,7 +134,7 @@ class CommunityFragment : BaseFragment() {
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                adjustViewPagerHeight()
+
             }
         })
     }
@@ -140,19 +144,6 @@ class CommunityFragment : BaseFragment() {
         hitTodayEventList()
     }
 
-    fun adjustViewPagerHeight() {
-        val recyclerView = binding.viewPager.getChildAt(0) as RecyclerView
-        recyclerView.post {
-            val currentView = recyclerView.getChildAt(0) ?: return@post
-            currentView.measure(
-                View.MeasureSpec.makeMeasureSpec(binding.viewPager.width, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-            )
-            val layoutParams = binding.viewPager.layoutParams
-            layoutParams.height = currentView.measuredHeight
-            binding.viewPager.layoutParams = layoutParams
-        }
-    }
 
     fun showImageSourceDialog() {
 
@@ -217,18 +208,50 @@ class CommunityFragment : BaseFragment() {
     }
 
 
-    private fun obervationAPi() {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun observationAPi() {
 
         collectApiResultOnStarted(viewModel.upComingEventList) {
             if (it.events.isEmpty()){
                 binding.eventLayout.visibility = View.GONE
             }else{
                 binding.eventLayout.visibility = View.VISIBLE
+
+                val item = it.events[0]
+
+                binding.upcomingEventLayout.mainLayout.setOnClickListener {
+                    val intent = Intent(requireContext(), EventDetailsActivity::class.java)
+                    intent.putExtra("eventId",item._id)
+                    startActivity(intent)
+                }
+
+                binding.upcomingEventLayout.apply {
+                    eventTitle.text = item.title
+                    tvDescription.text = item.description
+                    eventDate.text = formatDateToReadable1(item.eventDate)
+
+
+                    arrowBtn.setOnClickListener {
+                        if (imageRecylerview.isVisible) {
+                            imageRecylerview.visibility = View.GONE
+                        }else{
+                            imageRecylerview.visibility = View.VISIBLE
+                        }
+
+                    }
+                    imageRecylerview.layoutManager = LinearLayoutManager(requireContext(),
+                        LinearLayoutManager.HORIZONTAL,false)
+                    imageRecylerview.adapter = ImageAdapter(item.attachment?.toMutableList() ?: ArrayList(),true,{
+
+                    })
+                }
             }
 
-            datalist.clear()
-            datalist.addAll(it.events)
-            adapter.notifyDataSetChanged()
+
+
+
+
+
         }
 
         collectApiResultOnStarted(viewModel.communityPostResponseList) {
@@ -261,19 +284,6 @@ class CommunityFragment : BaseFragment() {
             viewModel.hitCommunityPostList()
             viewModel.hitRecentJoinMember(selectDay)
         }
-    }
-
-    private fun setUpRecyclerview() {
-        adapter = UpcomingEventAdapter(requireContext(), datalist,listener={
-            val intent = Intent(requireContext(), EventDetailsActivity::class.java)
-            intent.putExtra("eventId", it._id)
-            startActivity(intent)
-        },onClickItem = {
-
-        })
-        binding.upComingEventRecyclerview.adapter = adapter
-        binding.upComingEventRecyclerview.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun setUpCommunityPostRecyclerview() {

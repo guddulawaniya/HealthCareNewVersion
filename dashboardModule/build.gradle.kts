@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -41,6 +42,9 @@ android {
 }
 
 dependencies {
+
+    implementation("com.google.android.gms:play-services-fitness:21.1.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     // For ViewModel & Lifecycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")

@@ -55,6 +55,8 @@ dependencies {
     implementation ("com.webtoonscorp.android:readmore-view:1.0.0")
     implementation(libs.play.services.location)
     implementation(libs.play.services.maps)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
     // Hilt
     ksp("com.google.dagger:hilt-compiler:2.54")
     implementation("com.google.dagger:hilt-android:2.54")

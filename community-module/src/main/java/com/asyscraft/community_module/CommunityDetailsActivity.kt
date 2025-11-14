@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.asyscraft.community_module.adpaters.CommunityMemberListAdapter
 import com.asyscraft.community_module.adpaters.EventAdapter
 import com.asyscraft.community_module.adpaters.GalleryImageAdapter
+import com.asyscraft.community_module.callActivity.IncomingCallActivity
+import com.asyscraft.community_module.callActivity.VideoCallActivity
 import com.asyscraft.community_module.databinding.ActivityCommunityProfileActivtiyBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
 import com.bumptech.glide.Glide
@@ -195,7 +197,7 @@ class CommunityDetailsActivity : BaseActivity() {
         adapterMember = CommunityMemberListAdapter(this, userId.toString(), memberList) { position ->
                 userSelectedId.add(memberList[position]._id)
                 memberList.removeAt(position)
-                adapter.notifyDataSetChanged()
+                adapterMember.notifyDataSetChanged()
                 hitAddToCommunity()
             }
         binding.communityMemberRv.layoutManager = LinearLayoutManager(this)
@@ -203,7 +205,7 @@ class CommunityDetailsActivity : BaseActivity() {
     }
 
     private fun setUpRecyclerView() {
-        adapter = EventAdapter(this, eventList, onItemClicked = {
+        adapter = EventAdapter(this, eventList, true,onItemClicked = {
             val intent = Intent(this, EventDetailsActivity::class.java)
             intent.putExtra("eventId", it._id)
             startActivity(intent)
@@ -222,7 +224,6 @@ class CommunityDetailsActivity : BaseActivity() {
                     LeaveCommunityActivity::class.java
                 ).putExtra("communityId", memeberlistcommunity._id)
             )
-//            hitLeaveCommunity()
         }
 
         binding.callbtn.setOnClickListener {
@@ -232,8 +233,10 @@ class CommunityDetailsActivity : BaseActivity() {
         binding.searchbtn.setOnClickListener {
             startActivity(Intent(this@CommunityDetailsActivity, MemberSeachActivity::class.java).putExtra("communityId",communityId))
         }
-        binding.participantsbtn.setOnClickListener {
-            startActivity(Intent(this@CommunityDetailsActivity, MemberSeachActivity::class.java).putExtra("communityId",communityId))
+        binding.participantBtn.setOnClickListener {
+            startActivity(Intent(this@CommunityDetailsActivity, MemberSeachActivity::class.java)
+                .putExtra("communityId",communityId)
+                .putExtra("isParticipants",true))
         }
         binding.tvUpcomingEvents.setOnClickListener {
             startActivity(Intent(this@CommunityDetailsActivity, EventActivity::class.java)
@@ -250,6 +253,8 @@ class CommunityDetailsActivity : BaseActivity() {
                     this@CommunityDetailsActivity,
                     CreateCommunityActivity::class.java
                 )
+                    .putExtra("update","update")
+                    .putExtra("communityData",memeberlistcommunity)
             )
         }
 
@@ -261,7 +266,6 @@ class CommunityDetailsActivity : BaseActivity() {
                 ).putExtra(
                     "communityId",
                     communityId,
-
                     ).putExtra(
                     "AddMember",
                     true

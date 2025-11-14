@@ -6,18 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.asyscraft.alzimer_module.AlzimerMainActivity
+import androidx.lifecycle.lifecycleScope
+import com.asyscraft.alzimer_module.ModuleDetailsActivity
 import com.asyscraft.dietition_module.DietDashboardActivity
 import com.asyscraft.dietition_module.onBoardingQuestionActivity
+import com.asyscraft.medical_reminder.CreateWaterReminderActivity
+import com.asyscraft.medical_reminder.MedicalReminderDashboardActivity
 import com.asyscraft.medical_reminder.ReminderTypeActivity
+import com.asyscraft.medical_reminder.viewModels.MedicalViewModel
 import com.asyscraft.service_module.ui.BookCaretakerActivity
 import com.asyscraft.service_module.ui.MedicalServicesActivity
 import com.careavatar.core_network.base.BaseFragment
+import com.careavatar.dashboardmodule.DashboardActivity
 import com.careavatar.dashboardmodule.NotificationActivity
 import com.careavatar.dashboardmodule.adapters.ViewPagerAdapter
 import com.careavatar.dashboardmodule.databinding.FragmentHomeBinding
 import com.careavatar.dashboardmodule.viewModels.DashBoardViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -26,9 +32,10 @@ class HomeFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: DashBoardViewModel by viewModels()
+    private val viewModelWater: MedicalViewModel by viewModels()
     private var dietIsFirstTime = 0
     private var exerciseIsFirst = 0
-
+    var hasHistory = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,11 +59,33 @@ class HomeFragment : BaseFragment() {
             startActivity(Intent(requireContext(), ReminderTypeActivity::class.java))
         }
 
+        binding.waterIntake.setOnClickListener {
+            if (hasHistory) {
+                startActivity(
+                    Intent(requireActivity(), MedicalReminderDashboardActivity::class.java)
+                        .putExtra("reminder_type", "Water")
+                )
+            } else {
+                startActivity(
+                    Intent(requireActivity(), CreateWaterReminderActivity::class.java)
+                )
+            }
+
+        }
+
         binding.alzimerLayout.setOnClickListener {
-            startActivity(Intent(requireContext(), AlzimerMainActivity::class.java))
+            startActivity(Intent(requireContext(), ModuleDetailsActivity::class.java))
         }
 
         binding.dieticianLayout.setOnClickListener {
+            val intent = if (dietIsFirstTime == 1)
+                Intent(requireContext(), onBoardingQuestionActivity::class.java)
+            else
+                Intent(requireContext(), DietDashboardActivity::class.java)
+
+            startActivity(intent)
+        }
+        binding.dailyDietition.setOnClickListener {
             val intent = if (dietIsFirstTime == 1)
                 Intent(requireContext(), onBoardingQuestionActivity::class.java)
             else
@@ -68,13 +97,34 @@ class HomeFragment : BaseFragment() {
 
         fetchUserData()
         observeViewModel()
+        hitGetWaterHistory()
 
         return binding.root
     }
 
+
+
+
+    private fun hitGetWaterHistory() {
+        launchIfInternetAvailable {
+            viewModelWater.hitWaterHistory()
+        }
+    }
+
     private fun observeViewModel() = with(viewModel) {
+
+
+
+        collectApiResultOnStarted(viewModelWater.waterHistoryResponse) { response ->
+            hasHistory = response.success && response.data.history.isNotEmpty()
+        }
+
         collectApiResultOnStarted(userDetailsResponse) {
             if (it.success) {
+                lifecycleScope.launch {
+                    userPref.saveUser(it.user)
+                }
+
                 if (it.user.notificationCount > 0) {
                     binding.badgeCount.visibility = View.VISIBLE
                     binding.badgeCount.text = it.user.notificationCount.toString()

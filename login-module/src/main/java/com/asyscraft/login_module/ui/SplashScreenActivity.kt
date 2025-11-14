@@ -19,7 +19,7 @@ class SplashScreenActivity : BaseActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         lifecycleScope.launch {
-            val loggedIn = userPref.isLoggedIn.first()  // get current login state
+            val loggedIn = userPref.isLoggedIn.first()
 
             if (loggedIn) {
                 // User already logged in → go directly to MainActivity

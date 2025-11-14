@@ -14,8 +14,12 @@ import com.careavatar.core_model.CommnityMemberListResponse
 import com.careavatar.core_model.CommunityPostResponse
 import com.careavatar.core_model.CreateCommunityResponse
 import com.careavatar.core_model.DeleteCommunitesResponse
+import com.careavatar.core_model.DeleteEventRequest
 import com.careavatar.core_model.DeleteEventResponse
+import com.careavatar.core_model.DeleteHighLightPostResponse
+import com.careavatar.core_model.EventImageUploadReponse
 import com.careavatar.core_model.EventPostResponse
+import com.careavatar.core_model.ExploreCommunityModel
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_model.GetEventdataById
 import com.careavatar.core_model.GetUserByCategoryRequest
@@ -36,6 +40,7 @@ import com.careavatar.core_model.PendingChatRequest
 import com.careavatar.core_model.RecentJoinMemberList
 import com.careavatar.core_model.SendRequestModel
 import com.careavatar.core_model.SendRequestModelRequestBody
+import com.careavatar.core_model.UpdateCommunityResponse
 import com.careavatar.core_model.UserChatListResponse
 import com.careavatar.core_model.UserDetailsbyIdResponse
 import com.careavatar.core_model.VerifyOtpRequest
@@ -121,6 +126,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.HTTP
 import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.PATCH
@@ -218,6 +224,16 @@ interface ApiServices {
         @Part image: MultipartBody.Part? = null,
     ): Response<CreateCommunityResponse>
 
+    @Multipart
+    @PATCH("communities")
+    suspend fun hitUpdateCommunity(
+        @Part("communityId") communityId: RequestBody?,
+        @Part("name") name: RequestBody?,
+        @Part("type") type: RequestBody?,
+        @Part("categoryId") categoryId: RequestBody?,
+        @Part image: MultipartBody.Part? = null
+    ): Response<UpdateCommunityResponse>
+
     @GET("getCategory")
     suspend fun hitGetCategoryList(
     ): Response<CategoryListResponse>
@@ -243,6 +259,15 @@ interface ApiServices {
         @Path("categoryName") categoryName: String
     ): Response<SearchCommunityResponse>
 
+    @GET("communities/getAllCommunity")
+    suspend fun hitAllCommunityList(
+    ): Response<ExploreCommunityModel>
+
+    @DELETE("deletePost/{id}")
+    suspend fun hitDeletePost(
+        @Path("id") id: String,
+    ): Response<DeleteHighLightPostResponse>
+
     @GET("get-messages/{communityId}")
     suspend fun hitGetGroupMessage(
         @Path("communityId") communityId: String,
@@ -267,6 +292,19 @@ interface ApiServices {
     suspend fun hitEventsDelete(
         @Path("eventId") eventId: String
     ): Response<DeleteEventResponse>
+
+    @Multipart
+    @PUT("event/{eventid}/attachments")
+    suspend fun hitUploadEventImage(
+        @Path("eventid") eventid: String,
+        @Part image: MultipartBody.Part? = null,
+    ): Response<EventImageUploadReponse>
+
+    @HTTP(method = "DELETE", path = "event/{eventid}/attachments", hasBody = true)
+    suspend fun deleteEventImage(
+        @Path("eventid") eventId: String,
+        @Body request: DeleteEventRequest
+    ): Response<EventImageUploadReponse>
 
     @Multipart
     @POST("messageToCategoryMembers")
@@ -329,7 +367,7 @@ interface ApiServices {
 
     @Multipart
     @PATCH("event/{eventid}")
-    suspend fun UpdateEventdata(
+    suspend fun hitUpdateEvent(
         @Path("eventid") eventid: String,
         @Part("communityId") communityId: RequestBody,
         @Part("description") description: RequestBody,

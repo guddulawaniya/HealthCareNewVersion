@@ -6,11 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.asyscraft.community_module.databinding.CommunityExploreRowLayoutBinding
-import com.careavatar.userapploginmodule.model.ExploreCommunityModel
+import com.bumptech.glide.Glide
+import com.careavatar.core_model.ExploreCommunityModel
+import com.careavatar.core_model.SearchCommunityResponse
+import com.careavatar.core_ui.R
+import com.careavatar.core_utils.Constants
 
 class ExploreCommunityAdapter(
-    val content: Context,
-    val datalist: MutableList<ExploreCommunityModel>
+    private val content: Context,
+    private val datalist: MutableList<ExploreCommunityModel.CommunityData>,
+    private val onItemClick: (ExploreCommunityModel.CommunityData) -> Unit
 ) : RecyclerView.Adapter<ExploreCommunityAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: CommunityExploreRowLayoutBinding) :
@@ -28,15 +33,25 @@ class ExploreCommunityAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = datalist[position]
 
-        if (item.type){
+        if (position==1){
             holder.binding.newcreatepost.visibility = View.VISIBLE
         }else{
             holder.binding.newcreatepost.visibility = View.GONE
         }
 
-        holder.binding.communityTitle.text = item.title
-        holder.binding.communitySubtitle.text = item.subtitle
-        holder.binding.communityImage.setImageResource(item.image)
+        holder.binding.communityTitle.text = item.name
+        holder.binding.communitySubtitle.text = "${item.members.size} Members , ${item.category.name} , ${item.type}"
+
+        if (item.communityLogo.isNotEmpty()){
+            Glide.with(content).load(Constants.IMAGE_BASEURL+item.communityLogo).placeholder(R.drawable.commuinty_placeholder_image).into(holder.binding.communityImage)
+
+        }else
+        {
+            holder.binding.communityImage.setImageResource(R.drawable.commuinty_placeholder_image)
+        }
+        holder.itemView.setOnClickListener {
+            onItemClick(item)
+        }
 
     }
 

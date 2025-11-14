@@ -5,7 +5,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import com.careavatar.core_model.UserDetailsResponse
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,6 +24,31 @@ class UserPref @Inject constructor(
         private val KEY_MOBILE_NUMBER = stringPreferencesKey("mobile_number")
         private val KEY_RADUIS_Circle = stringPreferencesKey("RaduisCircle")
         private val KEY_USER_ID = stringPreferencesKey("user_id")
+        private val KEY_USER_DATA = stringPreferencesKey("user_data")
+
+    }
+
+
+    // ✅ Save full user model
+    suspend fun saveUser(user: UserDetailsResponse.User) {
+        val userJson = Gson().toJson(user)
+        dataStore.edit { prefs ->
+            prefs[KEY_USER_DATA] = userJson
+        }
+    }
+
+    // ✅ Retrieve full user model as Flow
+    val user: Flow<UserDetailsResponse.User?> = dataStore.data.map { prefs ->
+        prefs[KEY_USER_DATA]?.let { json ->
+            Gson().fromJson(json, UserDetailsResponse.User::class.java)
+        }
+    }
+
+    // ✅ Retrieve once (non-flow, suspend)
+    suspend fun getUser(): UserDetailsResponse.User? {
+        val prefs = dataStore.data.first()
+        val json = prefs[KEY_USER_DATA]
+        return json?.let { Gson().fromJson(it, UserDetailsResponse.User::class.java) }
     }
 
     @Volatile private var cachedToken: String? = null

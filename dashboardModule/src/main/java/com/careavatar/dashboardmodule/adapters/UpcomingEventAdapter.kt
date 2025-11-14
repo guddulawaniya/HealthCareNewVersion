@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.RecyclerView
-import com.careavatar.core_model.UpcomingTodayEventList
-import com.careavatar.dashboardmodule.databinding.UpcomingEventRowLayoutBinding
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.asyscraft.community_module.adpaters.ImageAdapter
-import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable
+import com.asyscraft.community_module.databinding.UpcomingEventRowLayoutBinding
+import com.careavatar.core_model.UpcomingTodayEventList
 import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 
 class UpcomingEventAdapter(
@@ -49,14 +48,17 @@ class UpcomingEventAdapter(
         holder.binding.arrowBtn.setOnClickListener {
             if (holder.binding.imageRecylerview.isVisible) {
                 holder.binding.imageRecylerview.visibility = View.GONE
-            }else{
+            } else {
                 holder.binding.imageRecylerview.visibility = View.VISIBLE
             }
 
         }
-        holder.binding.imageRecylerview.layoutManager = LinearLayoutManager(content,
-            LinearLayoutManager.HORIZONTAL,false)
-        holder.binding.imageRecylerview.adapter = ImageAdapter(item.attachment?.toMutableList() ?: ArrayList(),true,onClickItem)
+        holder.binding.imageRecylerview.layoutManager = LinearLayoutManager(
+            content,
+            LinearLayoutManager.HORIZONTAL, false
+        )
+        holder.binding.imageRecylerview.adapter =
+            ImageAdapter(item.attachment?.toMutableList() ?: ArrayList(), true, onClickItem)
 
     }
 

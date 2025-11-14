@@ -5,6 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GroupAudioCallActivity">
+    tools:context=".callActivity.GroupAudioCallActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

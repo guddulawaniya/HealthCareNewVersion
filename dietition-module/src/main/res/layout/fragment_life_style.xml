@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".LifeStyleFragment">
+    tools:context=".fragments.LifeStyleFragment">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -11,8 +11,12 @@ import com.careavatar.core_model.CommnityMemberListResponse
 import com.careavatar.core_model.CommunityPostResponse
 import com.careavatar.core_model.CreateCommunityResponse
 import com.careavatar.core_model.DeleteCommunitesResponse
+import com.careavatar.core_model.DeleteEventRequest
 import com.careavatar.core_model.DeleteEventResponse
+import com.careavatar.core_model.DeleteHighLightPostResponse
+import com.careavatar.core_model.EventImageUploadReponse
 import com.careavatar.core_model.EventPostResponse
+import com.careavatar.core_model.ExploreCommunityModel
 import com.careavatar.core_model.GetCategoryRquest
 import com.careavatar.core_model.GetEventdataById
 import com.careavatar.core_model.GetUserByCategoryRequest
@@ -24,6 +28,7 @@ import com.careavatar.core_model.SearchCommunityResponse
 import com.careavatar.core_model.SendRequestModel
 import com.careavatar.core_model.SendRequestModelRequestBody
 import com.careavatar.core_model.UpcomingEventModel
+import com.careavatar.core_model.UpdateCommunityResponse
 import com.careavatar.core_model.UserChatListResponse
 import com.careavatar.core_model.UserDetailsbyIdResponse
 import com.careavatar.core_model.UserHobbiesResponse
@@ -147,16 +152,37 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
         _commnityMemberListResponse
 
 
-   private val _userDetailsbyIdResponse =
+    private val _userDetailsbyIdResponse =
         MutableStateFlow<ApiResult<UserDetailsbyIdResponse>>(ApiResult.Idle)
     val userDetailsbyIdResponse: StateFlow<ApiResult<UserDetailsbyIdResponse>> =
         _userDetailsbyIdResponse
 
 
-   private val _sendRequestModel =
+    private val _sendRequestModel =
         MutableStateFlow<ApiResult<SendRequestModel>>(ApiResult.Idle)
     val sendRequestModel: StateFlow<ApiResult<SendRequestModel>> =
         _sendRequestModel
+
+    private val _ExploreCommunityModel =
+        MutableStateFlow<ApiResult<ExploreCommunityModel>>(ApiResult.Idle)
+    val exploreCommunityModel: StateFlow<ApiResult<ExploreCommunityModel>> =
+        _ExploreCommunityModel
+
+    private val _DeleteHighLightPostResponse =
+        MutableStateFlow<ApiResult<DeleteHighLightPostResponse>>(ApiResult.Idle)
+    val deleteHighLightPostResponse: StateFlow<ApiResult<DeleteHighLightPostResponse>> =
+        _DeleteHighLightPostResponse
+
+
+    private val _UpdateCommunityResponse =
+        MutableStateFlow<ApiResult<UpdateCommunityResponse>>(ApiResult.Idle)
+    val updateCommunityResponse: StateFlow<ApiResult<UpdateCommunityResponse>> =
+        _UpdateCommunityResponse
+
+    private val _EventImageUploadResponse =
+        MutableStateFlow<ApiResult<EventImageUploadReponse>>(ApiResult.Idle)
+    val eventImageUploadResponse: StateFlow<ApiResult<EventImageUploadReponse>> =
+        _EventImageUploadResponse
 
 
     fun hitGetChatList(userId: String) {
@@ -166,7 +192,6 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
             else throw Exception(response.message())
         }
     }
-
 
 
     fun hitSendRequest(request: SendRequestModelRequestBody) {
@@ -194,9 +219,9 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
         }
     }
 
-    fun getUpcomingEventList(communityId: String,date:String) {
+    fun getUpcomingEventList(communityId: String, date: String) {
         safeFlowApiCall(_upComingEventList) {
-            val response = repository.hitEventsByDateAndCommunity(communityId,date)
+            val response = repository.hitEventsByDateAndCommunity(communityId, date)
             if (response.isSuccessful) response.body()!!
             else throw Exception(response.message())
         }
@@ -209,6 +234,7 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
             else throw Exception(response.message())
         }
     }
+
     fun hitGetCommunityMember(communityId: String) {
         safeFlowApiCall(_commnityMemberListResponse) {
             val response = repository.hitGetCommunityMember(communityId)
@@ -216,6 +242,7 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
             else throw Exception(response.message())
         }
     }
+
     fun hitDeleteCommunity(communityId: String) {
         safeFlowApiCall(_deleteCommunitesResponse) {
             val response = repository.hitDeleteCommunity(communityId)
@@ -237,7 +264,8 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
         title: String,
         visibility: String,
         notifiedMembers: List<String>?,
-        attachments: List<MultipartBody.Part>?) {
+        attachments: List<MultipartBody.Part>?
+    ) {
 
         safeFlowApiCall(_eventPostResponse) {
 
@@ -265,6 +293,42 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
         }
     }
 
+    fun hitUpdateEvent(
+        eventId: String,
+        communityId: String,
+        eventDate: String,
+        description: String,
+        eventLink: String,
+        eventMode: String,
+        eventTime: String,
+        latitude: String,
+        location: String,
+        longitude: String,
+        title: String,
+        visibility: String,
+    ) {
+
+        safeFlowApiCall(_eventPostResponse) {
+
+            val response = repository.hitUpdateEvent(
+                eventId,
+                communityId,
+                eventDate,
+                description,
+                eventLink,
+                eventMode,
+                eventTime,
+                latitude,
+                location,
+                longitude,
+                title,
+                visibility,
+            )
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
     fun hitEventsDelete(eventId: String) {
         safeFlowApiCall(_deleteEventResponse) {
             val response = repository.hitEventsDelete(eventId)
@@ -272,6 +336,7 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
             else throw Exception(response.message())
         }
     }
+
     fun hitGetEventdetailbyid(eventId: String) {
         safeFlowApiCall(_getEventDetailResponse) {
             val response = repository.hitGetEventdetailbyid(eventId)
@@ -280,7 +345,23 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
         }
     }
 
- fun getGroupMessage(communityId: String) {
+    fun hitDeleteEventImage(eventId: String, request: DeleteEventRequest) {
+        safeFlowApiCall(_EventImageUploadResponse) {
+            val response = repository.hitDeleteEventImage(eventId, request)
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun hitUploadEventImage(eventId: String, image: MultipartBody.Part? = null) {
+        safeFlowApiCall(_EventImageUploadResponse) {
+            val response = repository.hitUploadEventImage(eventId, image)
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun getGroupMessage(communityId: String) {
         safeFlowApiCall(_groupMessageResponse) {
             val response = repository.hitGroupMessage(communityId)
             if (response.isSuccessful) response.body()!!
@@ -295,7 +376,7 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
         address: String,
         latitude: String,
         longitude: String,
-        image: File?=null
+        image: File? = null
     ) {
         safeFlowApiCall(_hightlightPostResponse) {
             val response = repository.hitHightLightPost(
@@ -307,6 +388,22 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
                 longitude.toRequestBody(),
                 convertFormFileToMultipartBody("image", image)
             )
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun hitAllCommunityList() {
+        safeFlowApiCall(_ExploreCommunityModel) {
+            val response = repository.hitAllCommunityList()
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun hitDeletePost(id: String) {
+        safeFlowApiCall(_DeleteHighLightPostResponse) {
+            val response = repository.hitDeletePost(id)
             if (response.isSuccessful) response.body()!!
             else throw Exception(response.message())
         }
@@ -347,6 +444,26 @@ class SocialMeetViewmodel @Inject constructor(private val repository: UserReposi
     fun hitCreateCommunity(name: String, type: String, interestsId: String, image: File? = null) {
         safeFlowApiCall(_createCommunityResponse) {
             val response = repository.hitCreateCommunity(
+                name.toRequestBody(),
+                type.toRequestBody(),
+                interestsId.toRequestBody(),
+                convertFormFileToMultipartBody("image", image)
+            )
+            if (response.isSuccessful) response.body()!!
+            else throw Exception(response.message())
+        }
+    }
+
+    fun hitUpdateCommunity(
+        communityId: String,
+        name: String,
+        type: String,
+        interestsId: String,
+        image: File? = null
+    ) {
+        safeFlowApiCall(_UpdateCommunityResponse) {
+            val response = repository.hitUpdateCommunity(
+                communityId.toRequestBody(),
                 name.toRequestBody(),
                 type.toRequestBody(),
                 interestsId.toRequestBody(),

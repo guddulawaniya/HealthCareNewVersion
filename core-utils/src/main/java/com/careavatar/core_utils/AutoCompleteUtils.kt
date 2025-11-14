@@ -1,6 +1,8 @@
 package com.careavatar.core_utils
 
 import android.annotation.SuppressLint
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import com.careavatar.core_ui.R
@@ -19,17 +21,38 @@ object AutoCompleteUtils {
             data
         )
         autoCompleteTextView.setAdapter(adapter)
-        autoCompleteTextView.threshold = 1
 
-        // ✅ Show dropdown immediately when focused
+        // Make sure suggestions start showing immediately
+        autoCompleteTextView.threshold = 0
+
+        // ✅ Force show dropdown when focused
         autoCompleteTextView.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) autoCompleteTextView.showDropDown()
+            if (hasFocus) {
+                autoCompleteTextView.post {
+                    autoCompleteTextView.showDropDown()
+                }
+            }
         }
 
-        // ✅ Also show on touch
+        // ✅ Also show dropdown when touched
         autoCompleteTextView.setOnTouchListener { _, _ ->
-            autoCompleteTextView.showDropDown()
+            if (!autoCompleteTextView.isPopupShowing) {
+                autoCompleteTextView.showDropDown()
+            }
             false
         }
+
+        // ✅ Ensure filter shows full list when text is empty
+        autoCompleteTextView.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty()) {
+                    adapter.filter.filter(null)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
+
 }

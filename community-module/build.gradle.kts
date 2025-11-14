@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-
+    implementation("io.getstream:stream-webrtc-android:1.3.6")
     // For ViewModel & Lifecycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.5")
@@ -79,6 +79,7 @@ dependencies {
     implementation(project(":core-ui"))
     implementation(project(":core-model"))
     implementation(project(":core-utils"))
+    implementation("io.socket:socket.io-client:2.1.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

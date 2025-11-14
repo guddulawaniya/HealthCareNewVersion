@@ -1,8 +1,12 @@
 package com.asyscraft.community_module
 
 import android.Manifest
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -16,6 +20,7 @@ import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
 import com.bumptech.glide.Glide
 import com.careavatar.core_model.UpcomingTodayEventList
 import com.careavatar.core_network.base.BaseActivity
+import com.careavatar.core_ui.GlobalConfirmBottomSheet
 import com.careavatar.core_ui.R
 import com.careavatar.core_utils.Constants
 import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
@@ -48,7 +53,43 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityEventDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.toolbar.tvTitle.text = "Event Details"
+
+
+        // Toolbar navigation back
+        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+
+
+        // Handle toolbar menu clicks (if you have menu/chat_menu)
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                com.asyscraft.community_module.R.id.action_edit_event -> {
+                    startActivity(Intent(this, CreateEventActivity::class.java).apply {
+                        putExtra("eventId", intent.getStringExtra("eventId"))
+                        putExtra("updateEvent", "update")
+                    })
+                    true
+                }
+                com.asyscraft.community_module.R.id.action_delete_event -> {
+
+                    GlobalConfirmBottomSheet.show(
+                        context = this,
+                        title = "Delete Event",
+                        description = "This event is permanently deleted and removed form the calendar",
+                        cancelText = "Cancel",
+                        confirmText = "Delete",
+                        onCancel = {
+                            showToast("Cancelled")
+                        },
+                        onConfirm = {
+                            hitDeleteEvent()
+                        }
+                    )
+
+                    true
+                }
+                else -> false
+            }
+        }
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -69,7 +110,7 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
                 // Load main image
                 if (event.attachment.isNotEmpty()) {
                     Glide.with(this)
-                        .load(Constants.IMAGE_BASEURL + event.attachment[0])
+                        .load(Constants.socket_URL + event.attachment[0])
                         .placeholder(R.drawable.logo)
                         .into(binding.itemImageView)
                 }
@@ -87,14 +128,59 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
                         intent.putExtra("url", event.eventLink)
                         startActivity(intent)
                     }
-                    binding.locationText.visibility = View.GONE
-                    binding.locationLayout.visibility = View.GONE
+
+                    binding.copyTextBtn.setOnClickListener {
+                        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        val clip = ClipData.newPlainText("Event link", event.eventLink)
+                        clipboard.setPrimaryClip(clip)
+                        showToast("Link copied to clipboard!")
+                    }
+
+
+                    binding.joinbtn.buttonNext.text = "Join"
+                    hideLocationViews()
                     binding.eventtextMode.visibility = View.VISIBLE
                     binding.eventModeTextView.visibility = View.VISIBLE
-                } else {
+                }
+                else {
+                    binding.eventtextMode.visibility = View.GONE
+                    binding.copyTextBtn.visibility = View.GONE
+                    binding.eventModeTextView.visibility = View.GONE
+                    binding.locationLayout.visibility = View.VISIBLE
+                    binding.locationText.visibility = View.VISIBLE
+
+                    binding.joinbtn.buttonNext.text = "Get Direction"
                     val location = event.location
                     val latitudeStr = event.latitude
                     val longitudeStr = event.longitude
+                    binding.locationTextView.text = location ?: ""
+
+                    binding.joinbtn.buttonNext.setOnClickListener {
+                        try {
+                            val latitude = latitudeStr.toDouble()
+                            val longitude = longitudeStr.toDouble()
+
+                            // Create URI for navigation
+                            val uri = Uri.parse("google.navigation:q=$latitude,$longitude")
+
+                            // Create an intent
+                            val mapIntent = Intent(Intent.ACTION_VIEW, uri)
+                            mapIntent.setPackage("com.google.android.apps.maps")
+
+                            // Verify that the Maps app is installed
+                            if (mapIntent.resolveActivity(packageManager) != null) {
+                                startActivity(mapIntent)
+                            } else {
+                                // If Google Maps is not installed, open in browser
+                                val webUri = Uri.parse("https://www.google.com/maps/dir/?api=1&destination=$latitude,$longitude")
+                                startActivity(Intent(Intent.ACTION_VIEW, webUri))
+                            }
+
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            showToast("Invalid location coordinates")
+                        }
+                    }
 
                     if (!latitudeStr.isNullOrEmpty() && !longitudeStr.isNullOrEmpty()) {
                         try {
@@ -107,11 +193,7 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
                                 placeMarker(eventLatLng!!)
                             }
 
-                            binding.locationLayout.visibility = View.VISIBLE
-                            binding.locationText.visibility = View.VISIBLE
-                            binding.eventtextMode.visibility = View.GONE
-                            binding.eventModeTextView.visibility = View.GONE
-                            binding.locationTextView.text = location ?: ""
+
                         } catch (e: NumberFormatException) {
                             e.printStackTrace()
                             hideLocationViews()
@@ -122,11 +204,23 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
                 }
             }
         }
+
+        collectApiResultOnStarted(viewmodel.deleteEventResponse){
+            showToast("Event deleted successfully")
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun hideLocationViews() {
         binding.locationLayout.visibility = View.GONE
         binding.locationText.visibility = View.GONE
+    }
+
+    private fun hitDeleteEvent() {
+        val eventId = intent.getStringExtra("eventId").toString()
+        launchIfInternetAvailable {
+            viewmodel.hitEventsDelete(eventId)
+        }
     }
 
     private fun fetchEventDetails() {
@@ -201,7 +295,7 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun setupRecyclerview(selectedImages: MutableList<String>) {
-        imageAdapter = ImageAdapter(selectedImages.toMutableList()) { position ->
+        imageAdapter = ImageAdapter(selectedImages.toMutableList(),true) { position ->
             val flag = intent.getBooleanExtra("flag", false)
             if (flag) {
                 // Handle delete logic if needed

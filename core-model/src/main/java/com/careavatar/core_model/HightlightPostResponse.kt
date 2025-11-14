@@ -32,3 +32,9 @@ data class CommunityPostUser(
     val image: Any?,
 )
 
+data class DeleteHighLightPostResponse(
+    val success: Boolean,
+    val msg: String,
+)
+
+

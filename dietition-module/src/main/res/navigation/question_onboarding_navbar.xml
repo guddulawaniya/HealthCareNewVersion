@@ -7,25 +7,35 @@
 
     <fragment
         android:id="@+id/dailyRoutineFragment"
-        android:name="com.asyscraft.dietition_module.DailyRoutineFragment"
+        android:name="com.asyscraft.dietition_module.fragments.DailyRoutineFragment"
         android:label="fragment_daily_routine"
         tools:layout="@layout/fragment_daily_routine" >
+
         <action
-            android:id="@+id/action_dailyRoutineFragment_to_mainGoalFragment"
-            app:destination="@id/mainGoalFragment" />
+            android:id="@+id/action_dailyRoutineFragment_to_calculateBMIFragment"
+            app:destination="@id/calculateBMIFragment" />
     </fragment>
     <fragment
         android:id="@+id/lifeStyleFragment"
-        android:name="com.asyscraft.dietition_module.LifeStyleFragment"
+        android:name="com.asyscraft.dietition_module.fragments.LifeStyleFragment"
         android:label="fragment_life_style"
         tools:layout="@layout/fragment_life_style" />
     <fragment
         android:id="@+id/mainGoalFragment"
-        android:name="com.asyscraft.dietition_module.MainGoalFragment"
+        android:name="com.asyscraft.dietition_module.fragments.MainGoalFragment"
         android:label="fragment_main_goal"
         tools:layout="@layout/fragment_main_goal" >
         <action
             android:id="@+id/action_mainGoalFragment_to_lifeStyleFragment"
             app:destination="@id/lifeStyleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculateBMIFragment"
+        android:name="com.asyscraft.dietition_module.fragments.CalculateBMIFragment"
+        android:label="fragment_calculate_b_m_i"
+        tools:layout="@layout/fragment_calculate_b_m_i" >
+        <action
+            android:id="@+id/action_calculateBMIFragment_to_mainGoalFragment"
+            app:destination="@id/mainGoalFragment" />
     </fragment>
 </navigation>

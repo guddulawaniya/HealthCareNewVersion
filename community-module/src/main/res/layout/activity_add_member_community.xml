@@ -22,13 +22,93 @@
         android:id="@+id/custom_searchbar"
         layout="@layout/custom_search_layout" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invite with Link"
+        android:textSize="18dp"
+        android:fontFamily="@font/inter_medium"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"
+        android:background="@drawable/medical_types_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/copyLayoutlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/tab_bg"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/copyLinkText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="https://heathifywithme//.com..."
+                    android:textSize="12dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/inter_medium"
+                    android:textColor="@color/black" />
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:src="@drawable/copy_icon"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/shareBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share Link"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#1A73E8"
+              />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anyone with the link can join the community share with your friends and family"
+            android:textSize="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/inter_medium"
+            android:textColor="@color/hintColor" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Friends"
+        android:textSize="18dp"
+        android:fontFamily="@font/inter_medium"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/memberRecyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         tools:listitem="@layout/add_poeple_row_layout" />
 
     <include

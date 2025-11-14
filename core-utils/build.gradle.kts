@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation(project(":core-ui"))
+    implementation(project(":core-model"))
     //location
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("androidx.datastore:datastore-preferences:1.1.1")

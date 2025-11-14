@@ -13,6 +13,8 @@ android {
         version = release(36)
     }
 
+    // jks file password : android
+
     defaultConfig {
         applicationId = "com.careavatar.userapp"
         minSdk = 24
@@ -51,6 +53,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.core:core-splashscreen:1.2.0")
+
     ksp("com.google.dagger:hilt-compiler:2.54")
     implementation("com.google.dagger:hilt-android:2.54")
 
@@ -60,6 +64,7 @@ dependencies {
     implementation( project(":core-model"))
     implementation( project(":core-ui"))
     implementation( project(":login-module"))
+    implementation( project(":dashboardModule"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

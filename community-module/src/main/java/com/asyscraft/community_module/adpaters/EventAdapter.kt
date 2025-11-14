@@ -18,6 +18,7 @@ import com.careavatar.core_utils.DateTimePickerUtil.formatDateToReadable1
 class EventAdapter(
     val content: Context,
     val datalist: MutableList<UpcomingTodayEventList>,
+    val changeText : Boolean = false,
     private val onItemClicked: (UpcomingTodayEventList) -> Unit
 ) : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
@@ -37,12 +38,13 @@ class EventAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = datalist[position]
 
+        holder.binding.btnJoin.text = if (changeText) "View" else "Join"
         holder.binding.tvEventTitle.text = item.title
         holder.binding.tvEventDesc.text = item.description
         holder.binding.tvEventDateTime.text = formatDateToReadable1(item.eventDate)
 
         if (item.attachment?.isNotEmpty() ?: false){
-            Glide.with(holder.itemView.context).load(Constants.IMAGE_BASEURL+ item.attachment!![0]).into(holder.binding.eventImage)
+            Glide.with(holder.itemView.context).load(Constants.socket_URL+ item.attachment[0]).into(holder.binding.eventImage)
         }
 
         holder.itemView.setOnClickListener { onItemClicked(item) }

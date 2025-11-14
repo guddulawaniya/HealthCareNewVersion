@@ -8,9 +8,10 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.asyscraft.community_module.databinding.ActivityHightLightPreviewBinding
 import com.asyscraft.community_module.viewModels.SocialMeetViewmodel
-import com.careavatar.core_network.base.BaseActivity
 import com.bumptech.glide.Glide
 import com.careavatar.core_model.CommunityPostDatalist
+import com.careavatar.core_network.base.BaseActivity
+import com.careavatar.core_ui.GlobalConfirmBottomSheet
 import com.careavatar.core_utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
@@ -32,11 +33,45 @@ class HightLightPreviewActivity : BaseActivity() {
         }
 
         binding.deletebtn.setOnClickListener {
-            deleteEvent()
+            GlobalConfirmBottomSheet.show(
+                context = this,
+                title = "Delete Highlight",
+                description = "This highlight will be permanently removed from the database.",
+                cancelText = "Cancel",
+                confirmText = "Delete",
+                onCancel = {
+                    showToast("Cancelled")
+                },
+                onConfirm = {
+                    hitDeletePost()
+                }
+            )
+
         }
         setData()
+        observer()
+    }
+
+    private fun observer() {
+        collectApiResultOnStarted(viewModel.deleteHighLightPostResponse) {
+            if (it.success) {
+                showToast(it.msg)
+                finish()
+            }
+        }
 
     }
+
+    private fun hitDeletePost() {
+        val item = intent.getParcelableExtra<CommunityPostDatalist>("highLightpost")
+        if (item != null) {
+            launchIfInternetAvailable {
+                viewModel.hitDeletePost(item._id)
+            }
+        }
+
+    }
+
     private fun setData() {
         val item = intent.getParcelableExtra<CommunityPostDatalist>("highLightpost")
 
@@ -44,8 +79,7 @@ class HightLightPreviewActivity : BaseActivity() {
             val currentUserId = userPref.userId.first()
             if (item?.user?.id == currentUserId) {
                 binding.deletebtn.visibility = View.VISIBLE
-            }else
-            {
+            } else {
                 binding.deletebtn.visibility = View.GONE
             }
         }
@@ -54,7 +88,8 @@ class HightLightPreviewActivity : BaseActivity() {
         if (item != null) {
 
             Glide.with(this)
-                .load(item.image?.let { Constants.IMAGE_BASEURL + it } ?: com.careavatar.core_ui.R.drawable.logo)
+                .load(item.image?.let { Constants.IMAGE_BASEURL + it }
+                    ?: com.careavatar.core_ui.R.drawable.logo)
                 .into(binding.postImage)
 
             binding.title.text = item.title
@@ -66,7 +101,6 @@ class HightLightPreviewActivity : BaseActivity() {
             )
         }
     }
-
 
 
     fun getAddressFromLatLng(context: Context, latitude: Double, longitude: Double): String {
@@ -87,12 +121,4 @@ class HightLightPreviewActivity : BaseActivity() {
         }
     }
 
-    private fun deleteEvent() {
-        val eventId = intent.getStringExtra("event_id").toString()
-        launchIfInternetAvailable {
-
-            viewModel.hitEventsDelete(eventId)
-        }
-
-    }
 }

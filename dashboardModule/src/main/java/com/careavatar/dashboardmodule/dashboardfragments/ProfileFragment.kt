@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.asyscraft.core_navigation.AppNavigator
-
+import com.bumptech.glide.Glide
 import com.careavatar.core_network.base.BaseFragment
+import com.careavatar.core_ui.R
+import com.careavatar.core_utils.Constants
 import com.careavatar.dashboardmodule.databinding.FragmentProfileBinding
 import com.careavatar.dashboardmodule.viewModels.DashBoardViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,7 @@ class ProfileFragment : BaseFragment() {
     private lateinit var binding: FragmentProfileBinding
 
     private val viewModel: DashBoardViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +53,7 @@ class ProfileFragment : BaseFragment() {
 
     }
 
+
     private fun navigateToLogin() {
         try {
             val intent = Intent(
@@ -74,11 +77,13 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun restartApp() {
-        val intent = requireContext().packageManager.getLaunchIntentForPackage(requireContext().packageName)?.apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
+        val intent =
+            requireContext().packageManager.getLaunchIntentForPackage(requireContext().packageName)
+                ?.apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
         requireContext().startActivity(intent)
         requireActivity().finishAffinity()
     }
@@ -92,6 +97,10 @@ class ProfileFragment : BaseFragment() {
                         stepCount.text = notificationCount.toString()
                         tvBloodPressure.text = BP
                         tvSugarLevel.text = sugar
+                        Glide.with(requireContext())
+                            .load(Constants.IMAGE_BASEURL + it.user.avatar)
+                            .placeholder(R.drawable.profile_1)
+                            .into(profileImage)
                     }
                 }
 

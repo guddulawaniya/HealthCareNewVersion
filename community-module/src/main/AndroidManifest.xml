@@ -8,10 +8,13 @@
 
     <application>
         <activity
-            android:name=".GroupIncomingActivity"
+            android:name=".AddParticipantsActivity"
             android:exported="false" />
         <activity
-            android:name=".IncomingCallActivity"
+            android:name=".callActivity.GroupIncomingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".callActivity.IncomingCallActivity"
             android:exported="false" />
         <activity
             android:name=".MemberSeachActivity"
@@ -47,16 +50,16 @@
             android:name=".CommunityDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".AudioCallActivity"
+            android:name=".callActivity.AudioCallActivity"
             android:exported="false" />
         <activity
-            android:name=".VideoCallActivity"
+            android:name=".callActivity.VideoCallActivity"
             android:exported="false" />
         <activity
-            android:name=".GroupAudioCallActivity"
+            android:name=".callActivity.GroupAudioCallActivity"
             android:exported="false" />
         <activity
-            android:name=".GroupVideoActivity"
+            android:name=".callActivity.GroupVideoActivity"
             android:exported="false" />
         <activity
             android:name=".HightLightPreviewActivity"

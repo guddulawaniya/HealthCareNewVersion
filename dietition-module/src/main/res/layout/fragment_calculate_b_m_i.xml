@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    tools:context=".fragments.CalculateBMIFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s Calculate the BMI"
+            android:textSize="25dp"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#3349A24E">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight (kg)"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:textColor="@color/hintColor" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="65"
+                        android:layout_marginTop="8dp"
+                        android:textSize="45dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryColor" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
+                            android:elevation="4dp"
+                            android:layout_marginEnd="10dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="30dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="4dp"
+                                android:src="@drawable/minus_icon_doctor"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
+                            android:elevation="4dp"
+                            android:layout_marginStart="10dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="30dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="5dp"
+                                android:src="@drawable/add_plus_btn_icon"/>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                app:cardCornerRadius="20dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#3349A24E">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Age"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:textColor="@color/hintColor" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="65"
+                        android:layout_marginTop="8dp"
+                        android:textSize="45dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryColor" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
+                            android:elevation="4dp"
+                            android:layout_marginEnd="10dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="30dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="4dp"
+                                android:src="@drawable/minus_icon_doctor"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
+                            android:elevation="4dp"
+                            android:layout_marginStart="10dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="30dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="5dp"
+                                android:src="@drawable/add_plus_btn_icon"/>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="#3349A24E">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight (kg)"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/inter_medium"
+                    android:textColor="@color/hintColor" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="65"
+                    android:textSize="45dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primaryColor" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        android:elevation="4dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="30dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="4dp"
+                            android:src="@drawable/minus_icon_doctor"/>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        android:elevation="4dp"
+                        android:layout_marginStart="10dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="30dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:src="@drawable/add_plus_btn_icon"/>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+   <include
+       android:id="@+id/includeBtn"
+       layout="@layout/custom_button"/>
+
+</LinearLayout>
